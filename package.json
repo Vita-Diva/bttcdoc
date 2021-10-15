@@ -1,0 +1,13 @@
+{
+  "name": "bttc",
+  "version": "1.0.0",
+  "description": "bttc docs",
+  "main": "index.js",
+  "author": "BitTorrent-Chain",
+  "license": "MIT",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  }
+}
+
