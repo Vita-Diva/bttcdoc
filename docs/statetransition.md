@@ -18,7 +18,7 @@ BTTC的验证人定期向公共区块链上提交BTTC上所有交易的哈希值
 
 ## Child Tunnel 合约
 
-通过FxBaseChildTunnel合约，您可以使用以下功能：
+通过`FxBaseChildTunnel`合约，您可以使用以下功能：
 
 * `_processMessageFromRoot(uint256 stateId, address sender, bytes memory data)`：实现这个函数，来处理从Root Tunnel发送的数据。
 

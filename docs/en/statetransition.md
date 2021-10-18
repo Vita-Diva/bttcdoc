@@ -36,7 +36,7 @@ The following functions are available via the FxBaseChildTunnel contract:
 
 ## State Transition Bridge Contract Example
 
-FxBaseRootTunnel, FxBaseChildTunnel to be determined
+TBD:FxBaseRootTunnel, FxBaseChildTunnel
 
 ## Transition of State Between Public Blockchain and BTTC
 
