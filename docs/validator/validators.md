@@ -24,13 +24,11 @@ TRON及其他区块链网络上的Root合约，支持用户通过存取款的方
 
 验证BitTorrent-Chain区块，定期发送Checkpoint至支持的TRON及其他区块链网络。
 
-    **Bridge：** 负责监听各链路事件，发送事件消息等。
+**Bridge**：负责监听各链路事件，发送事件消息等。
 
+**Core**：共识模块，包括Checkpoint(BitTorrent-Chain链的状态快照)的验证，Statesync事件&Staking事件的共识。  
 
-    **Core：**共识模块，包括Checkpoint(BitTorrent-Chain链的状态快照)的验证，Statesync事件&Staking事件的共识。  
-
-
-    **REST-Server：**提供相关API服务。
+**REST-Server**：提供相关API服务。
 
 ### BitTorrent-Chain
 
@@ -51,19 +49,15 @@ BitTorrent-Chain的验证人是通过链上的质押来选择的，这个过程�
 * 验证人可以随时增加质押BTT代币数量，以增加质押能力。
 * 设置验证人节点后，验证人将执行以下操作：
 
-      1.区块生产者选择
+    1.区块生产者选择
 
+    2.在BitTorrent-Chain 上验证块
 
-      2.在BitTorrent-Chain 上验证块
+    3.检查点提交
 
+    4.在以太坊上同步对BitTorrent-Chain 质押合约的更改
 
-      3.检查点提交
-
-
-      4.在以太坊上同步对BitTorrent-Chain 质押合约的更改
-
-
-      5.从TRON&以太坊&BSC 到BitTorrent-Chain层的状态同步
+    5.从TRON&以太坊&BSC 到BitTorrent-Chain层的状态同步
 
 * 验证人需要保持最低数量的代币来支付相关链上的交易费用。
 

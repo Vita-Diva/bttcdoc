@@ -18,9 +18,4 @@ You can deploy your smart contract on BTTC without worrying about the underlying
 
 ## Community
 
-Welcome to join us by any of the following methods:
-
-* Telegram:
-* GitHub:
-* Team E-mail:
-* Support:
+Welcome to join us.

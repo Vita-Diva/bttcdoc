@@ -18,9 +18,4 @@ const web3 = new Web3('')
 
 ## 社区
 
-欢迎通过下面的任何方式加入到BTTC的社区中来
-
-* Telegram:
-* GitHub:
-* Team E-mail:
-* Support:
+欢迎加入到BTTC的社区中来

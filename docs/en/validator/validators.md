@@ -19,13 +19,11 @@ The BitTorrent-Chain is a blockchain application platform with an overall struct
 * Root Contracts layer: Root contracts on TRON and other blockchain networks will support functions of staking, mapping tokens to BitTorrent-Chain by depositing/withdrawing funds, etc.
 * Validator layer: Validates BitTorrent-Chain blocks and periodically sends checkpoints to the TRON and other supported blockchain networks.
 
-              Bridge: Responsible for listening to events on each chain, sending event   messages, etc.
+     Bridge: Responsible for listening to events on each chain, sending event   messages, etc.
 
+     Core: Consensus module, including verification of Checkpoint (snapshot of BitTorrent-Chain chain state), consensus of Statesync events & Staking events.  
 
-              Core: Consensus module, including verification of Checkpoint (snapshot of BitTorrent-Chain chain state), consensus of Statesync events & Staking events.  
-
-
-              REST-Server: Provides related API services.
+     REST-Server: Provides related API services.
 
 * BitTorrent-Chain layer.
 
