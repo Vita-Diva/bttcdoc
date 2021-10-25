@@ -8,13 +8,14 @@ A principal does not need to host a full node to participate in the verification
 
 ## How to vote for a Validator
 
-Please refer to the user guidance document: How to vote for a Validator [Graphical Operations - TBD - wait here for the product to provide the relevant graphical operations document].
+Related contractual methods:`ValidatorShare:buyVoucher(uint256, uint256)`
 
-Related contractual methods.
+Parameters:
+
++ `_amount`：vote amount
++ `_minSharesToMint`：minimum amount of the staking token
 
 ## Claiming rewards
-
-Please refer to the user guide: Claiming your rewards [graphic manipulation - TBD - wait for the product to provide the relevant graphic manipulation documentation here].
 
 Related contractual methods: `StakeManagerProxy:withdrawRewards(uint256)`
 
@@ -23,8 +24,6 @@ Parameters:
 + validatorId：The id of the validator claiming the reward
 
 ## Cancelling a vote
-
-Please refer to the user guidance document: Claiming Rewards [Graphical Operations - TBD - Waiting here for the product to provide relevant graphical operations documentation]
 
 Related contractual methods: `ValidatorShare:(uint256, uint256)`
 
@@ -35,13 +34,9 @@ Parameters:
 
 ## Reward reinvestment
 
-Please refer to the user guidance document: Reward Reinvestment [Graphical Operations - TBD - wait here for the product to provide the relevant graphical operations document].
-
 Related contractual methods: `ValidatorShare:reStake()`
 
 ## Transfer Vote
-
-Please refer to the user guidance document: Transfer Polling [Graphical Operations - TBD - wait here for the product to provide the relevant graphical operations documentation].
 
 Related contractual methods: `StakeManagerProxy:sellVoucher_new(uint256, uint256)`
 

@@ -8,11 +8,14 @@
 
 ## 如何为验证人投票
 
-请参考用户指导文档：如何为验证人投票【**图形操作 - TBD-**此处等待产品提供相关图形化操作文档】
+相关合约方法：`ValidatorShare:buyVoucher(uint256, uint256)`
+
+参数：
+
++ `_amount`：投票数量
++ `_minSharesToMint`：可接受的最少代理币数量
 
 ## 领取奖励
-
-请参考用户指导文档：领取奖励【**图形操作 - TBD-**此处等待产品提供相关图形化操作文档】
 
 相关合约方法：`StakeManagerProxy:withdrawRewards(uint256)`
 
@@ -21,8 +24,6 @@
 + validatorId：领取奖励的validator id
 
 ## 取消投票
-
-请参考用户指导文档：领取奖励【**图形操作 - TBD-**此处等待产品提供相关图形化操作文档】
 
 相关合约方法：`ValidatorShare:(uint256, uint256)`
 
@@ -33,13 +34,9 @@
 
 ## 奖励复投
 
-请参考用户指导文档：奖励复投【**图形操作 - TBD-**此处等待产品提供相关图形化操作文档】
-
 相关合约方法：`ValidatorShare:reStake()`
 
 ## 转移投票
-
-请参考用户指导文档：转移投票【**图形操作 - TBD-**此处等待产品提供相关图形化操作文档】
 
 相关合约方法：`StakeManagerProxy:sellVoucher_new(uint256, uint256)`
 

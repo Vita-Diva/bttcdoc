@@ -26,7 +26,7 @@ Prior to introducing the use of PoS bridges, we recommend that you familiarize y
 
 + [Token Mapping](mapping.md)
 
-To begin using a PoS bridge, a token mapping must be established. This asset cannot be transferred between the two chains until the root chain's token contract and the sub-token contract on the sub-chain are mapped. Kindly submit your request for token mapping [here] (TBD).
+To begin using a PoS bridge, a token mapping must be established. This asset cannot be transferred between the two chains until the root chain's token contract and the sub-token contract on the sub-chain are mapped. Kindly send us your request for token mapping through email.
 
 After successful mapping, you can interact with the contract via the interface or via various SDKs.
 

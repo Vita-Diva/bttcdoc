@@ -39,9 +39,7 @@ MetaMask是一个免费且安全的钱包，它允许web程序与多种区块链
 
 ![image](./pics/wallet-rpc.jpg)
 
-在打开的表单中，请按照下图的内容填写，以正确添加BTTC的主网。
-
-TBD: 添加主网到metamask
+在打开的表单中，请正确添加BTTC的主网。
 
 ### 配置自定义代币
 
@@ -53,7 +51,7 @@ TBD: 添加主网到metamask
 
 添加完成后，这个代币将显示在您MetaMask的账户中。
 
-将BTTC上的代币添加到MetaMask的操作与上述基本一致，只需要在添加前，在自定义RPC中输入BTTC的正确URL：TBD：RPCURL
+将BTTC上的代币添加到MetaMask的操作与上述基本一致，只需要在添加前，在自定义RPC中输入BTTC的正确URL。
 
 ### 多个账户
 

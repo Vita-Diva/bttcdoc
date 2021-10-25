@@ -10,22 +10,9 @@ You can either manually deploy mintable tokens on BTTC or submit a mapping reque
 
 If you intend to deploy the contract manually, here are some sample contract code. You may modify these examples, but you must ensure that the contract includes the `deposit`, `withdraw`, and `mint` functions.
 
-### Contracts on BTTC
-
-TBD: Example of a child contract code ERC20,721,1155
-
 ### Contracts on Public Blockchain
-
-TBD: Example of a dummy contract code ERC20,721,1155
 
 The critical point is that when the token contract is deployed on the public blockchain, it must specify the `MintableAssetProxy` contract as the mint. On the public blockchain, only the `MintableAssetPredicate` contract has the authority to mint coins.
 
 This role can be granted by invoking the root chain's token contract's `grantRole` method. The first parameter is the constant value for `PREDICATE_ROLE,` i.e. `0x12ff340d0cd9c652c747ca35727e68c547d0f0bfa7758d2e77f75acef481b4f2`, and the second parameter is the contract address for the corresponding `Predicate` contract:
 
-TBD:
-
-"MintableERC20PredicateProxy"
-
-"MintableERC721PredicateProxy"
-
-"MintableERC1155PredicateProxy"

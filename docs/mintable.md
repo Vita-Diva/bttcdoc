@@ -10,22 +10,8 @@
 
 如果您打算自行部署合约，下面是一些合约代码示例。您可以对这些示例进行更改，但必须确保合约用有`deposit`、`withdraw`以及`mint`功能。
 
-### 部署在BTTC上的合约
-
-TBD：child合约代码示例 ERC20,721,1155
-
 ### 部署在公共区块链上的合约
-
-TBD：dummy合约代码示例 ERC20,721,1155
 
 最重要的一点是，部署在公共区块链代币合约需要指定公共区块链上的`MintableAssetProxy`合约为铸币者。只有`MintableAssetPredicate`合约有权在公共区块链上铸币。
 
 这个角色可以通过调用根链上代币合约的`grantRole`方法来授予。第一个参数是`PREDICATE_ROLE`常量值，即`0x12ff340d0cd9c652c747ca35727e68c547d0f0bfa7758d2e77f75acef481b4f2`，第二个参数是相应的`Predicate`合约地址：
-
-TBD：
-
-"MintableERC20PredicateProxy"
-
-"MintableERC721PredicateProxy"
-
-"MintableERC1155PredicateProxy"

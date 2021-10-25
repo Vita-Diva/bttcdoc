@@ -11,7 +11,7 @@ BTTC是一个公共区块链的扩展方案。它是一条PoS链，在支持以�
 ```javascript
 const Web3 = require('Web3')
 
-const web3 = new Web3('TBD:BTTC RPC')
+const web3 = new Web3('')
 ```
 
 如果有现成的dApp，只要与EVM兼容，您可以直接在BTTC上部署您的智能合约，而无需担心底层架构。

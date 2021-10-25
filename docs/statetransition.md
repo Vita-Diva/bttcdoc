@@ -26,17 +26,13 @@ BTTC的验证人定期向公共区块链上提交BTTC上所有交易的哈希值
 
 ## 先决条件
 
-1. 部署在公共区块链的Root合约需要继承`FxBaseRootTunnel`合约。您可以参照这个示例（TBD：根合约示例）。同样，BTTC上的子合约也需要继承`FxBaseChildTunnel`合约，您可以参照这里的示例（TBD：子合约示例）
+1. 部署在公共区块链的Root合约需要继承`FxBaseRootTunnel`合约。您可以参照示例。同样，BTTC上的子合约也需要继承`FxBaseChildTunnel`合约。
 
-2. `_checkpointManager`的地址（TBD：checkpointmanager的地址）
+2. `_checkpointManager`
 
-3. `_fxChild`的地址是（TBD：fxchild的地址）
+3. `_fxChild`
 
 4. 使用child tunnel的地址，在root tunnel上调用`setChildTunnel`方法；同时，使用root tunnel的地址，在child tunnel上调用`setRootTunnel`方法
-
-## 状态转移桥的示例合约
-
-TBD：FxBaseRootTunnel, FxBaseChildTunnel
 
 ## 从公共区块链到BTTC的状态转移
 

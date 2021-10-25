@@ -23,16 +23,9 @@ BitTorrent-Chain 是一个区块链应用平台，整体结构分为三层：
 
 BitTorrent-Chain的代码库，用于了解BitTorrent-Chain 核心组件如何工作。
 
-* Validator: 【TBD】 github地址
-* BitTorrent-Chain: 【TBD】github地址
-* Contracts: 【TBD】github地址
-
 一旦熟悉了架构和代码库，您就可以设置您的节点。请注意，上面的文档只是为了让您熟悉多边形内部的工作原理，您可以直接设置节点而不熟悉上面的规格。
 
 ## 设置你的节点
-
-* 选项1: 部署节点 【TBD】github地址
-* 选项2: 部署节点 【TBD】github地址
 
 ## 成为委托人
 

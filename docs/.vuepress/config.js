@@ -29,8 +29,8 @@ module.exports = {
               '', 
               'architecture', 
               'btttoken',
-              'genesis-contracts',
-              'fullnode',
+              // 'genesis-contracts',
+              // 'fullnode',
               'wallets',
               'tron-bttc',
               'checkpoint',
@@ -47,7 +47,7 @@ module.exports = {
               '/validator/overview',
               '/validator/validators',
               '/validator/delegators',
-              '/validator/node',
+              // '/validator/node',
               '/validator/faq'
             ]
           }
@@ -64,8 +64,8 @@ module.exports = {
               '/en/', 
               '/en/architecture', 
               '/en/btttoken',
-              '/en/genesis-contracts',
-              '/en/fullnode',
+              // '/en/genesis-contracts',
+              // '/en/fullnode',
               '/en/wallets',
               '/en/tron-bttc',
               '/en/checkpoint',
@@ -82,7 +82,7 @@ module.exports = {
               '/en/validator/overview',
               '/en/validator/validators',
               '/en/validator/delegators',
-              '/en/validator/node',
+              // '/en/validator/node',
               '/en/validator/faq'
             ]
           }

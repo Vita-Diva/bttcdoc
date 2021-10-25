@@ -168,8 +168,4 @@ Dapp/用户 需要做的事情是与state-sync 一起工作。
 3. Validator层上的所有验证人都会收到这个事件。
 4. 一旦Validator层上的状态同步交易被包含在一个区块中，它就会被添加到待定状态同步列表中。
 5. BitTorrent-chain层节点通过API调用从旦Validator上获取待定的状态同步事件。
-6. 接收者合同继承了IStateReceiver接口，解码数据字节和执行任何行动的自定义逻辑位于onStateReceive函数中：【TBD - IStateReceiver.sol github链接地址】。
-
-## 如何成为验证人
-
-请参考用户指导文档：如何为验证人投票【**图形操作 - TBD-**此处等待产品提供相关图形化操作文档】
+6. 接收者合同继承了IStateReceiver接口，解码数据字节和执行任何行动的自定义逻辑位于onStateReceive函数中。

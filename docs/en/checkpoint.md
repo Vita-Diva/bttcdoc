@@ -10,7 +10,7 @@ When tokens from the public blockchain are deposited into BTTC, the state synchr
 const WebSocket = require("ws");
 const Web3 = require("web3");
 
-const ws = new WebSocket("TBD");
+const ws = new WebSocket("");
 
 const web3 = new Web3();
 const abiCoder = web3.eth.abi;
@@ -106,7 +106,7 @@ const web3 = new Web3(provider);
 
 
 const child_provider = new Web3.providers.HttpProvider(
- "TBD:BTTC http provider"
+ ""
 );
 
 const child_web3 = new Web3(child_provider);
@@ -170,7 +170,7 @@ const provider = new Web3.providers.WebsocketProvider(
 const web3 = new Web3(provider);
 
 const chil_provider = new Web3.providers.HttpProvider(
- "TBD: HTTP provider"
+ ""
 );
 const child_web3 = new Web3(chil_provider);
 
@@ -219,6 +219,4 @@ checkInclusion(
 
 ## Historical Checkpoint Inclusion Checking
 
-You can query through the API below:
-
-TBD: http APIs
+You can query through the API.

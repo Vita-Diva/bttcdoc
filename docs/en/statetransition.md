@@ -26,17 +26,13 @@ The following functions are available via the FxBaseChildTunnel contract:
 
 ## Prerequisites
 
-1. On the public blockchain, the Root contract must inherit the `FxBaseRootTunnel` contract. You may refer to the following example (TBD: Root Contract Example). Similarly, the sub-contracts on BTTC must inherit the `FxBaseChildTunnel` contract, as demonstrated in the following example (TBD: sub-contract example)
+1. On the public blockchain, the Root contract must inherit the `FxBaseRootTunnel` contract. Similarly, the sub-contracts on BTTC must inherit the `FxBaseChildTunnel` contract.
 
-2. The location of the `_checkpointManager` object (TBD: address of checkpointmanager)
+2. The location of the `_checkpointManager` object
 
-3. `_fxChild` has the address `_fxChild` (TBD: address of fxchild)
+3. `_fxChild` has the address `_fxChild`
 
 4. Call the`setChildTunnel` method on the root tunnel using the address of the child tunnel; concurrently, call the`setRootTunnel` method on the child tunnel using the address of the root tunnel.
-
-## State Transition Bridge Contract Example
-
-TBD:FxBaseRootTunnel, FxBaseChildTunnel
 
 ## Transition of State Between Public Blockchain and BTTC
 

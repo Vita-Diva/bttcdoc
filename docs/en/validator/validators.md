@@ -125,15 +125,10 @@ The receiver contract inherits from the IStateReceiver, and the associated custo
 
 What the Dapp/user needs to do is work with the state-sync.
 
-
-
 1. The syncState() function of the StateSender contract is called.
 2. The above function will trigger the StateSynced(uint256 indexed id, address indexed contractAddress, bytes data); event
 3. All super delegates on the Validator layer will receive this event.
 4. Once a state sync transaction on the Validator layer is included in a block, it is added to the pending state sync list.
 5. BitTorrent-chain layer nodes fetch the pending state sync event from the DanValidator via an API call.
-6. The receiver contract inherits the IStateReceiver interface and the custom logic to decode the data bytes and perform any actions is located in the onStateReceive function: [TBD - IStateReceiver.sol github link address].
+6. The receiver contract inherits the IStateReceiver interface and the custom logic to decode the data bytes and perform any actions is located in the onStateReceive function.
 
-## How to become a Validator
-
-Please refer to the user guidance document: How to vote for a Validator [Graphical Operations - TBD - wait here for the product to provide the relevant graphical operations documentation]

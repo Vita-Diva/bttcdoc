@@ -23,17 +23,9 @@ BitTorrent-Chain is a blockchain application platform with an overall structure 
 
 BitTorrent-Chain's code base for understanding how the core BitTorrent-Chain components work.
 
-* Validator: [TBD] github address
-* BitTorrent-Chain: [TBD] github address
-* Contracts: [TBD] github address
-
 Once you are familiar with the architecture and code base, you can set up your node. Please note that the above documentation is only intended to familiarise you with the inner workings of the polygon, you can set up your nodes directly without familiarising yourself with the specifications above.
 
 ### Setting up your node
-
-Option 1: Deploy Node [TBD] github address
-
-Option 2: Deploy the node [TBD] github address
 
 ## To become a Delegator
 

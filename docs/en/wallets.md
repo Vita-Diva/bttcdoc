@@ -41,8 +41,6 @@ Please select custom RPC here to add BTTC's mainnet.
 
 Please complete the form as shown in the figure below to correctly add the BTTC mainnet.
 
-TBD: 添加主网到metamask
-
 ### Setting up Custom Token
 
 The following sections detail how to configure custom tokens on MetaMask. This method can be used to add any custom ERC-20 tokens to MetaMask
@@ -53,7 +51,7 @@ In MetaMask, click Add Token. The Token added here is the Ethereum Ropsten test 
 
 The token will be displayed in your MetaMask account once the addition is complete.
 
-The procedure for adding BTTC tokens to MetaMask is essentially identical to that described above. Before adding: You only need to enter the correct BTTC URL in the custom RPC. TBD:RPCURL
+The procedure for adding BTTC tokens to MetaMask is essentially identical to that described above. Before adding: You only need to enter the correct BTTC URL in the custom RPC.
 
 ### Mutiple Accounts
 

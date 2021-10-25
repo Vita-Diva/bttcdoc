@@ -10,7 +10,7 @@ If your token contract is currently deployed on the root chain and you wish to m
 
 ### Standard Child Token
 
-If the token being mapped is a standard TRC-20 or TRC-721 contract, all you need to do is submit a mapping request at [here](TBD), and our team will quickly deploy it on BTTC. Contract for standard sub-tokens.
+If the token being mapped is a standard TRC-20 or TRC-721 contract, all you need to do is send us a mail, and our team will quickly deploy it on BTTC. Contract for standard sub-tokens.
 
 You can determine whether your token is a standard contract by visiting the following link:
 
@@ -18,11 +18,9 @@ You can determine whether your token is a standard contract by visiting the foll
 
 + [TRC-721](https://github.com/tronprotocol/tips/blob/master/tip-721.md)
 
-To learn how to submit a new mapping request, please refer to [here](TBD).
-
 ### Custom Child Token
 
-If you wish to map a non-standard (custom) token, you must first deploy a token contract on the sub-chain and then submit your mapping request [here](TBD). Please ensure that you submit the request with accurate token information.
+If you wish to map a non-standard (custom) token, you must first deploy a token contract on the sub-chain and then send us your mapping request. Please ensure that you submit the request with accurate token information.
 
 The following is an illustration of how to create a customized child token:
 
@@ -101,7 +99,3 @@ Steps:
 + Deploy sub-tokens on sub-chains, namely BTTC
 
 + Submit a mapping request
-
-### Submit a mapping request
-
-Please submit a mapping request [here](TBD).

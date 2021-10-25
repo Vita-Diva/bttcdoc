@@ -11,7 +11,7 @@ You are already a BTTC developer if you have developed a dApp on TRON or Ethereu
 ```js
 const Web3 = require('Web3')
 
-const web3 = new Web3('TBD:BTTC RPC')
+const web3 = new Web3('')
 ```
 
 You can deploy your smart contract on BTTC without worrying about the underlying architecture if you have a ready-made dApp that is compatible with EVM.
