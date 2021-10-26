@@ -36,7 +36,8 @@ module.exports = {
               'checkpoint',
               'mapping',
               'mintable',
-              'statetransition'
+              'statetransition',
+              'dapp'
             ]
           },
           {
@@ -71,7 +72,8 @@ module.exports = {
               '/en/checkpoint',
               '/en/mapping',
               '/en/mintable',
-              '/en/statetransition'
+              '/en/statetransition',
+              '/en/dapp'
             ]
           },
           {
