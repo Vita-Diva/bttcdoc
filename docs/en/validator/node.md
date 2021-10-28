@@ -4,7 +4,7 @@
 
 To participate and become a verifier by running a node on the BitTorrent-chain, you can follow the documentation below.
 
-### Recommended configuration
+## Recommended configuration
 
 * 64 GiB of memory
 * 16 core CPU (m5d.4xlarge or OVH's infra-3)
