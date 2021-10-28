@@ -11,11 +11,9 @@
 * Minimum 1TB SSD (make sure it is extendable)
 * 1Gb/s Bandwidth (expect 3-5 TB data transferred per month)
 
-## 部署指南
+## 使用Ansible
 
-### 使用Ansible运行一个验证人节点
-
-#### 先决条件
+### 先决条件
 
 * 三台机器--一台本地机器，你将在上面运行Ansible playbook；两台远程机器--一台sentry和一台验证机。
 * 在本地机器上，安装了Ansible。
@@ -23,7 +21,7 @@
 * 在远程机器上，确保没有安装Go。
 * 在远程机器上，你的本地机器的SSH公钥在远程机器上，以便让Ansible连接到它们。
 
-#### 5.1.2 概述
+### 概述
 
 要进入一个运行中的验证人节点，请做以下工作。
 
@@ -36,21 +34,21 @@
 * 设置所有者和签名者密钥。
 * 启动验证人节点。
 
-#### 5.1.3 设置sentry节点
+### 设置sentry节点
 
-##### 在你的本地机器上，git clone node-ansible资源库
+#### 在你的本地机器上，git clone node-ansible资源库
 
 ```sh
 git clone [https://github.com/maticnetwork/node-ansible](https://github.com/maticnetwork/node-ansible)
 ```
 
-##### 切换至 node-ansible目录
+#### 切换至 node-ansible目录
 
 ```sh
 cd node-ansible
 ```
 
-##### 在inventory.yaml文件中添加将成为sentry节点和验证人节点的远程机器的IP地址
+#### 在inventory.yaml文件中添加将成为sentry节点和验证人节点的远程机器的IP地址
 
 ```yaml
 all:
@@ -94,7 +92,7 @@ all:
         134.209.100.175: 
 ```
 
-##### 检查远程sentry节点机器是否可以到达
+#### 检查远程sentry节点机器是否可以到达
 
 在本地机器上，运行`ansible sentry -m ping`
 
@@ -116,13 +114,13 @@ xxx.xxx.xx.xx | SUCCESS => {
 }
 ```
 
-##### 对sentry节点的设置进行一次测试
+#### 对sentry节点的设置进行一次测试
 
 ```sh
 ansible-playbook -l sentry playbooks/network.yml --extra-var="bor_branch=v0.2.8 heimdall_branch=v0.2.2  network_version=mainnet-v1 node_type=sentry/sentry heimdall_network=mainnet" --list-hosts
 ```
 
-##### 运行sentry节点设置
+#### 运行sentry节点设置
 
 ```sh
 ansible-playbook -l sentry playbooks/network.yml --extra-var="bor_branch=v0.2.8 heimdall_branch=v0.2.2  network_version=mainnet-v1 node_type=sentry/sentry heimdall_network=mainnet"
@@ -130,7 +128,7 @@ ansible-playbook -l sentry playbooks/network.yml --extra-var="bor_branch=v0.2.8 
 
 一旦设置完成，你将在终端上看到一条完成信息。
 
-#### 设置validator节点
+### 设置validator节点
 
 至此，你已经建立了sentry节点。
 
@@ -156,13 +154,13 @@ xxx.xxx.xx.xx | SUCCESS => {
 }
 ```
 
-##### 对验证人节点设置进行测试运行
+#### 对验证人节点设置进行测试运行
 
 ```sh
 ansible-playbook -l validator playbooks/network.yml --extra-var="bor_branch=v0.2.8 heimdall_branch=v0.2.2 network_version=mainnet-v1 node_type=sentry/validator heimdall_network=mainnet" --list-hosts
 ```
 
-##### 运行验证人节点设置
+#### 运行验证人节点设置
 
 ```sh
 ansible-playbook -l validator playbooks/network.yml --extra-var="bor_branch=v0.2.8 heimdall_branch=v0.2.2  network_version=mainnet-v1 node_type=sentry/validator heimdall_network=mainnet"
@@ -170,11 +168,11 @@ ansible-playbook -l validator playbooks/network.yml --extra-var="bor_branch=v0.2
 
 一旦设置完成，你将在终端上看到一条完成信息。
 
-#### 配置sentry节点
+### 配置sentry节点
 
 登录到远程sentry机。
 
-#### 配置Delivery节点
+### 配置Delivery节点
 
 * 编辑 ~/.heimdalld/config/config.toml。
 
@@ -194,7 +192,7 @@ ansible-playbook -l validator playbooks/network.yml --extra-var="bor_branch=v0.2
 * prometheus - 将该值设为true，以启用Prometheus度量。例如：prometheus = true。
 * max_open_connections - 将该值设置为100。例如：max_open_connections = 100。
 
-#### 配置BTTC节点
+### 配置BTTC节点
 
 * 编辑 `~/node/bor/start.sh`。
 
@@ -218,7 +216,7 @@ ansible-playbook -l validator playbooks/network.yml --extra-var="bor_branch=v0.2
     示例: "enode://410e359736bcd3a58181cf55d54d4e0bbd6db2939c5f548426be7d18b8fd755a0ceb730fe5cf7510c6fa6f0870e388277c5f4c717af66d53c440feedffb29b4b@134.209.100.175:30303".
 ```
 
-#### 配置防火墙
+### 配置防火墙
 
 sentry节点机器必须对外开放以下端口 0.0.0.0/0。
 
@@ -226,11 +224,11 @@ sentry节点机器必须对外开放以下端口 0.0.0.0/0。
 * 26656
 * 30303
 
-#### 启动sentry节点
+### 启动sentry节点
 
 你将首先启动Delivery节点,一旦Delivery节点同步了，你将启动BTTC节点。
 
-#### 启动Delivery节点
+### 启动Delivery节点
 
 * 启动Delivery服务:
 
@@ -269,25 +267,25 @@ sentry节点机器必须对外开放以下端口 0.0.0.0/0。
 
 等待Heimdall节点完全同步。
 
-#### 启动BTTC节点
+### 启动BTTC节点
 
 一旦Heimdall节点被完全同步，启动BTTC节点。
 
-#### 启动BTTC服务
+### 启动BTTC服务
 
 ```sh
 sudo service bttc start
 ```
 
-#### 检查BTTC服务日志
+### 检查BTTC服务日志
 
 ```sh
 journalctl -u bttc.service -f
 ```
 
-#### 配置validator节点
+### 配置validator节点
 
-##### 配置Heimdall节点
+#### 配置Heimdall节点
 
 登录到远程验证人机器上。
 
@@ -315,7 +313,7 @@ journalctl -u bttc.service -f
 * tron_rpc_url- tron主网节点的rpc端点，用来发送交易到这个端点。Example:tron_rpc_url = "47.252.19.181:50051"
 * tron_grid_url -tron主网节点的事件服务,用来查询事件日志.Example:tron_grid_url = "http://47.252.35.194:8547"
 
-##### 配置BTTC节点
+#### 配置BTTC节点
 
 编辑 `~/.bor/data/bor/static-nodes.json`，在 static-nodes.json 中，修改以下内容。
 
@@ -331,14 +329,14 @@ journalctl -u bttc.service -f
 "enode://a8024075291c0dd3467f5af51a05d531f9e518d6cd229336156eb6545581859e8997a80bc679fdb7a3bd7473744c57eeb3411719b973b2d6c69eff9056c0578f@188.166.216.25:30303"
 ```
 
-#### 设置Owner和Signer的密钥
+### 设置Owner和Signer的密钥
 
 在BTTC，建议你保持Onwer和Signer Key的不同。
 
 * Signer - 签署checkpoint交易的地址。
 * Owner - 进行staking交易的地址。
 
-##### 生成一个Heimdall私钥
+#### 生成一个Heimdall私钥
 
 你必须只在validator上生成一个Heimdall私钥，不要在sentry节点上生成Heimdall私钥。
 
@@ -358,7 +356,7 @@ ETHEREUM_PRIVATE_KEY - 你的以太坊地址私钥。
 mv ./priv_validator_key.json ~/.heimdalld/config
 ```
 
-##### 生成一BTTC keystore文件
+#### 生成一BTTC keystore文件
 
 你必须只在validator机器上生成一个BTTC keystore文件,不要在sentry节点生成BTTC keystore文件。
 
@@ -380,11 +378,11 @@ ETHEREUM_PRIVATE_KEY - 你的以太坊地址私钥。
 mv ./UTC-<time>-<address> ~/.bor/keystore/
 ```
 
-##### 添加password.txt
+#### 添加password.txt
 
 在 ~/.bor/password.txt 文件中添加BTTC keystore文件密码。
 
-##### 添加你的以太坊地址
+#### 添加你的以太坊地址
 
 编辑/etc/matic/metadata，在metadata中，添加你的以太坊地址。
 
@@ -394,7 +392,7 @@ mv ./UTC-<time>-<address> ~/.bor/keystore/
 VALIDATOR_ADDRESS=0xca67a8D767e45056DC92384b488E9Af654d78DE2.
 ```
 
-#### 启动validator节点
+### 启动validator节点
 
 至此，你必须：
 
@@ -403,7 +401,7 @@ VALIDATOR_ADDRESS=0xca67a8D767e45056DC92384b488E9Af654d78DE2.
 * 配置好validator上的Heimdall节点和BTTC节点。
 * 你的Owner和Signer密钥已配置。
 
-##### 启动Heimdall节点
+#### 启动Heimdall节点
 
 现在你将在validator上启动Heimdall节点,一旦Heimdall节点同步了，你将在validator上启动BTTC节点。
 
@@ -456,7 +454,7 @@ VALIDATOR_ADDRESS=0xca67a8D767e45056DC92384b488E9Af654d78DE2.
 
 等待Heimdall节点完全同步。
 
-##### 启动BTTC节点
+#### 启动BTTC节点
 
 一旦validator上的Heimdall节点完全同步，启动validator上的BTTC节点。
 
@@ -472,11 +470,11 @@ sudo service bttc start
 journalctl -u bttc.service -f
 ```
 
-### 使用Binaries运行一个验证人节点
+## 使用Binaries
 
 本节将指导您使用从Binaries启动和运行验证人节点。
 
-#### 先决条件
+### 先决条件
 
 * 两台机器--一台sentry和一台validator。
 * 在sentry机和validator机上安装build-essential。
@@ -501,7 +499,7 @@ journalctl -u bttc.service -f
 
 * 在sentry机和validator机上安装RabbitMQ。请参阅 "[下载和安装 RabbitMQ](https://www.rabbitmq.com/download.html)"。
 
-#### 概述
+### 概述
 
 要运行一个验证人节点，请做以下工作：
 
@@ -515,13 +513,13 @@ journalctl -u bttc.service -f
 * 设置Owner和Signer的密钥。
 * 启动validator节点。
 
-#### 安装二进制文件
+### 安装二进制文件
 
 注:
 
 在sentry和validator上都要运行本节。
 
-##### 安装Heimdall
+#### 安装Heimdall
 
 ```sh
 #Clone the Heimdall repository:
@@ -534,7 +532,7 @@ make install
 heimdalld version --long 
 ```
 
-##### 安装BTTCr
+#### 安装BTTCr
 
 ```sh
 #Clone the BTTC repository:
@@ -551,33 +549,22 @@ sudo ln -nfs ~/bor/build/bin/bootnode /usr/bin/bootnode
 bttc version
 ```
 
-#### 设置节点文件
+### 设置节点文件
 
 注:
 
 在sentry和validator上都要运行本节。
 
-##### 获取 launch repository
+#### 获取 launch repository
 
 ```sh
 #Clone the launch repository:
 git clone https://github.com/maticnetwork/launch
 ```
 
-##### 设置目录
+#### 设置目录
 
-###### sentry机器上
-
-```sh
-#Create a node directory:
-mkdir -p node
-
-#Copy the files and scripts from the launch directory to the node directory:
-cp -rf launch/mainnet-v1/sentry/sentry ~/node
-cp launch/mainnet-v1/service.sh ~/node
-```
-
-###### validator机器上
+##### sentry机器上
 
 ```sh
 #Create a node directory:
@@ -588,9 +575,20 @@ cp -rf launch/mainnet-v1/sentry/sentry ~/node
 cp launch/mainnet-v1/service.sh ~/node
 ```
 
-##### 设置网络目录
+##### validator机器上
 
-##### 设置Heimdall
+```sh
+#Create a node directory:
+mkdir -p node
+
+#Copy the files and scripts from the launch directory to the node directory:
+cp -rf launch/mainnet-v1/sentry/sentry ~/node
+cp launch/mainnet-v1/service.sh ~/node
+```
+
+#### 设置网络目录
+
+#### 设置Heimdall
 
 ```sh
 #Change to the node directory:
@@ -599,7 +597,7 @@ cd ~/node/heimdall
 bash setup.sh
 ```
 
-##### 设置BTTC
+#### 设置BTTC
 
 ```sh
 #Change to the node directory:
@@ -608,7 +606,7 @@ cd ~/node/bor
 bash setup.sh
 ```
 
-#### 设置服务
+### 设置服务
 
 注:
 
@@ -623,11 +621,11 @@ bash service.sh
 sudo cp *.service /etc/systemd/system/
 ```
 
-#### 配置sentry节点
+### 配置sentry节点
 
 登录到sentry机。
 
-##### 配置Heimdall节点
+#### 配置Heimdall节点
 
 * 编辑 ~/.heimdalld/config/config.toml。
 
@@ -647,7 +645,7 @@ sudo cp *.service /etc/systemd/system/
 * prometheus - 将该值设为true，以启用Prometheus度量。例如：prometheus = true。
 * max_open_connections - 将该值设置为100。例如：max_open_connections = 100。
 
-##### 配置BTTC节点
+#### 配置BTTC节点
 
 * 编辑 ~/node/bor/start.sh。
 
@@ -659,7 +657,7 @@ sudo cp *.service /etc/systemd/system/
 
 保存start.sh中的修改。
 
-##### 配置防火墙
+#### 配置防火墙
 
 sentry节点机器必须对外开放以下端口 0.0.0.0/0。
 
@@ -667,11 +665,11 @@ sentry节点机器必须对外开放以下端口 0.0.0.0/0。
 * 26656
 * 30303
 
-#### 启动sentry节点
+### 启动sentry节点
 
 你将首先启动Heimdall节点,一旦Heimdall节点同步了，你将启动BTTC节点。
 
-##### 启动Heimdall节点
+#### 启动Heimdall节点
 
 * 启动Heimdall服务:
 
@@ -710,25 +708,25 @@ sentry节点机器必须对外开放以下端口 0.0.0.0/0。
 
 等待Heimdall节点完全同步。
 
-##### 启动BTTC节点
+#### 启动BTTC节点
 
 一旦Heimdall节点被完全同步，启动BTTC节点。
 
-##### 启动BTTC服务
+#### 启动BTTC服务
 
 ```sh
 sudo service bttc start
 ```
 
-##### 检查BTTC服务日志
+#### 检查BTTC服务日志
 
 ```sh
 journalctl -u bttc.service -f
 ```
 
-#### 配置validator节点
+### 配置validator节点
 
-##### 配置Heimdall节点
+#### 配置Heimdall节点
 
 登录到远程validator机器上。
 
@@ -754,7 +752,7 @@ journalctl -u bttc.service -f
 * tron_rpc_url- tron主网节点的rpc端点，用来发送交易到这个端点。Example:tron_rpc_url = "47.252.19.181:50051"
 * tron_grid_url -tron主网节点的事件服务,用来查询事件日志.Example:tron_grid_url = "http://47.252.35.194:8547"
 
-##### 配置BTTC节点
+#### 配置BTTC节点
 
 编辑 `~/.bor/data/bor/static-nodes.json`，在 static-nodes.json 中，修改以下内容。
 
@@ -770,14 +768,14 @@ journalctl -u bttc.service -f
 "enode://a8024075291c0dd3467f5af51a05d531f9e518d6cd229336156eb6545581859e8997a80bc679fdb7a3bd7473744c57eeb3411719b973b2d6c69eff9056c0578f@188.166.216.25:30303".
 ```
 
-#### 设置Owner和Signer的密钥
+### 设置Owner和Signer的密钥
 
 在BTTC，建议你保持Onwer和Signer Key的不同。
 
 * Signer - 签署checkpoint交易的地址。
 * Owner - 进行staking交易的地址。
 
-##### 生成一个Heimdall私钥
+#### 生成一个Heimdall私钥
 
 你必须只在validator上生成一个Heimdall私钥，不要在sentry节点上生成Heimdall私钥。
 
@@ -797,7 +795,7 @@ ETHEREUM_PRIVATE_KEY - 你的以太坊地址私钥。
 mv ./priv_validator_key.json ~/.heimdalld/config
 ```
 
-##### 生成一个BTTC keystore文件
+#### 生成一个BTTC keystore文件
 
 你必须只在validator机器上生成一个BTTC keystore文件,不要在sentry节点生成BTTC keystore文件。
 
@@ -819,11 +817,11 @@ ETHEREUM_PRIVATE_KEY - 你的以太坊地址私钥。
 mv ./UTC-<time>-<address> ~/.bor/keystore/
 ```
 
-##### 添加password.txt
+#### 添加password.txt
 
 在 `~/.bor/password.txt` 文件中添加BTTC keystore文件密码。
 
-##### 添加你的以太坊地址
+#### 添加你的以太坊地址
 
 编辑/etc/matic/metadata，在metadata中，添加你的以太坊地址。
 
@@ -833,7 +831,7 @@ mv ./UTC-<time>-<address> ~/.bor/keystore/
 VALIDATOR_ADDRESS=0xca67a8D767e45056DC92384b488E9Af654d78DE2.
 ```
 
-#### 启动validator节点
+### 启动validator节点
 
 至此，你必须：
 
@@ -842,7 +840,7 @@ VALIDATOR_ADDRESS=0xca67a8D767e45056DC92384b488E9Af654d78DE2.
 * 配置好validator上的Heimdall节点和BTTC节点。
 * 你的Owner和Signer密钥已配置。
 
-##### 启动Heimdall节点
+#### 启动Heimdall节点
 
 现在你将在validator上启动Heimdall节点,一旦Heimdall节点同步了，你将在validator上启动BTTC节点。
 
@@ -895,7 +893,7 @@ VALIDATOR_ADDRESS=0xca67a8D767e45056DC92384b488E9Af654d78DE2.
 
 等待Heimdall节点完全同步。
 
-##### 启动BTTC节点
+#### 启动BTTC节点
 
 一旦validator上的Heimdall节点完全同步，启动validator上的BTTC节点。
 

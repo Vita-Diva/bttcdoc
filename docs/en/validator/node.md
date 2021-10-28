@@ -493,9 +493,9 @@ Check the BTTC service logs:
 journalctl -u bttc.service -f
 ```
 
-### Run a Validator Node from Binaries
+## Run a Validator Node from Binaries
 
-#### Prerequisites
+### Prerequisites
 
 * Two machines — one sentry and one validator.
 * build-essential installed on both the sentry and the validator machines. \
@@ -512,7 +512,7 @@ sudo ln -nfs ~/.go/bin/go /usr/bin/go
 
 * RabbitMQ installed on both the sentry and the validator machines. See [Downloading and Installing RabbitMQ](https://www.rabbitmq.com/download.html).
 
-#### To get to a running validator node, do the following
+### To get to a running validator node, do the following
 
 1. Have the two machines prepared.
 2. Install the Heimdall and Bor binaries on the sentry and the validator machines.
@@ -525,11 +525,11 @@ sudo ln -nfs ~/.go/bin/go /usr/bin/go
 9. Start the validator node.
 10. Check node health with the community.
 
-#### Install binaries
+### Install binaries
 
 NOTE:Run this section both on the sentry and the validator machines.
 
-##### Install Heimdall
+#### Install Heimdall
 
 Clone the [Heimdall repository](https://github.com/maticnetwork/heimdall/):
 
@@ -549,7 +549,7 @@ Check the installation:
 heimdalld version --long
 ```
 
-##### Install Bor
+#### Install Bor
 
 Clone the Bor repository:
 
@@ -577,11 +577,11 @@ Check the installation:
 bor version
 ```
 
-#### Set up node files
+### Set up node files
 
 NOTE:Run this section both on the sentry and the validator machines.
 
-##### Fetch the launch repository
+#### Fetch the launch repository
 
 Clone the [launch repository](https://github.com/maticnetwork/launch):
 
@@ -589,9 +589,9 @@ Clone the [launch repository](https://github.com/maticnetwork/launch):
 git clone https://github.com/maticnetwork/launch
 ```
 
-##### Set up the launch directory
+#### Set up the launch directory
 
-###### On the sentry machine
+##### On the sentry machine
 
 Create a node directory:
 
@@ -607,7 +607,7 @@ cp -rf launch/mainnet-v1/sentry/sentry ~/node
 cp launch/mainnet-v1/service.sh ~/node
 ```
 
-###### On the validator machine
+##### On the validator machine
 
 Create a node directory:
 
@@ -623,11 +623,11 @@ cp -rf launch/mainnet-v1/sentry/validator ~/node
 cp launch/mainnet-v1/service.sh ~/node
 ```
 
-##### Set up the network directories
+#### Set up the network directories
 
 NOTE:Run this section both on the sentry and the validator machines.
 
-###### Set up Heimdall
+##### Set up Heimdall
 
 Change to the node directory:
 
@@ -641,7 +641,7 @@ Run the setup script:
 bash setup.sh
 ```
 
-###### Set up Bor
+##### Set up Bor
 
 Change to the node directory:
 
@@ -655,7 +655,7 @@ Run the setup script:
 bash setup.sh
 ```
 
-#### Set up the services
+### Set up the services
 
 NOTE:Run this section both on the sentry and the validator machines.
 
@@ -677,11 +677,11 @@ the service file to the system directory:
 sudo cp *.service /etc/systemd/system/
 ```
 
-#### Configure the sentry node
+### Configure the sentry node
 
 Login to the remote sentry machine.
 
-##### Configure the Heimdall node
+#### Configure the Heimdall node
 
 Open for editing `~/.heimdalld/config/config.toml`.
 
@@ -702,7 +702,7 @@ To get the node ID of Heimdall on the validator machine:
 
 Save the changes in config.toml.
 
-##### Configure the Bor node
+#### Configure the Bor node
 
 Open for editing `~/node/bor/start.sh`.
 
@@ -714,7 +714,7 @@ In start.sh, add the boot node addresses consisting of a node ID, an IP address,
 
 Save the changes in start.sh.
 
-##### Configure firewall
+#### Configure firewall
 
 The sentry machine must have the following ports open to the world 0.0.0.0/0:
 
@@ -722,11 +722,11 @@ The sentry machine must have the following ports open to the world 0.0.0.0/0:
 * 26656
 * 30303
 
-#### Start the sentry node
+### Start the sentry node
 
 You will first start the Heimdall node. Once the Heimdall node syncs, you will start the Bor node.
 
-##### Start the Heimdall node
+#### Start the Heimdall node
 
 Start the Heimdall service:
 
@@ -746,7 +746,7 @@ Check the Heimdall service logs:
 journalctl -u heimdalld.service -f
 ```
 
-###### Check the Heimdall rest-server logs
+##### Check the Heimdall rest-server logs
 
 ```sh
 journalctl -u heimdalld-rest-server.service -f
@@ -765,7 +765,7 @@ In the output, the catching_up value is:
 
 Wait for the Heimdall node to fully sync.
 
-##### Start the Bor node
+#### Start the Bor node
 
 Once the Heimdall node is fully synced, start the Bor node.
 
@@ -781,9 +781,9 @@ Check the Bor service logs:
 journalctl -u bor.service -f
 ```
 
-#### Configure the validator node
+### Configure the validator node
 
-##### Configure the Heimdall node
+#### Configure the Heimdall node
 
 Login to the remote validator machine.
 
@@ -820,7 +820,7 @@ In heimdall-config.toml, change the following:
 
 Save the changes in heimdall-config.toml.
 
-##### Configure the Bor node
+#### Configure the Bor node
 
 Open for editing `~/.bor/data/bor/static-nodes.json`.
 
@@ -838,14 +838,14 @@ To get the node ID of Bor on the sentry machine:
 
 Save the changes in static-nodes.json.
 
-#### Set the owner and signer key
+### Set the owner and signer key
 
 On BTTC, it is recommended that you keep the owner and signer keys different.
 
 * Signer — the address that signs the checkpoint transactions. The recommendation is to keep at least 1 ETH on the signer address.
 * Owner — the address that does the staking transactions. The recommendation is to keep the MATIC tokens on the owner address.
 
-##### Generate a Heimdall private key
+#### Generate a Heimdall private key
 
 You must generate a Heimdall private key only on the validator machine. Do not generate a Heimdall private key on the sentry machine.
 
@@ -865,7 +865,7 @@ This will generate priv_validator_key.json. Move the generated JSON file to the 
 mv ./priv_validator_key.json ~/.heimdalld/config
 ```
 
-##### Generate a Bor keystore file
+#### Generate a Bor keystore file
 
 You must generate a Bor keystore file only on the validator machine. Do not generate a Bor keystore file on the sentry machine.
 
@@ -887,11 +887,11 @@ Move the generated keystore file to the Bor configuration directory:
 mv ./UTC-<time>-<address> ~/.bor/keystore/
 ```
 
-##### Add password.txt
+#### Add password.txt
 
 Add the Bor keystore file password in the `~/.bor/password.txt` file.
 
-##### Add your Ethereum address
+#### Add your Ethereum address
 
 Open for editing /etc/matic/metadata.
 
@@ -903,7 +903,7 @@ VALIDATOR_ADDRESS=0xca67a8D767e45056DC92384b488E9Af654d78DE2.
 
 Save the changes in metadata.
 
-#### Start the validator node
+### Start the validator node
 
 At this point, you must have:
 
@@ -912,7 +912,7 @@ At this point, you must have:
 * The Heimdall node and the Bor node on the validator machine configured.
 * Your owner and signer keys configured.
 
-##### Start the Heimdall node
+#### Start the Heimdall node
 
 You will now start the Heimdall node on the validator machine. Once the Heimdall node syncs, you will start the Bor node on the validator machine.
 
@@ -965,7 +965,7 @@ In the output, the catching_up value is:
 
 Wait for the Heimdall node to fully sync.
 
-##### Start the Bor node
+#### Start the Bor node
 
 Once the Heimdall node on the validator machine is fully synced, start the Bor node on the validator machine.
 
