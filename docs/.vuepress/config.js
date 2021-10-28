@@ -48,7 +48,7 @@ module.exports = {
               '/validator/overview',
               '/validator/validators',
               '/validator/delegators',
-              // '/validator/node',
+              '/validator/node',
               '/validator/faq'
             ]
           }
@@ -84,7 +84,7 @@ module.exports = {
               '/en/validator/overview',
               '/en/validator/validators',
               '/en/validator/delegators',
-              // '/en/validator/node',
+              '/en/validator/node',
               '/en/validator/faq'
             ]
           }
