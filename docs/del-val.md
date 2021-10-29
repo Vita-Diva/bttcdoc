@@ -130,7 +130,7 @@ TRON及其他区块链网络上的Root合约，支持用户通过存取款的方
 
 BitTorrent-Chain层的区块生产者是验证者的一个子集，由验证人定期改组。
 
-![image](../pics/architecture.jpg)
+![image](./pics/architecture.jpg)
 
 ### 功能
 

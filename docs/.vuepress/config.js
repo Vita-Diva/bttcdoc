@@ -37,38 +37,6 @@ module.exports = {
             '/validator/faq'
           ]
         }
-        // sidebar: [
-        //   {
-        //     title: '开发者',
-        //     prefix: '/',
-        //     children: [
-        //       '', 
-        //       'architecture', 
-        //       'btttoken',
-        //       'wallets',
-        //       'jsonrpc',   
-        //       'testnet',
-        //       'tools',
-        //       'dapp',
-        //       'tron-bttc',
-        //       'del-val',
-        //       '/validator/node',
-        //       '/validator/faq'
-        //     ]
-        //   },
-          // {
-          //   title: '验证人 & 委托人',
-          //   prefix: '/validator/',
-          //   children: [
-          //     '/validator/', 
-          //     '/validator/overview',
-          //     '/validator/validators',
-          //     '/validator/delegators',
-          //     '/validator/node',
-          //     '/validator/faq'
-          //   ]
-          // }
-        // ]
       },
       '/en/': {
         selectText: 'Select Language',
