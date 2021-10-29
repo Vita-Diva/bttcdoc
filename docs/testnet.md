@@ -62,8 +62,6 @@ Event Server: https://event/nilllex.io
 符号（Symbol）：BTT
 区块浏览器URL（Block Explorer URL）：https://scan.bittorrentchain.io/
 
-### 测试币申请示例
-
 ![image](./pics/wallet-rpc.png)
 
 ### 测试币申请示例

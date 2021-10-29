@@ -66,4 +66,4 @@ Block Explorer URL: https://scan.bittorrentchain.io/
 
 ### Test Coin Application
 
-![image](./pics/testnet/bttc.png)
+![image](../pics/testnet/bttc.png)
