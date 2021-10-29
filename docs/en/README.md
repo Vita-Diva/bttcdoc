@@ -8,14 +8,5 @@ BTTC is an extension of the public blockchain. It's a proof-of-stake (PoS) chain
 
 You are already a BTTC developer if you have developed a dApp on TRON or Ethereum. On BTTC, you can use familiar development tools like Truffle, Remix, and others. You can begin using BTTC's RPC by switching to it.
 
-```js
-const Web3 = require('Web3')
-
-const web3 = new Web3('')
-```
-
 You can deploy your smart contract on BTTC without worrying about the underlying architecture if you have a ready-made dApp that is compatible with EVM.
 
-## Community
-
-Welcome to join us.

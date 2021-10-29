@@ -1,4 +1,4 @@
-# 在BTTC上部署dApp
+# BTTC合约开发教程
 
 ## 使用Remix在BTTC上部署Hello World合约
 
