@@ -1,12 +1,6 @@
 # BTTC测试网络设置
 
-目前BTTC测试网需要使用如下相关测试网：
-
-* TRON：Nile测试网
-* ETH：Goerli测试网
-* BSC：BSC测试网
-
-## 测试网水龙头
+BitTorrent Chain（BTTC）测试网现已正式开启，目前已支持TRON测试网(Nile)，以太坊测试网( Goerli)以及BSC测试网的接入，简介如下：
 
 | 网络  |  测试网络名称 |  URL |  备注 |
 | ------------ | ------------ | ------------ | ------------ |
@@ -15,18 +9,20 @@
 |  BSC |  BSC测试网 | [BSC Faucet](https://testnet.binance.org/faucet-smart)  |   |
 |  BTTC | BTTC测试网  | [BTTC Faucet](https://faucet.bittorrentchain.io)  |   TBD |
 
-## TRON
+## TRON Nile 测试网
 
-Full Node: https://api.nileex.io
-Event Server: https://event/nilllex.io
+Tron Nile测试网的接入需要使用Tronlink Chrome插件，并且Tronlink已支持Nile，用户在登录Tronlink钱包后需要切换至Nile测试网，通过水龙头申请测试币并发送至Tronlink账号，即可完成Nile测试网环境准备。
 
-![image](./pics/nile-rpc.png)
+Nile测试网代币申请URL：https://nileex.io/join/getJoinPage
+Nile测试网官网地址：https://nileex.io/
+Nile测试网区块浏览器：https://nile.tronscan.org/
+Nile测试网开发资源：​​https://nileex.io/status/getStatusPage
 
-### 测试币申请示例
+## ETH Goerli测试网
 
-![image](./pics/testnet/nile.png)
+Goerli测试网的接入需要使用Metamask，并切换至Goerli测试网，申请测试币并发送至Metamask账号，即可完成Goerli测试网环境的准备。
 
-## ETH
+如Metamask还未接入Goerli测试网，需要在Metamask上添加自定义RPC网络，参数如下：
 
 网络名称（ Network Name）：Goerli - Testnet
 新的RPC URL（ New RPC URL）：https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161
@@ -36,11 +32,13 @@ Event Server: https://event/nilllex.io
 
 ![image](./pics/goerli-rpc.png)
 
-### 测试币申请示例
+详细操作流程可参考：[Metamask接入Goerli测试网流程](https://mudit.blog/getting-started-goerli-testnet/)。
 
-![image](./pics/testnet/goerli.png)
+## BSC测试网
 
-## BSC
+BSC测试网的接入需要使用Metamask，并切换至Goerli测试网，通过水龙头申请测试币并发送至Metamask账号，即可完成BSC测试网环境准备。
+
+如Metamask还未接入，需要在Metamask上添加自定义RPC网络，参数如下：
 
 网络名称（ Network Name）：Binace Smart Chain - Testnet
 新的RPC URL（ New RPC URL）：https://data-seed-prebsc-1-s1.binance.org:8545/
@@ -50,11 +48,11 @@ Event Server: https://event/nilllex.io
 
 ![image](./pics/bsc-rpc.png)
 
-### 测试币申请示例
+详细操作流程可参考：[Metamask接入BSC测试网流程](https://academy.binance.com/en/articles/connecting-metamask-to-binance-smart-chain)。
 
-![image](./pics/bsc-rpc.png)
+## BTTC测试网
 
-## BTTC
+BTTC测试网的接入需要使用Metamask，并使用Metamask添加BTTC测试网的网络配置，并切换至BTTC测试网。
 
 网络名称（ Network Name）：BitTorrent Chain Testnet
 新的RPC URL（ New RPC URL）：https://test-rpc.bittorrentchain.io/ 
@@ -64,6 +62,3 @@ Event Server: https://event/nilllex.io
 
 ![image](./pics/wallet-rpc.png)
 
-### 测试币申请示例
-
-![image](./pics/testnet/bttc.png)
