@@ -26,6 +26,7 @@ BitTorrent-Chain's code base for understanding how the core BitTorrent-Chain com
 Once you are familiar with the architecture and code base, you can set up your node. Please note that the above documentation is only intended to familiarise you with the inner workings of the polygon, you can set up your nodes directly without familiarising yourself with the specifications above.
 
 ### Setting up your node
+Please refer to the node setup [documentation](http://doc.bittorrentchain.io/v1/doc/en/validator/node.html "documentation")
 
 ## To become a Delegator
 
