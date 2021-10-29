@@ -60,7 +60,7 @@ contract HelloWorld {
 按照图中的信息填写：
 
 * Network Name: BitTorrent Chain Testnet
-* RPC URL: https://rpc.bittorrentchain.io/
+* RPC URL: https://test-rpc.bittorrentchain.io/
 * Chain ID: 1028
 * Currency Symbol: BTT
 * Explorer: https://scan.bittorrentchain.io/
@@ -287,7 +287,7 @@ mapping(uint256 => Tracking) public trackings;
 按照图中的信息填写：
 
 * Network Name: BitTorrent Chain Testnet
-* RPC URL: https://rpc.bittorrentchain.io/
+* RPC URL: https://test-rpc.bittorrentchain.io/
 * Chain ID: 1028
 * Currency Symbol: BTT
 * Explorer: https://scan.bittorrentchain.io/
