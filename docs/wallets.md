@@ -35,11 +35,9 @@ MetaMask是一个免费且安全的钱包，它允许web程序与多种区块链
 
 为了查看账户资金在BTTC上的活动，需要在MetaMask上配置BTTC的URL。
 
-要添加BTTC的主网，请在这里选择自定义RPC。
+要添加BTTC到MetaMask，请在这里选择自定义RPC，并在打开的表单中正确添加BTTC的相关参数。
 
-![image](./pics/wallet-rpc.jpg)
-
-在打开的表单中，请正确添加BTTC的主网。
+![image](./pics/wallet-rpc.png)
 
 ### 配置自定义代币
 
