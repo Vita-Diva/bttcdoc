@@ -7,7 +7,7 @@ The BitTorrent Chain (BTTC) test network is open now. Currently, it supports TRO
 | TRON  | Nile  |  [Nile Faucet](https://nileex.io/join/getJoinPage) |
 |  ETH |  Goerli | [Goerli Faucet](https://faucet.goerli.mudit.blog/)  |
 |  BSC |  BSC Testnet | [BSC Faucet](https://testnet.binance.org/faucet-smart)  |
-|  BTTC | BTTC Testnet | [BTTC Faucet](https://faucet.bittorrentchain.io)  |
+|  BTTC | BTTC Testnet | TBD  |
 
 ## TRON Nile Testnet
 
@@ -15,10 +15,10 @@ The access to the Tron Nile testnet requires the Tronlink Chrome plug-in, and Tr
 
 After logging in to the Tronlink wallet, users need to switch to the Nile testnet, apply for a test coin through the faucet with a Tronlink account to complete the Nile testnet environment configuration.
 
-Faucet: https://nileex.io/join/getJoinPage
-Official website: https://nileex.io/
-Block explorer: https://nile.tronscan.org/
-Status: ​​https://nileex.io/status/getStatusPage
+* Faucet: https://nileex.io/join/getJoinPage
+* Official website: https://nileex.io/
+* Block explorer: https://nile.tronscan.org/
+* Status: ​​https://nileex.io/status/getStatusPage
 
 ## ETH Goerli Testnet
 
@@ -26,11 +26,11 @@ Accessing to the Goerli testnet requires Metamask. Please switch to the Goerli t
 
 If Metamask has not yet connected to the Goerli test network, you need to add a custom RPC network to Metamask, with the following parameters:
 
-Network Name: Goerli - Testnet
-RPC URL: https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161
-ChainID: 5
-Symbol: ETH
-Block Explorer URL: https://goerli.etherscan.com
+* Network Name: Goerli - Testnet
+* RPC URL: https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161
+* ChainID: 5
+* Symbol: ETH
+* Block Explorer URL: https://goerli.etherscan.com
 
 ![image](../pics/goerli-rpc.png)
 
@@ -42,11 +42,11 @@ Accessing to the BSC testnet requires Metamask. Please switch to the Goerli test
 
 If Metamask has not been connected to the BSC testnet yet, you need to add a custom RPC network to Metamask. The parameters are as follows:
 
-Network Name: Binace Smart Chain - Testnet
-RPC URL: https://data-seed-prebsc-1-s1.binance.org:8545/
-ChainID: 97
-Symbol: BNB
-Block Explorer URL: https://testnet.bscscan.com
+* Network Name: Binace Smart Chain - Testnet
+* RPC URL: https://data-seed-prebsc-1-s1.binance.org:8545/
+* ChainID: 97
+* Symbol: BNB
+* Block Explorer URL: https://testnet.bscscan.com
 
 ![image](../pics/bsc-rpc.png)
 
@@ -56,11 +56,10 @@ For details, please refer to:：[Conncting Metamask to Binance Smart Chain](http
 
 Accessing to the BTTC test network requires Metamask. Please use Metamask to add the network configuration of the BTTC test network, and switch to the BTTC test network.
 
-Network Name: BitTorrent Chain Testnet
-RPC URL: https://test-rpc.bittorrentchain.io/ 
-ChainID: 1028
-Symbol: BTT
-Block Explorer URL: https://scan.bittorrentchain.io/
+* Network Name: BitTorrent Chain Testnet
+* RPC URL: https://test-rpc.bittorrentchain.io/ 
+* ChainID: 1028
+* Symbol: BTT
+* Block Explorer URL: https://scan.bittorrentchain.io/
 
 ![image](../pics/wallet-rpc.png)
-
