@@ -27,6 +27,8 @@ BitTorrent-Chain的代码库，用于了解BitTorrent-Chain 核心组件如何�
 
 ## 设置你的节点
 
+请参考节点设置[文档](http://doc.bittorrentchain.io/v1/doc/validator/node.html "文档")
+
 ## 成为委托人
 
 委托人可以将BTT代币委托给validator，并获得部分收入作为交换。成为BitTorrent-Chain 的委托人没有先决条件，只需要拥有一个TRON账户。

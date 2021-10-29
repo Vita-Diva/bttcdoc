@@ -105,7 +105,7 @@ Validator有两个地址：
  user：账户A地址
 
  amount：质押量，小于授权量，需精度的18个0
- heimdallFee：手续费，大于等于1个token，需精度的18个0
+ deliveryFee：手续费，大于等于1个token，需精度的18个0
 
  acceptDelegation：false（如果为true的话，stakeFor不能通过tronscan调用，因为tronscan费用限制为300TRX，可通过wallet cli、API等调用
 
@@ -125,13 +125,13 @@ Validator有两个地址：
 
 |合约|方法|参数|备注|
 |--------|--------|--------|--------|
-| StakeManagerProxy | stakeFor | address user：质押账号地址<br>uint256 amount：质押代币数量，带精度<br>uint256 heimdallFee：手续费<br>bool acceptDelegation：是否接受代理<br>bytes memory signerPubkey：签名账号公钥 | 质押成为validator，validator集合未满时有效，否则报validator集合已满 |
+| StakeManagerProxy | stakeFor | address user：质押账号地址<br>uint256 amount：质押代币数量，带精度<br>uint256 deliveryFee：手续费<br>bool acceptDelegation：是否接受代理<br>bytes memory signerPubkey：签名账号公钥 | 质押成为validator，validator集合未满时有效，否则报validator集合已满 |
 |StakeManagerProxy|restake|uint256 validatorId：质押的validator id<br>uint256 amount：质押数量<br>bool stakeRewards：奖励是否加入质押|追加质押|
 |StakeManagerProxy|withdrawRewards|uint256 validatorId：领取奖励的validator id|领取奖励|
 |StakeManagerProxy|unstake|uint256 validatorId：解除质押的validator id|解除质押|
 |StakeManagerProxy|unstakeClaim|uint256 validatorId：领取质押的validator id|领取质押，解除质押后WITHDRAWAL_DELAY个epoch后可领取|
 |StakeManagerProxy|updateSigner|uint256 validatorId：validator id<br>bytes memory signerPubkey：新签名公钥|更新validator签名公钥|
-|StakeManagerProxy|topUpForFee|user：手续费接收者的账号地址<br>heimdallFee：手续费金额，带精度|存heimdall层手续费|
+|StakeManagerProxy|topUpForFee|user：手续费接收者的账号地址<br>deliveryFee：手续费金额，带精度|存delivery层手续费|
 |StakeManagerProxy|claimFee|uint256 accumFeeAmount：领取手续费数量<br>uint256 index：bytes memory proof：证明数据|领取手续费|
 |StakeManagerProxy|updateCommissionRate|uint256 validatorId：validator id<br>uint256 newCommissionRate：新佣金比例，<=100|更新佣金比例|
 |ValidatorShare|buyVoucher|uint256 _amount：投票数量<br>uint256 _minSharesToMint：可接受的最少代理币数量|投票和追加投票|
