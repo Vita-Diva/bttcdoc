@@ -1,6 +1,6 @@
 # JSON-RPC
 
-## 测试网（ChainID 0xc7，十进制199）
+## 测试网（ChainID 0x404，十进制1028）
 
 ### Endpoint
 

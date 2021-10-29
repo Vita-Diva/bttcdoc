@@ -1,6 +1,6 @@
 # JSON-RPC
 
-## TestNet(ChainId 0xc7, Decimal 199)
+## TestNet(ChainId 0x404, Decimal 1028)
 
 ### Endpoint
 
