@@ -30,13 +30,10 @@ module.exports = {
               'architecture', 
               'btttoken',
               'wallets',
-              'jsonrpc',
+              'jsonrpc',   
+              'testnet',
               'dapp',
-              'tron-bttc',
-              'checkpoint',
-              'mapping',
-              'mintable',
-              'statetransition'
+              'tron-bttc'
             ]
           },
           {
@@ -66,12 +63,9 @@ module.exports = {
               '/en/btttoken',
               '/en/wallets',
               '/en/jsonrpc',
+              '/en/testnet',
               '/en/dapp',
-              '/en/tron-bttc',
-              '/en/checkpoint',
-              '/en/mapping',
-              '/en/mintable',
-              '/en/statetransition'
+              '/en/tron-bttc'
             ]
           },
           {

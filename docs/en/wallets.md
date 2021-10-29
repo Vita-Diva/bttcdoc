@@ -35,9 +35,9 @@ Following that, please create a new account in MetaMask. Please keep your passwo
 
 To view account fund activity on BTTC, you must configure the BTTC URL on MetaMask.
 
-Please select custom RPC here to add BTTC's mainnet.
+Please select custom RPC here to add BTTC's mainnet or testnet.
 
-![image](../pics/wallet-rpc.jpg)
+![image](../pics/wallet-rpc.png)
 
 Please complete the form as shown in the figure below to correctly add the BTTC mainnet.
 

@@ -1,7 +1,11 @@
-# JSON-RPC ENDPOINT
+# JSON-RPC
 
-## 测试网（ChainID 0xc6，十进制198）
+## 测试网（ChainID 0xc7，十进制199）
 
-### 推荐节点
+### Endpoint
 
-### 备用节点
+https://rpc.bittorrentchain.io/
+
+## JSON-RPC 方法
+
+请参考文档或使用Postman：[https://documenter.getpostman.com/view/4117254/ethereum-json-rpc/RVu7CT5J?version=latest](https://documenter.getpostman.com/view/4117254/ethereum-json-rpc/RVu7CT5J?version=latest)

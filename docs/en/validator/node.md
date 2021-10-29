@@ -37,10 +37,10 @@ To get to a running validator node, do the following:
 
 ### Set up the sentry node
 
-On your local machine, clone the [node-ansible repository](https://github.com/maticnetwork/node-ansible):
+On your local machine, clone the [node-ansible repository](https://github.com/bttcprotocol/node-ansible):
 
 ```sh
-git clone https://github.com/maticnetwork/node-ansible
+git clone https://github.com/bttcprotocol/node-ansible
 ```
 
 Change to the cloned repository:
@@ -118,13 +118,13 @@ xxx.xxx.xx.xx | SUCCESS => {
 #### Do a test run of the sentry node setup
 
 ```sh
-ansible-playbook -l sentry playbooks/network.yml --extra-var="bor_branch=v0.2.9 heimdall_branch=v0.2.3  network_version=mainnet-v1 node_type=sentry/sentry heimdall_network=mainnet" --list-hosts
+ansible-playbook -l sentry playbooks/network.yml --extra-var="bttc_branch=v0.2.9 delivery_branch=v0.2.3  network_version=mainnet-v1 node_type=sentry/sentry delivery_network=mainnet" --list-hosts
 ```
 
 #### Run the sentry node setup
 
 ```sh
-ansible-playbook -l sentry playbooks/network.yml --extra-var="bor_branch=v0.2.9 heimdall_branch=v0.2.3  network_version=mainnet-v1 node_type=sentry/sentry heimdall_network=mainnet"
+ansible-playbook -l sentry playbooks/network.yml --extra-var="bttc_branch=v0.2.9 delivery_branch=v0.2.3  network_version=mainnet-v1 node_type=sentry/sentry delivery_network=mainnet"
 ```
 
 Once the setup is complete, you will see a message of completion on the terminal.
@@ -158,13 +158,13 @@ xxx.xxx.xx.xx | SUCCESS => {
 Do a test run of the validator node setup:
 
 ```sh
-ansible-playbook -l validator playbooks/network.yml --extra-var="bor_branch=v0.2.9 heimdall_branch=v0.2.3 network_version=mainnet-v1 node_type=sentry/validator heimdall_network=mainnet" --list-hosts
+ansible-playbook -l validator playbooks/network.yml --extra-var="bttc_branch=v0.2.9 delivery_branch=v0.2.3 network_version=mainnet-v1 node_type=sentry/validator delivery_network=mainnet" --list-hosts
 ```
 
 Run the validator node setup:
 
 ```sh
-ansible-playbook -l validator playbooks/network.yml --extra-var="bor_branch=v0.2.9 heimdall_branch=v0.2.3  network_version=mainnet-v1 node_type=sentry/validator heimdall_network=mainnet"
+ansible-playbook -l validator playbooks/network.yml --extra-var="bttc_branch=v0.2.9 delivery_branch=v0.2.3  network_version=mainnet-v1 node_type=sentry/validator delivery_network=mainnet"
 ```
 
 Once the setup is complete, you will see a message of completion on the terminal.
@@ -173,9 +173,9 @@ Once the setup is complete, you will see a message of completion on the terminal
 
 Login to the remote sentry machine.
 
-##### Configure the Heimdall node
+##### Configure the delivery node
 
-Open for editing `~/.heimdalld/config/config.toml`.
+Open for editing `~/.deliveryd/config/config.toml`.
 
 In config.toml, change the following:
 
@@ -184,10 +184,10 @@ In config.toml, change the following:
 Use the following values:
 * seeds="f4f605d60b8ffaaf15240564e58a81103510631c@159.203.9.164:26656,4fb1bc820088764a564d4f66bba1963d47d82329@44.232.55.71:26656,2eadba4be3ce47ac8db0a3538cb923b57b41c927@35.199.4.13:26656,3b23b20017a6f348d329c102ddc0088f0a10a444@35.221.13.28:26656,25f5f65a09c56e9f1d2d90618aa70cd358aa68da@35.230.116.151:26656"
 * pex — set the value to true to enable the peer exchange. Example: pex = true.
-* private_peer_ids — the node ID of Heimdall set up on the validator machine. \
-To get the node ID of Heimdall on the validator machine:
+* private_peer_ids — the node ID of delivery set up on the validator machine. \
+To get the node ID of delivery on the validator machine:
     1. Login to the valdator machine.
-    2. Run heimdalld tendermint show-node-id.
+    2. Run deliveryd tendermint show-node-id.
 * Example: private_peer_ids = "0ee1de0515f577700a6a4b6ad882eff1eb15f066".
 * prometheus — set the value to true to enable the Prometheus metrics. Example: prometheus = true.
 * max_open_connections — set the value to 100. Example: max_open_connections = 100.
@@ -196,7 +196,7 @@ Save the changes in config.toml.
 
 ##### Configure the BTTC node
 
-Open for editing `~/node/bor/start.sh`.
+Open for editing `~/node/bttc/start.sh`.
 
 In start.sh, add the boot node addresses consisting of a node ID, an IP address, and a port by adding the following line at the end:
 
@@ -206,7 +206,7 @@ In start.sh, add the boot node addresses consisting of a node ID, an IP address,
 
 Save the changes in start.sh.
 
-Open for editing `~/.bor/data/bor/static-nodes.json`.
+Open for editing `~/.bttc/data/bttc/static-nodes.json`.
 
 In static-nodes.json, change the following:
 
@@ -214,7 +214,7 @@ In static-nodes.json, change the following:
 
 To get the node ID of BTTC on the validator machine:
     1. Login to the valdator machine.
-    2. Run `bootnode -nodekey ~/.bor/data/bor/nodekey -writeaddress`.
+    2. Run `bootnode -nodekey ~/.bttc/data/bttc/nodekey -writeaddress`.
 
 * Example:
 
@@ -234,35 +234,35 @@ The sentry machine must have the following ports open to the world 0.0.0.0/0:
 
 #### Start the sentry node
 
-You will first start the Heimdall node. Once the Heimdall node syncs, you will start the BTTC node.
+You will first start the delivery node. Once the delivery node syncs, you will start the BTTC node.
 
-##### Start the Heimdall node
+##### Start the delivery node
 
-Start the Heimdall service:
-
-```sh
-sudo service heimdalld start
-```
-
-Start the Heimdall rest-server:
+Start the delivery service:
 
 ```sh
-sudo service heimdalld-rest-server start
+sudo service deliveryd start
 ```
 
-Check the Heimdall service logs:
+Start the delivery rest-server:
 
 ```sh
-journalctl -u heimdalld.service -f
+sudo service deliveryd-rest-server start
 ```
 
-Check the Heimdall rest-server logs:
+Check the delivery service logs:
 
 ```sh
-journalctl -u heimdalld-rest-server.service -f
+journalctl -u deliveryd.service -f
 ```
 
-Check the sync status of Heimdall:
+Check the delivery rest-server logs:
+
+```sh
+journalctl -u deliveryd-rest-server.service -f
+```
+
+Check the sync status of delivery:
 
 ```sh
 curl localhost:26657/status
@@ -270,14 +270,14 @@ curl localhost:26657/status
 
 In the output, the catching_up value is:
 
-* true — the Heimdall node is syncing.
-* false — the Heimdall node is fully synced.
+* true — the delivery node is syncing.
+* false — the delivery node is fully synced.
 
-Wait for the Heimdall node to fully sync.
+Wait for the delivery node to fully sync.
 
 ##### Start the BTTCr node
 
-Once the Heimdall node is fully synced, start the BTTC node.
+Once the delivery node is fully synced, start the BTTC node.
 
 Start the BTTC service:
 
@@ -293,31 +293,31 @@ journalctl -u bttc.service -f
 
 #### Configure the validator node
 
-##### Configure the Heimdall node
+##### Configure the delivery node
 
 Login to the remote validator machine.
 
-Open for editing `~/.heimdalld/config/config.toml`.
+Open for editing `~/.deliveryd/config/config.toml`.
 
 In config.toml, change the following:
 
 * moniker — any name. Example: moniker = "my-validator-node".
 * pex — set the value to false to disable the peer exchange. Example: pex = false.
 * private_peer_ids — comment out the value to disable it. Example: # private_peer_ids = "".
-* persistent_peers — the node ID of Heimdall set up on the sentry machine and the IP address of the sentry machine. \
+* persistent_peers — the node ID of delivery set up on the sentry machine and the IP address of the sentry machine. \
 
-To get the node ID of Heimdall on the sentry machine:
+To get the node ID of delivery on the sentry machine:
     1. Login to the sentry machine.
-    2. Run heimdalld tendermint show-node-id.
+    2. Run deliveryd tendermint show-node-id.
 
 * Example: persistent_peers = "7d2adb45aa20fdcf053c0e3b8209eb781e501b46@188.166.216.25:26656".
 * prometheus — set the value to true to enable the Prometheus metrics. Example: prometheus = true.
 
 Save the changes in config.toml.
 
-Open for editing `~/.heimdalld/config/heimdall-config.toml`.
+Open for editing `~/.deliveryd/config/delivery-config.toml`.
 
-In heimdall-config.toml, change the following:
+In delivery-config.toml, change the following:
 
 * eth_rpc_url — an RPC endpoint for a fully synced Ethereum mainnet node. Example: eth_rpc_url = "[https://nd-123-456-789.p2pify.com/60f2a23810ba11c827d3da642802412a](https://nd-123-456-789.p2pify.com/60f2a23810ba11c827d3da642802412a)"
 * bsc_rpc_url- — an RPC endpoint for a fully synced BSC mainnet node. 
@@ -330,11 +330,11 @@ In heimdall-config.toml, change the following:
 
 * tron_grid_url - event service for Tron mainnet node, used to query event logs.Example:tron_grid_url = "http://47.252.35.194:8547"
 
-Save the changes in heimdall-config.toml.
+Save the changes in delivery-config.toml.
 
 ##### Configure the BTTC node
 
-Open for editing ~/.bor/data/bor/static-nodes.json.
+Open for editing ~/.bttc/data/bttc/static-nodes.json.
 
 In static-nodes.json, change the following:
 
@@ -342,7 +342,7 @@ In static-nodes.json, change the following:
 
 To get the node ID of BTTC on the sentry machine:
     1. Login to the sentry machine.
-    2. Run bootnode -nodekey ~/.bor/data/bor/nodekey -writeaddress.
+    2. Run bootnode -nodekey ~/.bttc/data/bttc/nodekey -writeaddress.
 
 * Example:
 
@@ -357,24 +357,24 @@ Save the changes in static-nodes.json.
 On BTTC, it is recommended that you keep the owner and signer keys different.
 
 * Signer — the address that signs the checkpoint transactions. The recommendation is to keep at least 1 ETH on the signer address.
-* Owner — the address that does the staking transactions. The recommendation is to keep the MATIC tokens on the owner address.
+* Owner — the address that does the staking transactions. The recommendation is to keep the bttc tokens on the owner address.
 
-##### Generate a Heimdall private key
+##### Generate a delivery private key
 
-You must generate a Heimdall private key only on the validator machine. Do not generate a Heimdall private key on the sentry machine.
+You must generate a delivery private key only on the validator machine. Do not generate a delivery private key on the sentry machine.
 
-To generate the private key, run:
+To generate the private key, run:部署验证人节点
 
-heimdallcli generate-validatorkey ETHEREUM_PRIVATE_KEY
+deliverycli generate-validatorkey ETHEREUM_PRIVATE_KEY
 
 where
 
 * ETHEREUM_PRIVATE_KEY — your Ethereum address private key.
 
-This will generate priv_validator_key.json. Move the generated JSON file to the Heimdall configuration directory:
+This will generate priv_validator_key.json. Move the generated JSON file to the delivery configuration directory:
 
 ```sh
-mv ./priv_validator_key.json ~/.heimdalld/config
+mv ./priv_validator_key.json ~/.deliveryd/config
 ```
 
 ##### Generate a BTTC keystore file
@@ -383,7 +383,7 @@ You must generate a BTTC keystore file only on the validator machine. Do not gen
 
 To generate the private key, run:
 
-heimdallcli generate-keystore ETHEREUM_PRIVATE_KEY
+deliverycli generate-keystore ETHEREUM_PRIVATE_KEY
 
 where
 
@@ -396,16 +396,16 @@ This will generate a `UTC-<time>-<address> keystore` keystore file.
 Move the generated keystore file to the BTTC configuration directory:
 
 ```sh
-mv ./UTC-<time>-<address> ~/.bor/keystore/
+mv ./UTC-<time>-<address> ~/.bttc/keystore/
 ```
 
 ##### Add password.txt
 
-Add the BTTC keystore file password in the `~/.bor/password.txt` file.
+Add the BTTC keystore file password in the `~/.bttc/password.txt` file.
 
 ##### Add your Ethereum address
 
-Open for editing /etc/matic/metadata.
+Open for editing /etc/bttc/metadata.
 
 In metadata, add your Ethereum address. Example:
 
@@ -419,52 +419,52 @@ Save the changes in metadata.
 
 At this point, you must have:
 
-* The Heimdall node on the sentry machine fully synced and running.
+* The delivery node on the sentry machine fully synced and running.
 * The BTTC node on the sentry machine running.
-* The Heimdall node and the BTTC node on the validator machine configured.
+* The delivery node and the BTTC node on the validator machine configured.
 * Your owner and signer keys configured.
 
-##### Start the Heimdall node
+##### Start the delivery node
 
-You will now start the Heimdall node on the validator machine. Once the Heimdall node syncs, you will start the BTTC node on the validator machine.
+You will now start the delivery node on the validator machine. Once the delivery node syncs, you will start the BTTC node on the validator machine.
 
-Start the Heimdall service:
-
-```sh
-sudo service heimdalld start
-```
-
-Start the Heimdall rest-server:
+Start the delivery service:
 
 ```sh
-sudo service heimdalld-rest-server start
+sudo service deliveryd start
 ```
 
-Start the Heimdall bridge:
+Start the delivery rest-server:
 
 ```sh
-sudo service heimdalld-bridge start
+sudo service deliveryd-rest-server start
 ```
 
-Check the Heimdall service logs:
+Start the delivery bridge:
 
 ```sh
-journalctl -u heimdalld.service -f
+sudo service deliveryd-bridge start
 ```
 
-Check the Heimdall rest-server logs:
+Check the delivery service logs:
 
 ```sh
-journalctl -u heimdalld-rest-server.service -f
+journalctl -u deliveryd.service -f
 ```
 
-Check the Heimdall bridge logs:
+Check the delivery rest-server logs:
 
 ```sh
-journalctl -u heimdalld-bridge.service -f
+journalctl -u deliveryd-rest-server.service -f
 ```
 
-Check the sync status of Heimdall:
+Check the delivery bridge logs:
+
+```sh
+journalctl -u deliveryd-bridge.service -f
+```
+
+Check the sync status of delivery:
 
 ```sh
 curl localhost:26657/status
@@ -472,14 +472,14 @@ curl localhost:26657/status
 
 In the output, the catching_up value is:
 
-* true — the Heimdall node is syncing.
-* false — the Heimdall node is fully synced.
+* true — the delivery node is syncing.
+* false — the delivery node is fully synced.
 
-Wait for the Heimdall node to fully sync.
+Wait for the delivery node to fully sync.
 
 ##### Start the BTTC node
 
-Once the Heimdall node on the validator machine is fully synced, start the BTTC node on the validator machine.
+Once the delivery node on the validator machine is fully synced, start the BTTC node on the validator machine.
 
 Start the BTTC service:
 
@@ -515,9 +515,9 @@ sudo ln -nfs ~/.go/bin/go /usr/bin/go
 ### To get to a running validator node, do the following
 
 1. Have the two machines prepared.
-2. Install the Heimdall and Bor binaries on the sentry and the validator machines.
-3. Set up the Heimdall and Bor node files on the sentry and the validator machines.
-4. Set up the Heimdall and Bor services on the sentry and the validator machines.
+2. Install the delivery and bttc binaries on the sentry and the validator machines.
+3. Set up the delivery and bttc node files on the sentry and the validator machines.
+4. Set up the delivery and bttc services on the sentry and the validator machines.
 5. Configure the sentry node.
 6. Start the sentry node.
 7. Configure the validator node.
@@ -529,15 +529,15 @@ sudo ln -nfs ~/.go/bin/go /usr/bin/go
 
 NOTE:Run this section both on the sentry and the validator machines.
 
-#### Install Heimdall
+#### Install delivery
 
-Clone the [Heimdall repository](https://github.com/maticnetwork/heimdall/):
+Clone the [delivery repository](https://github.com/bttcprotocol/delivery/):
 
 ```sh
-git clone https://github.com/maticnetwork/heimdall
+git clone https://github.com/bttcprotocol/delivery
 ```
 
-Install Heimdall:
+Install delivery:
 
 ```sh
 make install
@@ -546,35 +546,35 @@ make install
 Check the installation:
 
 ```sh
-heimdalld version --long
+deliveryd version --long
 ```
 
-#### Install Bor
+#### Install bttc
 
-Clone the Bor repository:
+Clone the bttc repository:
 
 ```sh
-git clone https://github.com/maticnetwork/bor
+git clone https://github.com/bttcprotocol/bttc
 ```
 
-Install Bor:
+Install bttc:
 
 ```sh
-make bor-all
+make bttc-all
 ```
 
 Create symlinks:
 
 ```sh
-sudo ln -nfs ~/bor/build/bin/bor /usr/bin/bor
+sudo ln -nfs ~/bttc/build/bin/bttc /usr/bin/bttc
 
-sudo ln -nfs ~/bor/build/bin/bootnode /usr/bin/bootnode
+sudo ln -nfs ~/bttc/build/bin/bootnode /usr/bin/bootnode
 ```
 
 Check the installation:
 
 ```sh
-bor version
+bttc version
 ```
 
 ### Set up node files
@@ -583,10 +583,10 @@ NOTE:Run this section both on the sentry and the validator machines.
 
 #### Fetch the launch repository
 
-Clone the [launch repository](https://github.com/maticnetwork/launch):
+Clone the [launch repository](https://github.com/bttcprotocol/launch):
 
 ```sh
-git clone https://github.com/maticnetwork/launch
+git clone https://github.com/bttcprotocol/launch
 ```
 
 #### Set up the launch directory
@@ -627,12 +627,12 @@ cp launch/mainnet-v1/service.sh ~/node
 
 NOTE:Run this section both on the sentry and the validator machines.
 
-##### Set up Heimdall
+##### Set up delivery
 
 Change to the node directory:
 
 ```sh
-cd ~/node/heimdall
+cd ~/node/delivery
 ```
 
 Run the setup script:
@@ -641,12 +641,12 @@ Run the setup script:
 bash setup.sh
 ```
 
-##### Set up Bor
+##### Set up bttc
 
 Change to the node directory:
 
 ```sh
-cd ~/node/bor
+cd ~/node/bttc
 ```
 
 Run the setup script:
@@ -681,9 +681,9 @@ sudo cp *.service /etc/systemd/system/
 
 Login to the remote sentry machine.
 
-#### Configure the Heimdall node
+#### Configure the delivery node
 
-Open for editing `~/.heimdalld/config/config.toml`.
+Open for editing `~/.deliveryd/config/config.toml`.
 
 In config.toml, change the following:
 
@@ -692,19 +692,19 @@ In config.toml, change the following:
 Use the following values:
 * seeds="f4f605d60b8ffaaf15240564e58a81103510631c@159.203.9.164:26656,4fb1bc820088764a564d4f66bba1963d47d82329@44.232.55.71:26656,2eadba4be3ce47ac8db0a3538cb923b57b41c927@35.199.4.13:26656,3b23b20017a6f348d329c102ddc0088f0a10a444@35.221.13.28:26656,25f5f65a09c56e9f1d2d90618aa70cd358aa68da@35.230.116.151:26656"
 * pex — set the value to true to enable the peer exchange. Example: pex = true.
-* private_peer_ids — the node ID of Heimdall set up on the validator machine. \
-To get the node ID of Heimdall on the validator machine:
+* private_peer_ids — the node ID of delivery set up on the validator machine. \
+To get the node ID of delivery on the validator machine:
     1. Login to the valdator machine.
-    2. Run heimdalld tendermint show-node-id.
+    2. Run deliveryd tendermint show-node-id.
 * Example: private_peer_ids = "0ee1de0515f577700a6a4b6ad882eff1eb15f066".
 * prometheus — set the value to true to enable the Prometheus metrics. Example: prometheus = true.
 * max_open_connections — set the value to 100. Example: max_open_connections = 100.
 
 Save the changes in config.toml.
 
-#### Configure the Bor node
+#### Configure the bttc node
 
-Open for editing `~/node/bor/start.sh`.
+Open for editing `~/node/bttc/start.sh`.
 
 In start.sh, add the boot node addresses consisting of a node ID, an IP address, and a port by adding the following line at the end:
 
@@ -724,35 +724,35 @@ The sentry machine must have the following ports open to the world 0.0.0.0/0:
 
 ### Start the sentry node
 
-You will first start the Heimdall node. Once the Heimdall node syncs, you will start the Bor node.
+You will first start the delivery node. Once the delivery node syncs, you will start the bttc node.
 
-#### Start the Heimdall node
+#### Start the delivery node
 
-Start the Heimdall service:
-
-```sh
-sudo service heimdalld start
-```
-
-Start the Heimdall rest-server:
+Start the delivery service:
 
 ```sh
-sudo service heimdalld-rest-server start
+sudo service deliveryd start
 ```
 
-Check the Heimdall service logs:
+Start the delivery rest-server:
 
 ```sh
-journalctl -u heimdalld.service -f
+sudo service deliveryd-rest-server start
 ```
 
-##### Check the Heimdall rest-server logs
+Check the delivery service logs:
 
 ```sh
-journalctl -u heimdalld-rest-server.service -f
+journalctl -u deliveryd.service -f
 ```
 
-Check the sync status of Heimdall:
+##### Check the delivery rest-server logs
+
+```sh
+journalctl -u deliveryd-rest-server.service -f
+```
+
+Check the sync status of delivery:
 
 ```sh
 curl localhost:26657/status
@@ -760,52 +760,52 @@ curl localhost:26657/status
 
 In the output, the catching_up value is:
 
-* true — the Heimdall node is syncing.
-* false — the Heimdall node is fully synced.
+* true — the delivery node is syncing.
+* false — the delivery node is fully synced.
 
-Wait for the Heimdall node to fully sync.
+Wait for the delivery node to fully sync.
 
-#### Start the Bor node
+#### Start the bttc node
 
-Once the Heimdall node is fully synced, start the Bor node.
+Once the delivery node is fully synced, start the bttc node.
 
-Start the Bor service:
+Start the bttc service:
 
 ```sh
-sudo service bor start
+sudo service bttc start
 ```
 
-Check the Bor service logs:
+Check the bttc service logs:
 
 ```sh
-journalctl -u bor.service -f
+journalctl -u bttc.service -f
 ```
 
 ### Configure the validator node
 
-#### Configure the Heimdall node
+#### Configure the delivery node
 
 Login to the remote validator machine.
 
-Open for editing `~/.heimdalld/config/config.toml`.
+Open for editing `~/.deliveryd/config/config.toml`.
 
 In config.toml, change the following:
 
 * moniker — any name. Example: moniker = "my-validator-node".
 * pex — set the value to false to disable the peer exchange. Example: pex = false.
 * private_peer_ids — comment out the value to disable it. Example: # private_peer_ids = "".
-* persistent_peers — the node ID of Heimdall set up on the sentry machine and the IP address of the sentry machine. \
-To get the node ID of Heimdall on the sentry machine:
+* persistent_peers — the node ID of delivery set up on the sentry machine and the IP address of the sentry machine. \
+To get the node ID of delivery on the sentry machine:
     1. Login to the sentry machine.
-    2. Run heimdalld tendermint show-node-id.
+    2. Run deliveryd tendermint show-node-id.
 * Example: persistent_peers = "7d2adb45aa20fdcf053c0e3b8209eb781e501b46@188.166.216.25:26656".
 * prometheus — set the value to true to enable the Prometheus metrics. Example: prometheus = true.
 
 Save the changes in config.toml.
 
-Open for editing ~/.heimdalld/config/heimdall-config.toml.
+Open for editing ~/.deliveryd/config/delivery-config.toml.
 
-In heimdall-config.toml, change the following:
+In delivery-config.toml, change the following:
 
 * eth_rpc_url — an RPC endpoint for a fully synced Ethereum mainnet node. Example: eth_rpc_url = "[https://nd-123-456-789.p2pify.com/60f2a23810ba11c827d3da642802412a](https://nd-123-456-789.p2pify.com/60f2a23810ba11c827d3da642802412a)"
 * bsc_rpc_url- — an RPC endpoint for a fully synced BSC mainnet node.
@@ -818,18 +818,18 @@ In heimdall-config.toml, change the following:
 
 * tron_grid_url - event service for Tron mainnet node, used to query event logs.Example:tron_grid_url = "[http://47.252.35.194:8547](http://47.252.35.194:8547)"
 
-Save the changes in heimdall-config.toml.
+Save the changes in delivery-config.toml.
 
-#### Configure the Bor node
+#### Configure the bttc node
 
-Open for editing `~/.bor/data/bor/static-nodes.json`.
+Open for editing `~/.bttc/data/bttc/static-nodes.json`.
 
 In static-nodes.json, change the following:
 
 * Use "<enode://sentry_machine_enodeID@sentry_machine_ip:30303>" to replace the node ID and IP address of the BTTC set on the sentry node machine.
-To get the node ID of Bor on the sentry machine:
+To get the node ID of bttc on the sentry machine:
     1. Login to the sentry machine.
-    2. Run bootnode -nodekey ~/.bor/data/bor/nodekey -writeaddress.
+    2. Run bootnode -nodekey ~/.bttc/data/bttc/nodekey -writeaddress.
 * Example
 
 ```sh
@@ -843,35 +843,35 @@ Save the changes in static-nodes.json.
 On BTTC, it is recommended that you keep the owner and signer keys different.
 
 * Signer — the address that signs the checkpoint transactions. The recommendation is to keep at least 1 ETH on the signer address.
-* Owner — the address that does the staking transactions. The recommendation is to keep the MATIC tokens on the owner address.
+* Owner — the address that does the staking transactions. The recommendation is to keep the bttc tokens on the owner address.
 
-#### Generate a Heimdall private key
+#### Generate a delivery private key
 
-You must generate a Heimdall private key only on the validator machine. Do not generate a Heimdall private key on the sentry machine.
+You must generate a delivery private key only on the validator machine. Do not generate a delivery private key on the sentry machine.
 
 To generate the private key, run:
 
 ```sh
-heimdallcli generate-validatorkey ETHEREUM_PRIVATE_KEY
+deliverycli generate-validatorkey ETHEREUM_PRIVATE_KEY
 ```
 
 where
 
 * ETHEREUM_PRIVATE_KEY — your Ethereum address private key.
 
-This will generate priv_validator_key.json. Move the generated JSON file to the Heimdall configuration directory:
+This will generate priv_validator_key.json. Move the generated JSON file to the delivery configuration directory:
 
 ```sh
-mv ./priv_validator_key.json ~/.heimdalld/config
+mv ./priv_validator_key.json ~/.deliveryd/config
 ```
 
-#### Generate a Bor keystore file
+#### Generate a bttc keystore file
 
-You must generate a Bor keystore file only on the validator machine. Do not generate a Bor keystore file on the sentry machine.
+You must generate a bttc keystore file only on the validator machine. Do not generate a bttc keystore file on the sentry machine.
 
 To generate the private key, run:
 
-heimdallcli generate-keystore ETHEREUM_PRIVATE_KEY
+deliverycli generate-keystore ETHEREUM_PRIVATE_KEY
 
 where
 
@@ -881,19 +881,19 @@ When prompted, set up a password to the keystore file.
 
 This will generate a `UTC-<time>-<address> keystore` keystore file.
 
-Move the generated keystore file to the Bor configuration directory:
+Move the generated keystore file to the bttc configuration directory:
 
 ```sh
-mv ./UTC-<time>-<address> ~/.bor/keystore/
+mv ./UTC-<time>-<address> ~/.bttc/keystore/
 ```
 
 #### Add password.txt
 
-Add the Bor keystore file password in the `~/.bor/password.txt` file.
+Add the bttc keystore file password in the `~/.bttc/password.txt` file.
 
 #### Add your Ethereum address
 
-Open for editing /etc/matic/metadata.
+Open for editing /etc/bttc/metadata.
 
 In metadata, add your Ethereum address. Example:
 
@@ -907,52 +907,52 @@ Save the changes in metadata.
 
 At this point, you must have:
 
-* The Heimdall node on the sentry machine fully synced and running.
-* The Bor node on the sentry machine running.
-* The Heimdall node and the Bor node on the validator machine configured.
+* The delivery node on the sentry machine fully synced and running.
+* The bttc node on the sentry machine running.
+* The delivery node and the bttc node on the validator machine configured.
 * Your owner and signer keys configured.
 
-#### Start the Heimdall node
+#### Start the delivery node
 
-You will now start the Heimdall node on the validator machine. Once the Heimdall node syncs, you will start the Bor node on the validator machine.
+You will now start the delivery node on the validator machine. Once the delivery node syncs, you will start the bttc node on the validator machine.
 
-Start the Heimdall service:
-
-```sh
-sudo service heimdalld start
-```
-
-Start the Heimdall rest-server:
+Start the delivery service:
 
 ```sh
-sudo service heimdalld-rest-server start
+sudo service deliveryd start
 ```
 
-Start the Heimdall bridge:
+Start the delivery rest-server:
 
 ```sh
-sudo service heimdalld-bridge start
+sudo service deliveryd-rest-server start
 ```
 
-Check the Heimdall service logs:
+Start the delivery bridge:
 
 ```sh
-journalctl -u heimdalld.service -f
+sudo service deliveryd-bridge start
 ```
 
-Check the Heimdall rest-server logs:
+Check the delivery service logs:
 
 ```sh
-journalctl -u heimdalld-rest-server.service -f
+journalctl -u deliveryd.service -f
 ```
 
-Check the Heimdall bridge logs:
+Check the delivery rest-server logs:
 
 ```sh
-journalctl -u heimdalld-bridge.service -f
+journalctl -u deliveryd-rest-server.service -f
 ```
 
-Check the sync status of Heimdall:
+Check the delivery bridge logs:
+
+```sh
+journalctl -u deliveryd-bridge.service -f
+```
+
+Check the sync status of delivery:
 
 ```sh
 curl localhost:26657/status
@@ -960,23 +960,23 @@ curl localhost:26657/status
 
 In the output, the catching_up value is:
 
-* true — the Heimdall node is syncing.
-* false — the Heimdall node is fully synced.
+* true — the delivery node is syncing.
+* false — the delivery node is fully synced.
 
-Wait for the Heimdall node to fully sync.
+Wait for the delivery node to fully sync.
 
-#### Start the Bor node
+#### Start the bttc node
 
-Once the Heimdall node on the validator machine is fully synced, start the Bor node on the validator machine.
+Once the delivery node on the validator machine is fully synced, start the bttc node on the validator machine.
 
-Start the Bor service:
+Start the bttc service:
 
 ```sh
-sudo service bor start
+sudo service bttc start
 ```
 
-Check the Bor service logs:
+Check the bttc service logs:
 
 ```sh
-journalctl -u bor.service -f
+journalctl -u bttc.service -f
 ```
