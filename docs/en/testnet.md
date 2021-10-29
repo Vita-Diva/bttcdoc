@@ -2,12 +2,12 @@
 
 The BitTorrent Chain (BTTC) test network is open now. Currently, it supports TRON Nile testnet, Ethereum Goerli testnet and the BSC testnet. The introduction is as follows:
 
-| Network  |  Test network name |  URL |  Note |
-| ------------ | ------------ | ------------ | ------------ |
-| TRON  | Nile  |  [Nile Faucet](https://nileex.io/join/getJoinPage) |   |
-|  ETH |  Goerli | [Goerli Faucet](https://faucet.goerli.mudit.blog/)  | Twitter |
-|  BSC |  BSC Testnet | [BSC Faucet](https://testnet.binance.org/faucet-smart)  |   |
-|  BTTC | BTTC Testnet | [BTTC Faucet](https://faucet.bittorrentchain.io)  |  |
+| Network  |  Test network name |  URL |
+| ------------ | ------------ | ------------ |
+| TRON  | Nile  |  [Nile Faucet](https://nileex.io/join/getJoinPage) |
+|  ETH |  Goerli | [Goerli Faucet](https://faucet.goerli.mudit.blog/)  |
+|  BSC |  BSC Testnet | [BSC Faucet](https://testnet.binance.org/faucet-smart)  |
+|  BTTC | BTTC Testnet | [BTTC Faucet](https://faucet.bittorrentchain.io)  |
 
 ## TRON Nile Testnet
 
@@ -40,7 +40,7 @@ For details, please refer to: [Access to Goerli with Metamask](https://mudit.blo
 
 Accessing to the BSC testnet requires Metamask. Please switch to the Goerli test network, apply for a test coin through the faucet and send it to the Metamask account to complete the configuration of the BSC test network environment.
 
-If Metamask has not been connected yet, you need to add a custom RPC network to Metamask. The parameters are as follows:
+If Metamask has not been connected to the BSC testnet yet, you need to add a custom RPC network to Metamask. The parameters are as follows:
 
 Network Name: Binace Smart Chain - Testnet
 New RPC URL: https://data-seed-prebsc-1-s1.binance.org:8545/

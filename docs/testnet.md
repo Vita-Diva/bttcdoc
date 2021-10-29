@@ -2,12 +2,12 @@
 
 BitTorrent Chain（BTTC）测试网现已正式开启，目前已支持TRON测试网(Nile)，以太坊测试网( Goerli)以及BSC测试网的接入，简介如下：
 
-| 网络  |  测试网络名称 |  URL |  备注 |
-| ------------ | ------------ | ------------ | ------------ |
-| TRON  | Nile  |  [Nile Faucet](https://nileex.io/join/getJoinPage) |   |
-|  ETH |  Goerli | [Goerli Faucet](https://faucet.goerli.mudit.blog/)  |  需Twitter |
-|  BSC |  BSC测试网 | [BSC Faucet](https://testnet.binance.org/faucet-smart)  |   |
-|  BTTC | BTTC测试网  | [BTTC Faucet](https://faucet.bittorrentchain.io)  |   TBD |
+| 网络  |  测试网络名称 |  URL |
+| ------------ | ------------ | ------------ |
+| TRON  | Nile  |  [Nile Faucet](https://nileex.io/join/getJoinPage) |
+|  ETH |  Goerli | [Goerli Faucet](https://faucet.goerli.mudit.blog/)  |
+|  BSC |  BSC测试网 | [BSC Faucet](https://testnet.binance.org/faucet-smart)  |
+|  BTTC | BTTC测试网  | [BTTC Faucet](https://faucet.bittorrentchain.io)  |
 
 ## TRON Nile 测试网
 
@@ -38,7 +38,7 @@ Goerli测试网的接入需要使用Metamask，并切换至Goerli测试网，申
 
 BSC测试网的接入需要使用Metamask，并切换至Goerli测试网，通过水龙头申请测试币并发送至Metamask账号，即可完成BSC测试网环境准备。
 
-如Metamask还未接入，需要在Metamask上添加自定义RPC网络，参数如下：
+如Metamask还未接入BSC测试网，需要在Metamask上添加自定义RPC网络，参数如下：
 
 网络名称（ Network Name）：Binace Smart Chain - Testnet
 新的RPC URL（ New RPC URL）：https://data-seed-prebsc-1-s1.binance.org:8545/
