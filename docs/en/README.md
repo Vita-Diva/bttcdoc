@@ -28,6 +28,10 @@ In the future, BitTorrent-Chain can easily access more public chains while using
 
 The BitTorrent-Chain achieves economies of scale by conducting a large number of transactions at the block producer layer, thus reducing costs and ensuring low transaction costs.
 
+## BTT Token
+
+BTT is BTTC's native token, similiar to TRX on TRON. To send various transactions on BTTC, you must pay the fee using BTT.
+
 ## dApp Development
 
 You are already a BTTC developer if you have developed a dApp on TRON or Ethereum. On BTTC, you can use familiar development tools like Truffle, Remix, and others. You can begin using BTTC's RPC by switching to it.

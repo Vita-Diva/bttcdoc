@@ -28,6 +28,10 @@ BitTorrent-Chain 通过使用区块生产者层来解决这个问题，区块生
 
 BitTorrent-Chain 通过在区块生产者层进行大量的交易来实现规模经济，从而降低成本，确保交易低成本。
 
+## BTT代币
+
+BTT是BTTC的原生代币，类似于TRON上的TRX。要在BTTC上发送各种交易，需要用BTT来支付手续费。
+
 ## dApp开发
 
 如果您已经在TRON或以太坊上开发了dApp，那么您就已经是BTTC的开发者了。在BTTC上您可以使用熟悉的工具来进行开发，比如Truffle、Remix等。您可以切换到BTTC的RPC并开始使用它。

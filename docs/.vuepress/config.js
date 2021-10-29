@@ -25,7 +25,6 @@ module.exports = {
           '/' : [
             '', 
             'architecture', 
-            'btttoken',
             'wallets',
             'jsonrpc',   
             'testnet',
@@ -45,7 +44,6 @@ module.exports = {
           '/en': [
             '/en/', 
             '/en/architecture', 
-            '/en/btttoken',
             '/en/wallets',
             '/en/jsonrpc',
             '/en/testnet',
