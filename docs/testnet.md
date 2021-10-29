@@ -1,8 +1,8 @@
 # BTTC测试网络设置
 
-BitTorrent Chain（BTTC）测试网现已正式开启，目前已支持TRON测试网(Nile)，以太坊测试网( Goerli)以及BSC测试网的接入，简介如下：
+BitTorrent Chain（BTTC）测试网现已正式开启，目前已支持TRON测试网(Nile)，以太坊测试网(Goerli)以及BSC测试网的接入，简介如下：
 
-| 网络  |  测试网络名称 |  URL |
+| 公链  |  测试网络名称 |  URL |
 | ------------ | ------------ | ------------ |
 | TRON  | Nile  |  [Nile Faucet](https://nileex.io/join/getJoinPage) |
 |  ETH |  Goerli | [Goerli Faucet](https://faucet.goerli.mudit.blog/)  |
@@ -24,8 +24,8 @@ Goerli测试网的接入需要使用Metamask，并切换至Goerli测试网，申
 
 如Metamask还未接入Goerli测试网，需要在Metamask上添加自定义RPC网络，参数如下：
 
-网络名称（ Network Name）：Goerli - Testnet
-新的RPC URL（ New RPC URL）：https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161
+网络名称（Network Name）：Goerli - Testnet
+RPC URL（RPC URL）：https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161
 智能链ID（ChainID）：5
 符号（Symbol）：ETH
 区块浏览器URL（Block Explorer URL）：https://goerli.etherscan.com
@@ -40,8 +40,8 @@ BSC测试网的接入需要使用Metamask，并切换至Goerli测试网，通过
 
 如Metamask还未接入BSC测试网，需要在Metamask上添加自定义RPC网络，参数如下：
 
-网络名称（ Network Name）：Binace Smart Chain - Testnet
-新的RPC URL（ New RPC URL）：https://data-seed-prebsc-1-s1.binance.org:8545/
+网络名称（Network Name）：Binace Smart Chain - Testnet
+RPC URL（RPC URL）：https://data-seed-prebsc-1-s1.binance.org:8545/
 智能链ID（ChainID）：97
 符号（Symbol）：BNB
 区块浏览器URL（Block Explorer URL）：https://testnet.bscscan.com
@@ -54,11 +54,10 @@ BSC测试网的接入需要使用Metamask，并切换至Goerli测试网，通过
 
 BTTC测试网的接入需要使用Metamask，并使用Metamask添加BTTC测试网的网络配置，并切换至BTTC测试网。
 
-网络名称（ Network Name）：BitTorrent Chain Testnet
-新的RPC URL（ New RPC URL）：https://test-rpc.bittorrentchain.io/ 
+网络名称（Network Name）：BitTorrent Chain Testnet
+RPC URL（RPC URL）：https://test-rpc.bittorrentchain.io/ 
 智能链ID（ChainID）：1028
 符号（Symbol）：BTT
 区块浏览器URL（Block Explorer URL）：https://scan.bittorrentchain.io/
 
 ![image](./pics/wallet-rpc.png)
-
