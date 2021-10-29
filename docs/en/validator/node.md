@@ -62,15 +62,15 @@ all:
 
      hosts:
 
-       xxx.xxx.xx.xx: _# &lt;----- Add IP for sentry node_
+       xxx.xxx.xx.xx: # ----- Add IP for sentry node_
 
-       xxx.xxx.xx.xx: _# &lt;----- Add IP for second sentry node (optional)_
+       xxx.xxx.xx.xx: # ----- Add IP for second sentry node (optional)_
 
    validator:
 
      hosts:
 
-       xxx.xxx.xx.xx: _# &lt;----- Add IP for validator node_
+       xxx.xxx.xx.xx: # ----- Add IP for validator node_
 ```
 
 Example:
