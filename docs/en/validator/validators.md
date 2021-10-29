@@ -94,13 +94,13 @@ The Validator has two addresses.
 
 |Contracts|Methods|Parameters|Remarks|
 |--------|--------|--------|--------|
-| StakeManagerProxy | stakeFor | address user：Stake Account Address<br>uint256 amount：Number of stake tokens with precision<br>uint256 heimdallFee：fee<br>bool acceptDelegation：Accepting agents or not<br>bytes memory signerPubkey：signerPubkey | Stake become validator，Valid if the validator set is not full, otherwise the validator set is full error |
+| StakeManagerProxy | stakeFor | address user：Stake Account Address<br>uint256 amount：Number of stake tokens with precision<br>uint256 deliveryFee：fee<br>bool acceptDelegation：Accepting agents or not<br>bytes memory signerPubkey：signerPubkey | Stake become validator，Valid if the validator set is not full, otherwise the validator set is full error |
 |StakeManagerProxy|restake|uint256 validatorId：validator id<br>uint256 amount：Number of stake<br>bool stakeRewards：Whether the award is added to the stake|restake|
 |StakeManagerProxy|withdrawRewards|uint256 validatorId：validator id|Receive your award|
 |StakeManagerProxy|unstake|uint256 validatorId：validator id|unstake|
 |StakeManagerProxy|unstakeClaim|uint256 validatorId：validator id|Collect the stake and release the stake after WITHDRAWAL_DELAY an epoch|
 |StakeManagerProxy|updateSigner|uint256 validatorId：validator id<br>bytes memory signerPubkey：signerPubkey|Update validator signerPubkey|
-|StakeManagerProxy|topUpForFee|user：Account address of the recipient of the fee<br>heimdallFee：heimdallFee amount with precision|stakeheimdallFee|
+|StakeManagerProxy|topUpForFee|user：Account address of the recipient of the fee<br>deliveryFee：deliveryFee amount with precision|stakedeliveryFee|
 |StakeManagerProxy|claimFee|uint256 accumFeeAmount：Number of fees received<br>uint256 index：bytes memory proof：proof data
 |claimFee|
 |StakeManagerProxy|updateCommissionRate|uint256 validatorId：validator id<br>uint256 newCommissionRate：newCommissionRate，<=100|updateCommissionRate|
