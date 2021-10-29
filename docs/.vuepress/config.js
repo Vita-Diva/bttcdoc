@@ -29,15 +29,13 @@ module.exports = {
               '', 
               'architecture', 
               'btttoken',
-              // 'genesis-contracts',
-              // 'fullnode',
               'wallets',
+              'dapp',
               'tron-bttc',
               'checkpoint',
               'mapping',
               'mintable',
-              'statetransition',
-              'dapp'
+              'statetransition'
             ]
           },
           {
@@ -65,15 +63,13 @@ module.exports = {
               '/en/', 
               '/en/architecture', 
               '/en/btttoken',
-              // '/en/genesis-contracts',
-              // '/en/fullnode',
               '/en/wallets',
+              '/en/dapp',
               '/en/tron-bttc',
               '/en/checkpoint',
               '/en/mapping',
               '/en/mintable',
-              '/en/statetransition',
-              '/en/dapp'
+              '/en/statetransition'
             ]
           },
           {
