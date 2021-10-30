@@ -4,7 +4,7 @@
 
 ### Endpoint
 
-https://rpc.bittorrentchain.io/
+https://test-rpc.bittorrentchain.io/
 
 ## JSON-RPC Methods
 
