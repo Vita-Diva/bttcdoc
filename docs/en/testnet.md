@@ -7,7 +7,7 @@ The BitTorrent Chain (BTTC) test network is open now. Currently, it supports TRO
 | TRON  | Nile  |  [Nile Faucet](https://nileex.io/join/getJoinPage) |
 |  ETH |  Goerli | [Goerli Faucet](https://faucet.goerli.mudit.blog/)  |
 |  BSC |  BSC Testnet | [BSC Faucet](https://testnet.binance.org/faucet-smart)  |
-|  BTTC | BTTC Testnet | TBD  |
+|  BTTC | BTTC Testnet | [BTTC Faucet](https://faucet.bittorrentchain.io/)  |
 
 ## TRON Nile Testnet
 
