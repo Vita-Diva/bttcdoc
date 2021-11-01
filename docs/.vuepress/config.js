@@ -1,19 +1,19 @@
 module.exports = {
   title: 'BitTorrent-Chain',
   description: 'BitTorrent-Chain Documentation',
-  base: '/v1/doc/',
-  locales: {
-    '/': {
-      lang: 'zh-CN',
-      label: '简体中文',
-      title: 'BitTorrent-Chain 开发文档',
-      description: 'BitTorrent-Chain 开发和使用手册'
-    },  
+  base: '/v1/doc',
+  locales: { 
     '/en/': { 
       lang: 'en-US',
       label: 'English',
       title: 'BitTorrent-Chain Developer Documentation',
       description: 'BitTorrent-Chain Developer Documentation'
+    },
+    '/': {
+      lang: 'zh-CN',
+      label: '简体中文',
+      title: 'BitTorrent-Chain 开发文档',
+      description: 'BitTorrent-Chain 开发和使用手册'
     }
   },
   themeConfig: {
