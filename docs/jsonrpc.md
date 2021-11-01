@@ -1,5 +1,11 @@
 # JSON-RPC
 
+## 主网（ChainID 0xc7，十进制199）
+
+### Endpoint
+
+https://rpc.bittorrentchain.io/
+
 ## 测试网（ChainID 0x404，十进制1028）
 
 ### Endpoint

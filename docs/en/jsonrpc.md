@@ -1,6 +1,12 @@
 # JSON-RPC
 
-## TestNet(ChainId 0x404, Decimal 1028)
+## Mainnet(ChainID 0xc9, Decimal 199)
+
+### Endpoint
+
+https://rpc.bittorrentchain.io/
+
+## Testnet(ChainID 0x404, Decimal 1028)
 
 ### Endpoint
 
