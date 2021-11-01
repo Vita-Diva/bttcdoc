@@ -1,63 +1,65 @@
-# BTTC测试网络设置
+# BTTC Testnet Configuration
 
-BitTorrent Chain（BTTC）测试网现已正式开启，目前已支持TRON测试网(Nile)，以太坊测试网(Goerli)以及BSC测试网的接入，简介如下：
+The BitTorrent Chain (BTTC) test network is open now. Currently, it supports TRON Nile testnet, Ethereum Goerli testnet and the BSC testnet. The introduction is as follows:
 
-| 公链  |  测试网络名称 |  URL |
+| Chain  |  Test network name |  URL |
 | ------------ | ------------ | ------------ |
 | TRON  | Nile  |  [Nile Faucet](https://nileex.io/join/getJoinPage) |
 |  ETH |  Goerli | [Goerli Faucet](https://faucet.goerli.mudit.blog/)  |
-|  BSC |  BSC测试网 | [BSC Faucet](https://testnet.binance.org/faucet-smart)  |
-|  BTTC | BTTC测试网  | [BTTC Faucet](https://faucet.bittorrentchain.io/)  |
+|  BSC |  BSC Testnet | [BSC Faucet](https://testnet.binance.org/faucet-smart)  |
+|  BTTC | BTTC Testnet | [BTTC Faucet](https://faucet.bittorrentchain.io/)  |
 
-## TRON Nile 测试网
+## TRON Nile Testnet
 
-Tron Nile测试网的接入需要使用Tronlink Chrome插件，并且Tronlink已支持Nile，用户在登录Tronlink钱包后需要切换至Nile测试网，通过水龙头申请测试币并发送至Tronlink账号，即可完成Nile测试网环境准备。
+The access to the Tron Nile testnet requires the Tronlink Chrome plug-in, and Tronlink already supports Nile.
 
-* Nile测试网代币申请URL：https://nileex.io/join/getJoinPage
-* Nile测试网官网地址：https://nileex.io/
-* Nile测试网区块浏览器：https://nile.tronscan.org/
-* Nile测试网开发资源：​​https://nileex.io/status/getStatusPage
+After logging in to the Tronlink wallet, users need to switch to the Nile testnet, apply for a test coin through the faucet with a Tronlink account to complete the Nile testnet environment configuration.
 
-## ETH Goerli测试网
+* Faucet: https://nileex.io/join/getJoinPage
+* Official website: https://nileex.io/
+* Block explorer: https://nile.tronscan.org/
+* Status: ​​https://nileex.io/status/getStatusPage
 
-Goerli测试网的接入需要使用Metamask，并切换至Goerli测试网，申请测试币并发送至Metamask账号，即可完成Goerli测试网环境的准备。
+## ETH Goerli Testnet
 
-如Metamask还未接入Goerli测试网，需要在Metamask上添加自定义RPC网络，参数如下：
+Accessing to the Goerli testnet requires Metamask. Please switch to the Goerli testnet, apply for a test coin and send it to the Metamask account to complete the preparation of the Goerli testnet configuration.
 
-* 网络名称（Network Name）：Goerli - Testnet
-* RPC URL（RPC URL）：https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161
-* 智能链ID（ChainID）：5
-* 符号（Symbol）：ETH
-* 区块浏览器URL（Block Explorer URL）：https://goerli.etherscan.com
+If Metamask has not yet connected to the Goerli test network, you need to add a custom RPC network to Metamask, with the following parameters:
+
+* Network Name: Goerli - Testnet
+* RPC URL: https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161
+* ChainID: 5
+* Symbol: ETH
+* Block Explorer URL: https://goerli.etherscan.com
 
 ![image](./pics/goerli-rpc.png)
 
-详细操作流程可参考：[Metamask接入Goerli测试网流程](https://mudit.blog/getting-started-goerli-testnet/)。
+For details, please refer to: [Access to Goerli with Metamask](https://mudit.blog/getting-started-goerli-testnet/).
 
-## BSC测试网
+## BSC Testnet
 
-BSC测试网的接入需要使用Metamask，并切换至Goerli测试网，通过水龙头申请测试币并发送至Metamask账号，即可完成BSC测试网环境准备。
+Accessing to the BSC testnet requires Metamask. Please switch to the Goerli test network, apply for a test coin through the faucet and send it to the Metamask account to complete the configuration of the BSC test network environment.
 
-如Metamask还未接入BSC测试网，需要在Metamask上添加自定义RPC网络，参数如下：
+If Metamask has not been connected to the BSC testnet yet, you need to add a custom RPC network to Metamask. The parameters are as follows:
 
-* 网络名称（Network Name）：Binace Smart Chain - Testnet
-* RPC URL（RPC URL）：https://data-seed-prebsc-1-s1.binance.org:8545/
-* 智能链ID（ChainID）：97
-* 符号（Symbol）：BNB
-* 区块浏览器URL（Block Explorer URL）：https://testnet.bscscan.com
+* Network Name: Binace Smart Chain - Testnet
+* RPC URL: https://data-seed-prebsc-1-s1.binance.org:8545/
+* ChainID: 97
+* Symbol: BNB
+* Block Explorer URL: https://testnet.bscscan.com
 
 ![image](./pics/bsc-rpc.png)
 
-详细操作流程可参考：[Metamask接入BSC测试网流程](https://academy.binance.com/en/articles/connecting-metamask-to-binance-smart-chain)。
+For details, please refer to:：[Conncting Metamask to Binance Smart Chain](https://academy.binance.com/en/articles/connecting-metamask-to-binance-smart-chain)。
 
-## BTTC测试网
+## BTTC Testnet
 
-BTTC测试网的接入需要使用Metamask，并使用Metamask添加BTTC测试网的网络配置，并切换至BTTC测试网。
+Accessing to the BTTC test network requires Metamask. Please use Metamask to add the network configuration of the BTTC test network, and switch to the BTTC test network.
 
-* 网络名称（Network Name）：BitTorrent Chain Testnet
-* RPC URL（RPC URL）：https://test-rpc.bittorrentchain.io/ 
-* 智能链ID（ChainID）：1028
-* 符号（Symbol）：BTT
-* 区块浏览器URL（Block Explorer URL）：https://scan.bittorrentchain.io/
+* Network Name: BitTorrent Chain Testnet
+* RPC URL: https://test-rpc.bittorrentchain.io/ 
+* ChainID: 1028
+* Symbol: BTT
+* Block Explorer URL: https://scan.bittorrentchain.io/
 
 ![image](./pics/wallet-rpc.png)

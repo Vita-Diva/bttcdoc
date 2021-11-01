@@ -1,59 +1,57 @@
-# BTTC架构
+# Architecture
 
-BTTC是一个高效的区块链应用平台。
+BTTC is a powerful blockchain platform for developing applications.
 
-我们将会在各个TRON上部署多套用于管理质押的合约，与参与到BTTC网络中的验证者一起，确保平台PoS机制的运行。TRON将是BTTC支持的第一个basechain，但BTTC的生态将不仅于此，我们将根据社区的建议，为更多的公共区块链提供支持。
+We'll use multiple sets of contracts to manage pledges on each TRON, and we'll work with BTTC network verifiers to ensure the platform's PoS mechanism runs smoothly. TRON will be BTTC's first basechain to be supported, but the ecosystem of BTTC will be much larger. Based on community suggestions, we will support more public blockchains.
 
-BTTC具有三层架构：
+BTTC has an architecture of three-layers:
 
-1. TRON上的智能合约（质押链）
-
-2. 验证层
-
-3. BTTC侧链
+1. Smart contracts on TRON
+2. Validation layer
+3. BTTC chain
 
 ![image](./pics/architecture.jpg)
 
-## BTTC智能合约
+## BTTC Smart Contracts
 
-BTTC在TRON上部署了一套智能合约，管理下面的事务：
+BTTC deploys a set of smart contracts on TRON to handle the following:
 
-+ PoS层质押
++ PoS layer staking
 
-+ 验证者份额委托
++ Validator share delegation
 
-+ 侧链checkpoint
++ Sidechain checkpoint
 
-## PoS验证层
+## PoS Layer
 
-验证节点与TRON上的质押合约协同工作，以在BTTC网络上启用PoS机制。我们使用了TenderMint引擎并在其之上进行了必要的修改。验证层负责区块验证，出块者选择以及提交CheckPoint等各种重要任务。
+The verification node works in conjunction with the TRON pledge contract to enable the BTTC network's PoS mechanism. We started with the TenderMint engine and added the necessary modifications. The verification layer is in charge of several critical tasks, including block verification, producer selection, and checkpoint submission.
 
-验证层将侧链生产的区块聚合成默克尔树，并定期将其发送至TRON。这种定期发送的内容就是checkpoint。对于侧链上的每几个区块，一个验证层节点需要：
+The verification layer aggregates the side chain's blocks into a Merkel tree and periodically sends it to TRON. This type of regularly transmitted content is referred to as checkpoint. A verification layer node requires the following for every few blocks on the side chain:
 
-+ 验证上个checkpoint之后的所有区块
++ Verify all blocks created since the previous checkpoint.
 
-+ 创建基于区块哈希的默克尔树
++ Create a Merkel tree based on the hash of a block
 
-+ 将默克尔根（merkle root）发送至TRON
++ Transmit the merkle root to TRON
 
-checkpoint非常重要，有下面两个原因：
+Checkpoints are important for the following reasons:
 
-+ 在提取资产时提供燃烧证明
++ When withdrawing assets, provide proof of burning.
 
-+ 在TRON上提供终结性
++ Ensure TRON's finality
 
-下面是对上述过程的整体描述：
+The following is an overall description of the above process:
 
-+ 一部分活跃的验证者将被选出，作为下一个区间的出块者。出块者的选举需要获得2/3的同意票。这些验证者将负责生产区块，并将这些区块广播到整个网络。
++ In the next interval, a subset of active validators will be chosen as block producers. The election of block producers requires a two-thirds vote of approval. These validators will be tasked with the responsibility of creating blocks and broadcasting them to the entire network.
 
-+ 每个checkpoint包含了给定区间内的所有区块的根。验证节点需要验证这些根，并在通过验证之后对其签名。
++ Each checkpoint contains the roots of all the blocks contained within a specified interval. The verification node must validate these roots and sign them once they have been validated.
 
-+ 一名提议人将在验证者中产生。提议人负责收集特定checkpoint的所有签名，并将这些签名提交到TRON上。
++ Among validators, a proposer will be generated. The proposer is responsible for gathering all signatures associated with a particular checkpoint and submitting them to TRON.
 
-+ 每个验证者获得出块以及提交检查点权力的概率，取决于该验证者的权益比重。
++ The likelihood that a verifier will obtain the right to create blocks and submit checkpoints is proportional to the verifier's equity.
 
-## 区块生产层（侧链）
+## Block Producing Layer (Side Chain)
 
-BTTC的区块生产层负责将交易打包进区块中。
+BTTC's block production layer is in charge of encapsulating transactions in blocks.
 
-验证层的委员会定期选出下一个span中的产块者。区块由侧链的节点产生，并且侧链的虚拟机与以太坊虚拟机完全兼容。验证层节点会周期性的验证侧链区块，一个包含数个区块默克尔哈希的checkpoint也会被周期性的提交到TRON上。
+The verification layer's committee selects the block producer for the next span on a regular basis. The side chain's nodes generate blocks, and the side chain's virtual machine is fully compatible with the Ethereum virtual machine. The verification layer node will verify the side chain block on a periodic basis, and a checkpoint containing several blocks of Merkel hash will also be submitted to TRON on a periodic basis.

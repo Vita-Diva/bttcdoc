@@ -1,10 +1,10 @@
-# 工具
+# Tools
 
-## 区块链浏览器
+## Blockchain Explorer
 
-* 测试网：[https://scan.bittorrentchain.io/](https://scan.bittorrentchain.io/)
+* Testnet：[https://scan.bittorrentchain.io/](https://scan.bittorrentchain.io/)
 
-## 合约开发
+## Contract Development
 
 * [Remix](https://remix.ethereum.org/)
 

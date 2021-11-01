@@ -1,258 +1,225 @@
-# 验证人和委托人
+# Delegator and Validator
 
-## 概述
+## Overview
 
-BitTorrent-Chain 是一个区块链应用平台,如果您希望通过为BitTorrent-Chain设置节点来成validator,或者希望成为委托人以将代币委托给validator并获得奖励，可以通过该文档进行快速了解相关内容。
+BitTorrent-Chain is a blockchain application platform. If you wish to become a validator by setting up a node for BitTorrent-Chain, or to become a delegate to entrust tokens to a validator and receive rewards, you can use this document to get a quick overview of what is involved.
 
-## PoS、质押和投票
+## PoS, Staking and voting
 
-### 股权证明(PoS)
+### Proof of Stake (PoS)
 
-权益证明 (PoS) 是公共区块链的一类共识算法，取决于验证人在网络中的经济权益。在基于工作量证明 (PoW) 的公共区块链（例如比特币和以太坊的当前实现）中，该算法奖励解决密码难题的参与者，以验证交易并创建新块（即挖矿）。在基于 PoS 的公共区块链中，一组验证人轮流对下一个区块进行提议和投票，每个验证人投票的权重取决于其存款（即权益）的大小。PoS 的显着优势包括 安全性、降低中心化风险和能源效率。
+Proof of Stake (PoS) is a class of consensus algorithm for public blockchains that depends on the economic interest of the Validator in the network. In proof-of-work (PoW)-based public blockchains (such as current implementations of Bitcoin and Ether), the algorithm rewards participants who solve cryptographic puzzles to validate transactions and create new blocks (i.e. mining). In a PoS-based public blockchain, a set of super delegates take turns proposing and voting on the next block, with the weight of each Validator vote depending on the size of its deposit (i.e. equity). significant advantages of PoS include security, reduced risk of centralisation and energy efficiency.
 
-有关更多详细信息，请参阅 [https://github.com/ethereum/wiki/wiki/Proof-of-Stake-FAQ](https://github.com/ethereum/wiki/wiki/Proof-of-Stake-FAQ)。
+For more detailed information, see https://github.com/ethereum/wiki/wiki/Proof-of-Stake-FAQ.
 
-### 质押
+### Staking
 
-Staking 是指将代币锁定到存款中以获得在区块链上验证和生产区块的权利的过程。通常，质押是在网络的本机令牌中完成的。
+Staking is the process of locking tokens into a deposit in order to gain the right to verify and produce blocks on the blockchain. Usually, pledging is done in the network's native token.
 
-### 投票
+### Voting
 
-投票是代币持有者将其股份委托给验证人的过程。它允许不具备运行节点的技能或愿望的代币持有者参与网络，并根据投票的股份数量按比例获得奖励。
+Voting is the process by which token holders delegate their shares to a Validator. It allows token holders who do not have the skills or desire to run a node to participate in the network and receive a reward proportional to the number of shares voted.
 
-## 架构
+## Architecture
 
-BitTorrent-Chain 是一个区块链应用平台，整体结构分为三层：
+BitTorrent-Chain is a blockchain application platform with an overall structure divided into three layers.
 
-* Root Contracts层：TRON及其他区块链网络上的Root合约，支持用户通过存取款的方式将代币映射到 BitTorrent-Chain，及支持质押等功能。
-* Validator层: 验证BitTorrent-Chain区块，定期发送Checkpoint至支持的TRON及其他区块链网络。
+* Root Contracts layer: Root contracts on TRON and other blockchain networks, support for users to map tokens to BitTorrent-Chain by accessing funds, and support for features such as pledges.
+* Validator layer: Validates BitTorrent-Chain blocks and regularly sends checkpoints to the supporting TRON and other blockchain networks.
 
-    **Bridge**：负责监听各链路事件，发送事件消息等。
+    Bridge: Listens for events on each chain, sends event messages, etc.
 
-    **Core**：共识模块，包括Checkpoint(BitTorrent-Chain链的状态快照)的验证，Statesync事件&Staking事件的共识。  
+    Core: Consensus module, including validation of Checkpoint (snapshot of BitTorrent-Chain state), consensus on Statesync events & Staking events.  
 
-    **REST-Server**：提供相关API服务。
+    REST-Server: provides related API services.
 
-* BitTorrent-Chain层。
+* BitTorrent-Chain layer.
 
-## 代码库
+## Github Code
 
-BitTorrent-Chain的代码库，用于了解BitTorrent-Chain 核心组件如何工作。
+BitTorrent-Chain's code base for understanding how the core BitTorrent-Chain components work.
 
-一旦熟悉了架构和代码库，您就可以设置您的节点。请注意，上面的文档只是为了让您熟悉多边形内部的工作原理，您可以直接设置节点而不熟悉上面的规格。
+Once you are familiar with the architecture and code base, you can set up your node. Please note that the above documentation is only intended to familiarise you with the inner workings of the polygon, you can set up your nodes directly without familiarising yourself with the specifications above.
 
-## 设置节点
+## Setting up your node
 
-请参考节点设置[文档](http://doc.bittorrentchain.io/v1/doc/validator/node.html "文档")
+Please refer to the node setup [documentation](http://doc.bittorrentchain.io/v1/doc/en/validator/node.html "documentation")
 
-## 委托人
+## Delegator
 
-成为 BitTorrent-chain 的委托人没有先决条件。您所要做的就是拥有一个TRON帐户。
+### What is a Delegator
 
-### 什么是委托人
+A delegator does not need to host a full node to participate in the verification. They can stake BTT tokens to a super delegate and receive a portion of the reward in exchange. Because they share the reward with the super delegate, and because they share the reward with the super delegate, the delegate also shares the risk. Delegates play a crucial role in the system because they can choose the Validator as they wish.
 
-委托人无需托管完整节点即可参与验证。他们可以将BTT代币投票给验证人，并获得部分奖励作为交换。因为他们与验证人共享奖励，所以委托人也分担了风险。委托人在系统中起着至关重要的作用，因为他们可以根据自己的意愿选择验证人。
+### To become a Delegator
 
-### 成为委托人
+Delegators are token holders who cannot, or do not want to run a validator themselves. They can delegate staking tokens to a validator and obtain a part of their revenue in exchange. There are no prerequisites to become a principal of BitTorrent-Chain, only a TRON account is required.
 
-委托人可以将BTT代币委托给validator，并获得部分收入作为交换。成为BitTorrent-Chain 的委托人没有先决条件，只需要拥有一个TRON账户。
+### How to vote for a Validator
 
-### 如何为验证人投票
+Related contractual methods:`ValidatorShare:buyVoucher(uint256, uint256)`
 
-相关合约方法：`ValidatorShare:buyVoucher(uint256, uint256)`
+Parameters:
 
-参数：
++ `_amount`：vote amount
++ `_minSharesToMint`：minimum amount of the staking token
 
-+ `_amount`：投票数量
-+ `_minSharesToMint`：可接受的最少代理币数量
+### Claiming rewards
 
-### 领取奖励
+Related contractual methods: `StakeManagerProxy:withdrawRewards(uint256)`
 
-相关合约方法：`StakeManagerProxy:withdrawRewards(uint256)`
+Parameters:
 
-参数：
++ validatorId：The id of the validator claiming the reward
 
-+ validatorId：领取奖励的validator id
+### Cancelling a vote
 
-### 取消投票
+Related contractual methods: `ValidatorShare:(uint256, uint256)`
 
-相关合约方法：`ValidatorShare:(uint256, uint256)`
+Parameters:
 
-参数：
-
-+ uint256 claimAmount：数量
++ uint256 claimAmount：claiming amount
 + uint256 maximumSharesToBurn：可接受的燃烧最大代理币数量
 
-### 奖励复投
+### Reward reinvestment
 
-相关合约方法：`ValidatorShare:reStake()`
+Related contractual methods: `ValidatorShare:reStake()`
 
-### 转移投票
+### Transfer Vote
 
-相关合约方法：`StakeManagerProxy:sellVoucher_new(uint256, uint256)`
+Related contractual methods: `StakeManagerProxy:sellVoucher_new(uint256, uint256)`
 
 参数：
 
 + uint256 claimAmount：解释数量
 + uint256 maximumSharesToBurn：可接受的燃烧最大代理币数量
 
-## 验证人
+## Validator
 
-### 什么是验证人
+### What is a Validator
 
-验证人(Validator)是网络中的参与者，他将代币锁定在网络中并运行验证人节点以帮助运行网络。验证人有以下职责：
+A Validator (Validator) is a participant in the network who locks tokens into the network and runs the Super Delegate node to help run the network. A Super Delegate has the following responsibilities.
 
-* 质押网络令牌并运行验证人节点以作为验证器加入网络
-* 通过验证区块链上的状态转换获得质押奖励
-* 因停机等活动而受到处罚
+* Pledging the network token and running the Validator node to join the network as a validator
+* Receive pledge rewards by verifying state transitions on the blockchain
+* Receive penalties for activities such as downtime
 
-区块链验证人是负责验证区块链内交易的人，对于 BitTorrent-Chain，任何参与者都可以通过运行全节点获得奖励和交易费用，从而有资格成为BitTorrent-Chain的验证人。BitTorrent-Chain中的验证人是通过定期发生的链上拍卖过程选择的，这些选定的验证人将作为区块生产者和验证者参与。
+A Blockchain Validator is the person responsible for validating transactions within the blockchain, and for BitTorrent-Chain, any participant can qualify as a BitTorrent-Chain Validator by running a full node for rewards and transaction fees. selected, and these selected super-representatives will participate as block producers and validators.
 
-### 架构
+### Architecture
 
-BitTorrent-Chain 网络分为3层
+The BitTorrent-Chain is a blockchain application platform with an overall structure divided into three layers.
 
-#### Root Contracts
+* Root Contracts layer: Root contracts on TRON and other blockchain networks will support functions of staking, mapping tokens to BitTorrent-Chain by depositing/withdrawing funds, etc.
+* Validator layer: Validates BitTorrent-Chain blocks and periodically sends checkpoints to the TRON and other supported blockchain networks.
 
-TRON及其他区块链网络上的Root合约，支持用户通过存取款的方式将代币映射到 BitTorrent-Chain，及支持质押等功能。
+     Bridge: Responsible for listening to events on each chain, sending event   messages, etc.
 
-#### Validator
+     Core: Consensus module, including verification of Checkpoint (snapshot of BitTorrent-Chain chain state), consensus of Statesync events & Staking events.  
 
-验证BitTorrent-Chain区块，定期发送Checkpoint至支持的TRON及其他区块链网络。
+     REST-Server: Provides related API services.
 
-**Bridge**：负责监听各链路事件，发送事件消息等。
-
-**Core**：共识模块，包括Checkpoint(BitTorrent-Chain链的状态快照)的验证，Statesync事件&Staking事件的共识。  
-
-**REST-Server**：提供相关API服务。
-
-#### BitTorrent-Chain
-
-BitTorrent-Chain层的区块生产者是验证者的一个子集，由验证人定期改组。
+* BitTorrent-Chain layer.
 
 ![image](./pics/architecture.jpg)
 
-### 功能
+### Functions
 
-区块链验证人是负责验证区块链内交易的人。对于BitTorrent-Chain来说，任何参与者都有资格成为BitTorrent-Chain的验证人，通过运行一个完整的节点来获得奖励和交易费用。为了确保验证人的良好参与，他们锁定了他们的一些BTT代币作为生态系统的股份。
+A Blockchain Validator is the person responsible for verifying transactions within the blockchain. For BitTorrent-Chain, any participant is eligible to become a BitTorrent-Chain Validator, earning rewards and transaction fees by running a full node. To ensure good participation by the Validator, they lock in a number of their BTT tokens as shares in the ecosystem.
 
-BitTorrent-Chain的验证人是通过链上的质押来选择的，这个过程会定期进行。这些被选中的验证人，作为区块生产者和验证者参与其中。一旦一个检查点（一组区块）被参与者验证，那么就会在TRON&以太坊&BSC上进行更新，根据验证人在网络中的股份，为其发放奖励。
+BitTorrent-Chain's Validators are selected through an on-chain stake, a process that takes place periodically. These selected super-representatives participate as block producers and validators. Once a checkpoint (a set of blocks) has been verified by a participant, it is then updated on TRON & Ether & BSC and a reward is issued for the super-representative based on his or her shares in the network.
 
-#### 验证人的职责
+#### Duties of the Validator
 
-* 通过在TRON上的质押合约中锁定BTT代币来加入网络。
-* 验证人可以随时退出系统，可以通过unstake 在合约上执行交易来完成，
-* 验证人可以随时增加质押BTT代币数量，以增加质押能力。
-* 设置验证人节点后，验证人将执行以下操作：
+* Join the network by locking in BTT tokens in a stake contract on TRON.
+* Validators can exit the system at any time, which can be done by unstake executing transactions on the contract.
+* The Validator can increase the number of Stake BTT tokens at any time to increase pledge capacity.
+* After setting up a Validator node, the Validator will perform the following actions.
 
-    1.区块生产者选择
+     1. Block Producer Selection
 
-    2.在BitTorrent-Chain 上验证块
+     2. Validate the block on BitTorrent-Chain
 
-    3.检查点提交
+     3. checkpoint submission
 
-    4.在以太坊上同步对BitTorrent-Chain 质押合约的更改
+     4. Synchronise changes to the BitTorrent-Chain stake contract on Ether
 
-    5.从TRON&以太坊&BSC 到BitTorrent-Chain层的状态同步
+     5. State sync from TRON & Ether & BSC to BitTorrent-Chain layer
 
-* 验证人需要保持最低数量的代币来支付相关链上的交易费用。
+* Validators are required to maintain a minimum number of tokens to pay for transactions on the relevant chain.
 
-#### Validator层
+### Core components
 
-Validator层将BitTorrent-Chain产生的区块聚合成默克尔树，并定期将默克尔根发布到根链。这种定期发布被称为“检查点”。对于 BitTorrent-Chain 上的每几个区块，一个验证人（Validator）：
+#### The Validator Layer
 
-1. 验证自上次检查点以来的所有块
-2. 创建块哈希的默克尔树
-3. 将merkle root发布到主链
+The Validator layer aggregates the blocks generated by the BitTorrent-Chain into a Merkle tree, and periodically publishes the Merkle root to the root chain. This periodic posting is called a "checkpoint". For each block on BitTorrent-Chain, a Validator (Validator).
 
-检查点很重要，原因有两个：
+1. Validates all blocks since the last checkpoint.
+2. Create a merkle tree of block hashes.
+3. Posting the merkle root to the main chain.
 
-1. 在根链上提供终结性
-2. 在提取资产时提供销毁证明
+Checkpoints are important for two reasons.
 
-#### BitTorrent-Chain层
+1. To provide finality on the root chain.
+2. Provide proof of destruction when assets are withdrawn.
 
-BitTorrent-chain层中的区块生产者，BitTorrent-chain层中的VM与EVM兼容，是一个基本的Geth实现，并对共识算法进行了自定义修改。
+#### BitTorrent-Chain
 
-#### 检查点机制(Checkpoint)
+A block producer in the BitTorrent-chain layer, the VM in the BitTorrent-chain layer is compatible with EVM, a basic Geth implementation with custom modifications to the consensus algorithm.
 
-在Validator中通过Tendermint的加权轮回算法来选择一个提议者，在Tendermint上成功提交一个检查点有2个阶段的提交过程，一个是通过上述Tendermint算法选择的提议者发送一个检查点，在提议者字段中包含他的地址，所有其他提议者在将其添加到他们的状态中之前将对此进行验证。
+#### Checkpoint mechanism (Checkpoint)
 
-然后下一个提议者发送一个确认交易，以证明之前的检查点交易在以太坊主网中已经成功了。每一个验证者集的变化将由Validator上的验证人节点转发，该节点被嵌入到验证人节点上。这使得验证人在任何时候都能与TRON&Ethereum等链上的BitTorrent-chain合约状态保持同步。
+A proposer is selected in Validator by the weighted round robin algorithm of Tendermint. There is a 2 stage submission process for successfully submitting a checkpoint on Tendermint, one where the proposer selected by the Tendermint algorithm above sends a checkpoint with his address in the proposer field and all other proposers will validate it before adding it This is verified by all other proposers before adding it to their state.
 
-部署在TRON&Ethereum等链上的BitTorrent-chain合约被认为是最终的真相来源，因此所有的验证都是通过查询TRON&Ethereum等链上的BitTorrent-chain合约完成的。
+The next proponent then sends a confirmation transaction to prove that the previous checkpoint transaction has succeeded in the Ethernet mainnet. Each change to the validator set will be forwarded by the Validator node on the Validator, which is embedded on the super delegate node. This allows the super-representative to stay in sync with the state of BitTorrent-chain contracts on chains such as TRON & Ethereum at all times.
 
-#### 质押
+The BitTorrent-chain contracts deployed on chains such as TRON & Ethereum are considered to be the ultimate source of truth, so all verification is done by querying the BitTorrent-chain contracts on chains such as TRON & Ethereum.
 
-对于BitTorrent-chain来说，任何参与者都可以通过运行全节点有资格成为BitTorrent-chain的验证人，他们的成为验证人的主要动机是赚取奖励和交易费。
+#### Stake
 
-Validator有两个地址：
+For BitTorrent-chains, any participant can qualify as a BitTorrent-chain Validator by running a full node, and their main motivation for becoming a super delegate is to earn rewards and transaction fees.
 
-1. Owner 地址：验证人可以从该地址处理与管理相关的功能，比如取消抵押、获取奖励、设置委托参数。
-2. Signer 地址：验证人从这个地址签署检查点并运行节点。
+The Validator has two addresses.
 
-##### 质押流程
+* Owner address: from this address the Validator can handle administration-related functions such as canceling collateral, getting rewards, and setting stake parameters.
+* Signer address: from this address the validator signs checkpoints and runs nodes.
 
-* 保证卡槽数量validatorThreshold（StakeManagerProxy读方法查询）大于当前validator数量（通过StakeManagerProxy合约validatorState方法查看）。
-* 准备一个拥有至少500TRX的TRON地址Address_A。
-* 给地址Address_A转一定数量BTT，至少2个token（注意精度的18个0）。
-* 地址Address_A调用StakeManagerProxy的approve方法进行指定数量的BTT。
-* 使用地址Address_A调用StakeManagerProxy的stakeFor方法进行质押，参数如下
- user：账户A地址
+##### Stake Related Contracts Interface Description
 
- amount：质押量，小于授权量，需精度的18个0
- deliveryFee：手续费，大于等于1个token，需精度的18个0
-
- acceptDelegation：false（如果为true的话，stakeFor不能通过tronscan调用，因为tronscan费用限制为300TRX，可通过wallet cli、API等调用
-
- signerPubkey：账户A公钥，需要把前导“04”去掉
-
-* 交易执行成功即质押成功。
-* 用户质押成功后可通过地址Address_A的address，访问stakeManagerProxy的getValidatorId方法获取validator id，然后通过validators方法，输入id获取validator详细信息，判断质押是否成功。
-
-##### 取消质押流程
-
-当验证人想退出系统，停止验证区块和提交检查点时，验证人可以取消质押。为了保证良好的参与度，取消质押的验证人的质押部分代币将被锁定withdrawalDelay个周期。
-
-* 后续用户可通过unstake方法来退出，退出后立马返还奖励代币。质押部分的代币需要通过unclaim函数来申领
-* unclaim方法必须等待withdrawalDelay个周期后才可以
-
-##### 质押相关合约接口说明
-
-|合约|方法|参数|备注|
+|Contracts|Methods|Parameters|Remarks|
 |--------|--------|--------|--------|
-| StakeManagerProxy | stakeFor | address user：质押账号地址<br>uint256 amount：质押代币数量，带精度<br>uint256 deliveryFee：手续费<br>bool acceptDelegation：是否接受代理<br>bytes memory signerPubkey：签名账号公钥 | 质押成为validator，validator集合未满时有效，否则报validator集合已满 |
-|StakeManagerProxy|restake|uint256 validatorId：质押的validator id<br>uint256 amount：质押数量<br>bool stakeRewards：奖励是否加入质押|追加质押|
-|StakeManagerProxy|withdrawRewards|uint256 validatorId：领取奖励的validator id|领取奖励|
-|StakeManagerProxy|unstake|uint256 validatorId：解除质押的validator id|解除质押|
-|StakeManagerProxy|unstakeClaim|uint256 validatorId：领取质押的validator id|领取质押，解除质押后WITHDRAWAL_DELAY个epoch后可领取|
-|StakeManagerProxy|updateSigner|uint256 validatorId：validator id<br>bytes memory signerPubkey：新签名公钥|更新validator签名公钥|
-|StakeManagerProxy|topUpForFee|user：手续费接收者的账号地址<br>deliveryFee：手续费金额，带精度|存delivery层手续费|
-|StakeManagerProxy|claimFee|uint256 accumFeeAmount：领取手续费数量<br>uint256 index：bytes memory proof：证明数据|领取手续费|
-|StakeManagerProxy|updateCommissionRate|uint256 validatorId：validator id<br>uint256 newCommissionRate：新佣金比例，<=100|更新佣金比例|
-|ValidatorShare|buyVoucher|uint256 _amount：投票数量<br>uint256 _minSharesToMint：可接受的最少代理币数量|投票和追加投票|
-|StakeManagerProxy|migrateDelegation|uint256 fromValidatorId：源validator id<br>uint256 toValidatorId： 目的validator id<br>uint256 amount：转移数量|转移投票|
-|ValidatorShare|sellVoucher_new|uint256 claimAmount：解释数量<br>uint256 maximumSharesToBurn：可接受的燃烧最大代理币数量|解除投票|
-|ValidatorShare|unstakeClaimTokens_new|uint256 unbondNonce：解绑nonce|提取投票，解除投票后WITHDRAWAL_DELAY个epoch后可领取|
-|ValidatorShare|restake|无|奖励复投|
-|ValidatorShare|withdrawRewards|无|领取投票奖励|
+| StakeManagerProxy | stakeFor | address user：Stake Account Address<br>uint256 amount：Number of stake tokens with precision<br>uint256 deliveryFee：fee<br>bool acceptDelegation：Accepting agents or not<br>bytes memory signerPubkey：signerPubkey | Stake become validator，Valid if the validator set is not full, otherwise the validator set is full error |
+|StakeManagerProxy|restake|uint256 validatorId：validator id<br>uint256 amount：Number of stake<br>bool stakeRewards：Whether the award is added to the stake|restake|
+|StakeManagerProxy|withdrawRewards|uint256 validatorId：validator id|Receive your award|
+|StakeManagerProxy|unstake|uint256 validatorId：validator id|unstake|
+|StakeManagerProxy|unstakeClaim|uint256 validatorId：validator id|Collect the stake and release the stake after WITHDRAWAL_DELAY an epoch|
+|StakeManagerProxy|updateSigner|uint256 validatorId：validator id<br>bytes memory signerPubkey：signerPubkey|Update validator signerPubkey|
+|StakeManagerProxy|topUpForFee|user：Account address of the recipient of the fee<br>deliveryFee：deliveryFee amount with precision|stakedeliveryFee|
+|StakeManagerProxy|claimFee|uint256 accumFeeAmount：Number of fees received<br>uint256 index：bytes memory proof：proof data
+|claimFee|
+|StakeManagerProxy|updateCommissionRate|uint256 validatorId：validator id<br>uint256 newCommissionRate：newCommissionRate，<=100|updateCommissionRate|
+|ValidatorShare|buyVoucher|uint256 _amount：Number of votes<br>uint256 _minSharesToMint：Minimum number of coins acceptable|Vote and add vote|
+|StakeManagerProxy|migrateDelegation|uint256 fromValidatorId：from validator id<br>uint256 toValidatorId： to validator id<br>uint256 amount：Number of delegation |migrateDelegation|
+|ValidatorShare|sellVoucher_new|uint256 claimAmount：claimAmount<br>uint256 maximumSharesToBurn：Maximum number of coins burn|Cancellation of vote|
+|ValidatorShare|unstakeClaimTokens_new|uint256 unbondNonce：unbond Nonce|Withdraw the vote and collect it after WITHDRAWAL_DELAY epoch after unvoting|
+|ValidatorShare|restake|None|Reward reinvestment|
+|ValidatorShare|withdrawRewards|None|Receive your voting reward|
 
+#### Transaction Fees
 
-#### 交易费用
+Each block producer in the BitTorrent-chain layer will receive a percentage of the transaction fees charged for each block.
 
-BitTorrent-chain层的每个区块生产者都将获得每个区块收取的一定比例的交易费用。
+#### State Synchronisation Mechanism
 
-## 状态同步机制
+A Validator on the Validator layer receives the StateSynced event and passes it to the BitTorrent-chain layer.
 
-Validator层上的验证人接收StateSynced事件并将其传递给BitTorrent-chain层。
+The receiver contract inherits from the IStateReceiver, and the associated custom logic is located within the onStateReceive function.
 
-接收者合约继承了IStateReceiver,相关自定义逻辑位于onStateReceive函数内。
+What the Dapp/user needs to do is work with the state-sync.
 
-Dapp/用户 需要做的事情是与state-sync 一起工作。
-
-1. 调用StateSender合约的 `syncState()`函数。
-2. 上述函数将触发`StateSynced(uint256 indexed id, address indexed contractAddress, bytes data);`事件
-3. Validator层上的所有验证人都会收到这个事件。
-4. 一旦Validator层上的状态同步交易被包含在一个区块中，它就会被添加到待定状态同步列表中。
-5. BitTorrent-chain层节点通过API调用从旦Validator上获取待定的状态同步事件。
-6. 接收者合同继承了IStateReceiver接口，解码数据字节和执行任何行动的自定义逻辑位于onStateReceive函数中。
+1. The syncState() function of the StateSender contract is called.
+2. The above function will trigger the StateSynced(uint256 indexed id, address indexed contractAddress, bytes data); event
+3. All super delegates on the Validator layer will receive this event.
+4. Once a state sync transaction on the Validator layer is included in a block, it is added to the pending state sync list.
+5. BitTorrent-chain layer nodes fetch the pending state sync event from the DanValidator via an API call.
+6. The receiver contract inherits the IStateReceiver interface and the custom logic to decode the data bytes and perform any actions is located in the onStateReceive function.

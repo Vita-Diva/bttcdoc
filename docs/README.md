@@ -1,39 +1,40 @@
-# 欢迎加入BitTorrent-Chain
+# Welcome to BitTorrent-Chain
 
-欢迎来到BitTorrent-Chain（以下简称BTTC）的世界，我们是一个前所未有的创新区块链平台。
+Welcome to the BitTorrent-Chain (hereafter referred to as BTTC) world. We are a ground-breaking blockchain platform.
 
-BTTC是一个公共区块链的扩展方案。它是一条PoS链，在支持以太坊现有功能的情况下，拥有比以太坊更快的速度，以及更低的手续费。
+BTTC is an extension of the public blockchain. It's a proof-of-stake (PoS) chain that supports Ethereum's existing features while also being speedier and with cheaper transaction fees.
 
-## 为什么是BitTorrent-Chain
+## Why BitTorrent-Chain
 
-各式各样的去中心化应用程序，比如去中心化金融，已经成为TRON网络及其他智能合约平台的核心驱动因素。同时更多类型的去中心化应用程序正在大量的被开发出来，但目前的区块链生态系统还不足以支撑大规模的应用程序需求。用户在使用Dapp时的体验较差，区块确认缓慢，交易费用高，扩展性低，都是阻碍用户大规模使用区块链应用程序的因素。以下部分将介绍BitTorrent-Chain 将如何解决这些问题。
+A variety of decentralized applications, such as decentralized finance, have become core drivers of the TRON network and other smart contract platforms. Meanwhile more types of decentralized applications are being developed in large numbers, but the current blockchain ecosystem is not sufficient to support the demand for large-scale applications. Poor user experience with Dapps, slow block validation, high transaction fees and low scalability are all factors that prevent users from using blockchain applications at scale. The following sections describe how the BitTorrent-Chain will address these issues.
 
-* **交易缓慢**
+### Slow Transactions
 
-目前基于POW(Proof-of-Work)的区块链平台，因为其特性交易通常较为缓慢，并且吞吐量非常有限。
+Currently, the most significant disadvantages of POW(Proof-of-Work) based blockchain platforms are low transaction processing speed and limited throughput.
 
-BitTorrent-Chain 将通过使用高吞吐量区块链解决了这个问题，其机制是选定一组生产者并使用Proof Of Stake机制来验证区块，同时将区块周期性证明发布到TRON主链及其他支持的区块链主链，确保了极短的区块确认时间。
+BitTorrent-Chain will solve this problem by using a high-throughput blockchain. A set of block producers will be selected. Proof of Stake will be applied to validate blocks, and proofs of blocks will be periodically sent to TRON main net or other blockchains. This mechanism ensures blocks will be confirmed in an extremely short time.
 
-* **低吞吐量**
+### Low Throughput
 
-目前主流的区块链平台中区块生产之间需要有一定的时间间隔，以确保有足够的时间进行区块传播。此外，为了确保区块在网络中的快速传播，区块大小也有限制，这就导致了在一个区块中，交易的数量也受到了限制。
+A certain time interval is required between block production in current mainstream blockchain platforms to ensure sufficient time for block propagation. In addition, there is a limit on the block size to ensure fast block propagation in the network, which leads to a limit on the number of transactions in a block.
 
-BitTorrent-Chain 通过使用区块生产者层来解决这个问题，区块生产者能够以非常快的速度生产区块。
+BitTorrent-Chain solves this problem by using a block producer layer, where block producers are able to produce blocks at a very fast rate.
 
-* **低可扩展性**
+### Low Scalability
 
-在未来，BitTorrent-Chain 能够在使用相同的去中心化POS层的情况下，轻松的接入更多主链，以提高BitTorrent-Chain的可扩展性。
+In the future, BitTorrent-Chain can easily access more public chains while using the same decentralized POS layer to increase scalability.
 
-* **高交易费用**
+### High Transaction Fees
 
-BitTorrent-Chain 通过在区块生产者层进行大量的交易来实现规模经济，从而降低成本，确保交易低成本。
+The BitTorrent-Chain achieves economies of scale by conducting a large number of transactions at the block producer layer, thus reducing costs and ensuring low transaction costs.
 
-## BTT代币
+## BTT Token
 
-BTT是BTTC的原生代币，类似于TRON上的TRX。要在BTTC上发送各种交易，需要用BTT来支付手续费。
+BTT is BTTC's native token, similiar to TRX on TRON. To send various transactions on BTTC, you must pay the fee using BTT.
 
-## dApp开发
+## dApp Development
 
-如果您已经在TRON或以太坊上开发了dApp，那么您就已经是BTTC的开发者了。在BTTC上您可以使用熟悉的工具来进行开发，比如Truffle、Remix等。您可以切换到BTTC的RPC并开始使用它。
+You are already a BTTC developer if you have developed a dApp on TRON or Ethereum. On BTTC, you can use familiar development tools like Truffle, Remix, and others. You can begin using BTTC's RPC by switching to it.
 
-如果有现成的dApp，只要与EVM兼容，您可以直接在BTTC上部署您的智能合约，而无需担心底层架构。
+You can deploy your smart contract on BTTC without worrying about the underlying architecture if you have a ready-made dApp that is compatible with EVM.
+

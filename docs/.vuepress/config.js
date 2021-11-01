@@ -3,7 +3,7 @@ module.exports = {
   description: 'BitTorrent-Chain Documentation',
   base: '/v1/doc',
   locales: { 
-    '/en/': { 
+    '/': { 
       lang: 'en-US',
       label: 'English',
       title: 'BitTorrent-Chain Developer Documentation',
@@ -15,7 +15,7 @@ module.exports = {
       title: 'BitTorrent-Chain 開發文檔',
       description: 'BitTorrent-Chain 開發和使用手冊'
     },
-    '/': {
+    '/simplified/': {
       lang: 'zh-CN',
       label: '简体中文',
       title: 'BitTorrent-Chain 开发文档',
@@ -24,41 +24,41 @@ module.exports = {
   },
   themeConfig: {
     locales: {
-      '/en/': {
+      '/': {
         selectText: 'Select Language',
         label: 'English',
         sidebar : {
-          '/en': [
-            '/en/', 
-            '/en/architecture', 
-            '/en/wallets',
-            '/en/jsonrpc',
-            '/en/testnet',
-            '/en/tools',
-            '/en/dapp',
-            '/en/tron-bttc',
-            '/en/del-val',
-            '/en/validator/node',
-            '/en/validator/faq'
-          ]
-        }
-      },
-      '/': {
-        selectText: '选择语言',
-        label: '简体中文',
-        sidebar: {
-          '/' : [
+          '/': [
             '', 
             'architecture', 
             'wallets',
-            'jsonrpc',   
+            'jsonrpc',
             'testnet',
             'tools',
             'dapp',
             'tron-bttc',
             'del-val',
-            '/validator/node',
-            '/validator/faq'
+            'validator/node',
+            'validator/faq'
+          ]
+        }
+      },
+      '/simplified/': {
+        selectText: '选择语言',
+        label: '简体中文',
+        sidebar: {
+          '/simplified' : [
+            '/simplified/', 
+            '/simplified/architecture', 
+            '/simplified/wallets',
+            '/simplified/jsonrpc',   
+            '/simplified/testnet',
+            '/simplified/tools',
+            '/simplified/dapp',
+            '/simplified/tron-bttc',
+            '/simplified/del-val',
+            '/simplified/validator/node',
+            '/simplified/validator/faq'
           ]
         }
       },

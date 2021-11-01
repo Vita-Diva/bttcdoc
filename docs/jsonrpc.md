@@ -1,17 +1,17 @@
 # JSON-RPC
 
-## 主网（ChainID 0xc7，十进制199）
+## Mainnet(ChainID 0xc9, Decimal 199)
 
 ### Endpoint
 
 https://rpc.bittorrentchain.io/
 
-## 测试网（ChainID 0x404，十进制1028）
+## Testnet(ChainID 0x404, Decimal 1028)
 
 ### Endpoint
 
 https://test-rpc.bittorrentchain.io/
 
-## JSON-RPC 方法
+## JSON-RPC Methods
 
-请参考文档或使用Postman：[https://documenter.getpostman.com/view/4117254/ethereum-json-rpc/RVu7CT5J?version=latest](https://documenter.getpostman.com/view/4117254/ethereum-json-rpc/RVu7CT5J?version=latest)
+Please refer to this wiki page or use Postman: [https://documenter.getpostman.com/view/4117254/ethereum-json-rpc/RVu7CT5J?version=latest](https://documenter.getpostman.com/view/4117254/ethereum-json-rpc/RVu7CT5J?version=latest)

@@ -1,16 +1,20 @@
-# BTTC合约开发教程
+# Build a dApp on BTTC
 
-## 使用Remix在BTTC上部署Hello World合约
+## Main points of this article
 
-### 设置Remix
+This article is a zero-to-one DApp development tutorial, beginning with the deployment of the simplest Hello World contract, progressing through writing the contract and UI interaction to the complete deployment and online process, and culminating with learning to build a decentralized library to learn how to deploy their own DApp on the BTTC blockchain.
 
-Remix是一个在线的智能合约IDE，可以用与编写、编译以及部署合约。
+### Deploy HelloWorld Contract with Remix
 
-如果这是您首次使用Remix，需要在插件一栏中，找到“Solidity compiler”，并激活它，如下图
+#### Setting up [Remix IDE#](https://remix.ethereum.org/)
+
+Remix is a web-based IDE for writing, compiling, and deploying smart contracts.
+
+If this is your first time using Remix, you must locate and activate the "Solidity compiler" plug-in, as shown in the figure below.
 
 ![image](./pics/dapp/1.png)
 
-点击图中圈出的按钮，创建一个新文件，命名为HelloWorld.sol，并将下面的代码复制粘贴到这个文件中。
+By clicking the button circled in the figure, you can create a new file called HelloWorld.sol and copy and paste the following code into it.
 
 ![image](./pics/dapp/2.png)
 
@@ -33,31 +37,31 @@ contract HelloWorld {
 }
 ```
 
-第一行的`//SPDX-License-Identifier: GPL-3.0`表示这个智能合约是开源的，并且使用了GPL3.0的开源协议，可以根据需求自行选择其他开源协议。无协议时使用UNLICENSED。
+In the first line, `SPDX-License-Identifier: GPL-3.0` specifies that this smart contract is open source and adheres to the `GPL3.0` open source agreement. You can also choose from a variety of other open-source licenses based on your specific requirements. When there is not a license, use `UNLICENSED`.
 
-第二行`pragma solidity ^0.8.7` 声明了编译器的版本。这个合约只能在0.8.7以及更高版本的Solidity编译器中才能编译成功。
+The second line, `pragma solidity ^0.8.7`, specifies the compiler's version. This contract can be successfully compiled only with the Solidity compiler version 0.8.7 or higher.
 
-`string public greeting`声明了一个名为`greeting`的字符串类型的public变量，这种变量称为state variable，会被永久保存在合约中以及区块链上。public关键字让这个变量可以从合约外部被访问，并为其创建一个accessor函数。
+`string public greeting` declares a public variable named greeting of the string type. This variable is referred to as a state variable, and it will be stored in the contract and on the blockchain in perpetuity. The public keyword enables external access to this variable and creates an accessor function for it.
 
-`constructor`声明了这个合约的构造函数。它可以接收一个string类型的参数message，将其存储在内存中，并将其值赋给greeting。请注意，每个智能合约中只能有一个构造函数，它仅会在部署合约时被调用。
+`constructor` specifies the contract's constructor. It is capable of receiving a string parameter message, storing it in memory, and assigning the message's value to `greeting`. Please keep in mind that each smart contract can only contain one constructor, which will be invoked only when the contract is deployed.
 
-`function updateGreeting`声明了一个普通函数，可以从外部调用，来修改greeting的内容。
+`function updateGreeting` declares an ordinary function that can be called from outside to modify the content of greeting.
 
-### 编译合约
+### Compile Smart Contract
 
-在左侧选择Solidity编译器，并选择0.8.7或者更高的版本。
+Select the Solidity compiler on the left, and select version 0.8.7 or higher.
 
-点击Compile HelloWorld.sol。编译成功时，编译器图标会有绿色的对勾，如图所示。
+Click Compile HelloWorld.sol. When the compilation is successful, the compiler icon will have a green tick, as shown in the figure.
 
-![image](./pics/dapp/3.png)
+![image](./pics/dapp/2.png)
 
-### 网络设置
+### Network settings
 
-打开MetaMask钱包，并在如图的下拉选单中选择Custom RPC
+Open the MetaMask wallet and select Custom RPC in the drop-down menu as shown in the figure
 
 ![image](./pics/dapp/4.png)
 
-按照图中的信息填写：
+Fill in according to the information in the picture:
 
 * Network Name: BitTorrent Chain Testnet
 * RPC URL: https://test-rpc.bittorrentchain.io/
@@ -67,58 +71,60 @@ contract HelloWorld {
 
 ![image](./pics/dapp/5.png)
 
-添加完成后的界面如下图所示
+The screen after the addition is complete is shown below
 
 ![image](./pics/dapp/6.png)
 
-图中的测试账户已经预先存入了一些测试币。请前往水龙头来获取测试BTT。
+The test account has been pre-funded with some test coins. Kindly visit the faucet to obtain a test BTT.
 
-完成了网络设置，接下来，就能在BTTC上部署智能合约了。
+Once the network configuration is complete, the smart contract can be deployed on BTTC.
 
-### 部署合约
+### Deployment contracts
 
-首先，在Remix的DEPLOY & RUN TRANSACTIONS栏中，从Environment的下拉菜单里选择Injected Web3
+First, in the DEPLOY & RUN TRANSACTIONS column of Remix, select Injected Web3 from the Environment drop-down menu
 
 ![image](./pics/dapp/7.png)
 
-在Deploy旁边的输入框中，输入初始的Greeting内容
+In the input box next to Deploy, enter the initial Greeting content
 
 ![image](./pics/dapp/8.png)
 
-点击Deploy后，MetaMask会弹出交易确认的窗口
+After clicking Deploy, MetaMask will pop up a transaction confirmation window
 
 ![image](./pics/dapp/9.png)
 
-恭喜，HelloWorld合约已经成功部署到了BTTC的测试网，现在您可以与它进行交互了，同时可以再浏览器上检查它的状态。
+Congratulations! The HelloWorld contract has been successfully deployed to the BTTC testnet. Now you can interact with it and check its status on the explorer.
 
 ![image](./pics/dapp/10.png)
 
-## 构建一个去中心化的图书馆
+## Build a Decentralized Library
 
-### 开发前准备
+### Prerequisites
 
 #### Nodej v10+
 
 ```sh
-node -v
+# node -v
 v10.24.1
 ```
 
 #### Metamask
 
-在[这里](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn)安装Metamask的Google Chrome插件。
+Install [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn) Chrome extension.
 
-### 我们在做什么？
+### What Are We Doing
 
-我们将要构建一个包括以下功能的去中心化图书馆：
+We are building a decentralized library that contains the following functions:
 
-* 租书
-* 查看可借书目
-* 添加书
+* Book borrowing
+* Book browsing
+* Book adding
 
-### 数据结构
+Download the complete project code from [here](https://github.com/TRON-Developer-Hub/decentralized-library), and run npm install to install dependencies.
 
-对于借书者来说，通常，需要关心书的名字、内容、是否可借以及价格。基于此，我们在合约中创建一个名为Book的结构，它包括了如下的属性：
+### Data Structure
+
+Typically, borrowers are concerned with the title, content, availability, and price of the book. On this basis, we design a structure in the contract called Book, which comprises the following properties:
 
 ```js
 struct Book {
@@ -130,7 +136,7 @@ struct Book {
    }
 ```
 
-我们希望图书馆能通过一个映射来记录每一本书。为此，这里分别创建了一个bookId的属性，以及bookId到Book的映射关系，命名为books。
+We hope that the library will be able to have an easy way to find every book. To do this, we build a bookId attribute and a mapping relationship between bookId and Book, named books.
 
 ```js
 uint256 public bookId;
@@ -138,9 +144,9 @@ uint256 public bookId;
 mapping (uint256 => Book) public books;
 ```
 
-我们还需要记录每一本书的租借信息，包括借书者以及起止时间。
+Additionally, we must keep track of each book's rental information, including the borrower and the start and end dates.
 
-与Book相同，创建一个名为Tracking的结构来记录这些信息。这个结构包含了下面的属性：
+As with Book, construct a structure called Tracking to keep track of this data. This structure possesses the following fields:
 
 ```js
 struct Tracking {
@@ -151,7 +157,7 @@ struct Tracking {
    }
 ```
 
-同样的，我们也需要建立一种映射关系，来管理每一次租借记录：
+Similarly, a mapping relationship must be established to manage each rental record:
 
 ```js
 uint256 public trackingId;
@@ -159,15 +165,15 @@ uint256 public trackingId;
 mapping(uint256 => Tracking) public trackings;
 ```
 
-#### 定义功能和事件
+### Functions and Events
 
-我们需要为图书馆添加一些基本功能，包括：
+We are adding fundamental functions to our library, including:
 
-* 为图书馆添加书籍 - addBook
-* 借一本书 - borrowBook
-* 从图书馆移除这本书 - deleteBook
+* Add a book to the library - addBook
+* Borrow a book - borrowBook
+* Remove a book from the library - deleteBook
 
-##### addBook
+#### addBook
 
 ```js
 /**
@@ -195,7 +201,7 @@ mapping(uint256 => Tracking) public trackings;
    event NewBook(uint256 bookId);
 ```
 
-##### borrowBook
+#### borrowBook
 
 ```js
    /**
@@ -221,7 +227,7 @@ mapping(uint256 => Tracking) public trackings;
    }
 ```
 
-##### deleteBook
+#### deleteBook
 
 ```js
 /**
@@ -244,9 +250,9 @@ mapping(uint256 => Tracking) public trackings;
    }
 ```
 
-在borrowBook方法中，我们用到了两个工具方法_sendBTT和_createTracking。我们不希望用户调用这些方法，因此，遵照Solidity的规则，我们把它们标记为internal，表示仅能在合约内部被调用。
+We use two tool methods in the borrowBook method: `_sendBTT` and `_createTracking`. We do not wish for users to invoke these APIs. As a result, in accordance with Solidity's standards, we identify them as internal, which means they can be accessed only within the contract.
 
-##### _sendBTT
+#### _sendBTT
 
 ```js
 /**
@@ -257,7 +263,7 @@ mapping(uint256 => Tracking) public trackings;
    }
 ```
 
-##### _createTracking
+#### _createTracking
 
 ```js
 /**
@@ -272,19 +278,17 @@ mapping(uint256 => Tracking) public trackings;
    }
 ```
 
-现在我们已经完成了合约的编写工作，接下来就该部署上线了。
+The contract is done, it’s time to deploy it.
 
-### 部署和测试
+### Deployment and Testing
 
-我们用[Remix](https://remix.ethereum.org/)来编译和部署合约。
+We compile and deploy contracts using [Remix](https://remix.ethereum.org/). Deploying the contract requires burning BTT to pay for gas, and BTT test coins can be obtained here.
 
-部署合约需要燃烧BTT以支付gas。
-
-打开MetaMask钱包，并在如图的下拉选单中选择Custom RPC
+Open Metamask and select Custom RPC from the networks dropdown
 
 ![image](./pics/dapp/4.png)
 
-按照图中的信息填写：
+Fill in the information as per the chart：
 
 * Network Name: BitTorrent Chain Testnet
 * RPC URL: https://test-rpc.bittorrentchain.io/
@@ -294,29 +298,29 @@ mapping(uint256 => Tracking) public trackings;
 
 ![image](./pics/dapp/5.png)
 
-首先，在Remix的DEPLOY & RUN TRANSACTIONS栏中，从Environment的下拉菜单里选择Injected Web3
+First, in the DEPLOY & RUN TRANSACTIONS section of Remix, select Injected Web3 from the Environment drop-down menu.
 
 ![image](./pics/dapp/7.png)
 
-选择0.8.0以及更高版本的编译器
+Select a compiler version 0.8.0 and higher
 
 ![image](./pics/dapp/11.png)
 
-点击Deploy后，MetaMask会弹出交易确认的窗口
+After clicking Deploy, MetaMask will bring up the transaction confirmation window
 
 ![image](./pics/dapp/12.png)
 
-恭喜，Library合约已经成功部署到了BTTC的测试网，现在您可以与它进行交互了，同时可以在浏览器上检查它的状态。
+Congratulations, the Library contract has been successfully deployed to the BTTC test network and you can now interact with it and check its status in your browser!
 
-### 构建DApp
+### Build the DApp
 
-首先将上一步部署的合约地址粘贴到 utils.js 中的 libraryContractAddress 变量中。
+To begin, copy the contract address that was previously deployed into the libraryContractAddress variable in utils.js.
 
-#### 连接UI到Metamask
+#### Link the UI to Metamask
 
-下一步我们需要将UI连接到Metamask Chrome 钱包,  Metamask Chrome扩展程序会将Web3对象注入每个浏览器页面，使得 DApp 能与 BTTC 网络进行交互。
+The following step is to link the UI to the Metamask Chrome wallet. Metamskinjects the web3 object into each browser page, allowing the DApp to communicate with the BTTC network.
 
-在dapp-ui/plugins/utils.js中，创建如下函数来获取智能合约对象，并将其保存到全局变量中,接下来就可以直接使用全局变量来与合约交互了。
+Create the following code in dapp-ui/plugins/utils.js to retrieve the smart contract object and save it to the global variable. Then you can directly interact with the contract via the global variable.
 
 ```js
 export async function setLibraryContract() {
@@ -325,17 +329,17 @@ export async function setLibraryContract() {
 }
 ```
 
-#### 定义功能和函数
+#### Functions
 
-当我们的UI能够连接到Metamask之后，我要考虑我们的UI如何跟智能合约进行交互。所以我们要创建一个合约合约对象，表示去中心化图书馆智能合约。
+After connecting our user interface to Metamsk, we need to analyze how the user interface interacts with smart contracts. As a result, a contract object must be created to represent the decentralized library smart contract.
 
-图书馆DApp需要支持三个主要功能：
+The library should have three fundamental functions：
 
-* 为图书馆添加书籍
-* 查看所有可借书籍
-* 借书
+* Add a book
+* Browse available books
+* Borrow a book
 
-在index.vue中调用setLibraryContract()初始化合约对象。
+In index.vue, call `setLibraryContract()` to initialize the contract object.
 
 ```js
  async mounted() {
@@ -347,11 +351,11 @@ export async function setLibraryContract() {
  },
 ```
 
-##### 添加书籍
+##### Add a Book
 
-首先创建添加书籍表单，用于用户发布书籍出租信息。在后端，它将与library合约的addBook函数交互。
+To begin, construct an add book form for users to submit information about book rentals. On the back end, it will communicate with the library contract's addBook function.
 
-在dapp-ui/components/bookForm.vue的postAd()函数中添加如下代码：
+Add the following code to dapp-ui/components/postAd() bookForm.vue's function:
 
 ```js
  postAd() {
@@ -359,17 +363,17 @@ export async function setLibraryContract() {
  }
 ```
 
-在dapp-ui/plugins/utils.js的postBookInfo()中添加如下代码：
+Add the following code to `postBookInfo()` of dapp-ui/plugins/utils.js:
 
 ```js
 const result = await bookRentContract.methods.addBook(name,description,price).send();
 ```
 
-##### 查询所有可借书籍
+##### Browse All Available Books
 
-通过`fetchAllBooks()`函数获取书籍列表，列出所有可借书籍。
+The `fetchAllBooks()` function returns the book list, which contains a list of all available books.
 
-在dapp-ui/plugins/utils.js的fetchAllBooks()函数中添加如下代码：
+Add the following code to dapp-ui/plugins/fetchAllBooks() utils.js's function:
 
 ```js
  const books = [];
@@ -388,13 +392,13 @@ const result = await bookRentContract.methods.addBook(name,description,price).se
 return books
 ```
 
-在index.vue中调用`fetchAllBooks()`来获取书籍信息，并显示到主页上。
+In index.vue, call `fetchAllBooks()` to retrieve book information and show it on the homepage.
 
-##### 借阅书籍
+##### Borrow a Book
 
-用户查看书籍信息后，可以借阅这本书。
+The user may borrow the book after viewing the book's information.
 
-在dapp-ui/components/detailsModal.vue的book()函数中添加如下代码：
+In the `book()` function of dapp-ui/components/detailsModal.vue, add the following code:
 
 ```js
      // get Start date
@@ -407,38 +411,39 @@ return books
      borrowBook(this.propData.id, startDay, endDay, totalPrice)
 ```
 
-dapp-ui/plugins/utils.js，在borrowBook()函数中添加如下代码：
+dapp-ui/plugins/utils.js, add the following code to the `borrowBook()` function:
 
 ```js
  const result = await bookRentContract.methods.borrowBook(spaceId,checkInDate,checkOutDate).send();
 ```
 
-至此，图书馆DApp开发完毕。
+The development of the library Dapp is done.
 
-### 运行DApp
+### Run the DApp
 
-确保Metamask为登录状态，然后执行如下命令来启动服务：
+Ascertain that Metamask is logged in before running the following command to start the service:
 
 ```sh
 npm run dev
 ```
 
-在浏览器地址栏输入：localhost:3000，查看前端页面。
+To view the front-end page, type localhost:3000 into the browser's address bar.
 
 ![image](./pics/dapp/13.png)
 
-点击右上角的”Rent Your Books”按钮，发布一条图书租赁信息。信息包括，图书名称，图书简要描述，图书借阅一天的价格。
+To post book rental information, click the "Rent Your Books" button in the upper right corner. The title of the book, a brief description of the book, and the cost of the book for one day are all included in the material.
 
 ![image](./pics/dapp/14.png)
 
-信息填写完成后，点击”Submit”按钮，这些信息将发送给library合约的addBook函数，创建了一条触发合约的交易，然后将出现Metamask的弹框，要求确认并签名，如下所示：
+
+After you've completed the form, click the "Submit" button. The information will be passed to the library contract's addBook function, which will generate a transaction that triggers the contract. Then, as illustrated below, a Metamask pop-up box will open, requesting confirmation and signature:
 
 ![image](./pics/dapp/15.png)
 
-交易成功上链后，这条租赁信息将显示到页面上：
+After successfully connecting the transaction to the chain, the following leasing information will be displayed on the page:
 
 ![image](./pics/dapp/16.png)
 
-点击”View”可查看书籍详细信息， 选择租赁的时间段，租赁的价格为：每天的租赁价格*租赁天数。点击”Lent Now”发起租赁请求。将触发library合约的borrowBook函数调用。同样需要签名及广播，然后完成租赁交易。
+Click "View" to view the book's comprehensive details and to select the rental period. To initiate a lease request, click "Lent Now", then the library contract's borrowBook function will be called. Additionally, the leasing transaction must be signed and broadcasted to finish it.
 
 ![image](./pics/dapp/17.png)

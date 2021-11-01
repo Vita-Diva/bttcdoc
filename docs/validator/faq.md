@@ -1,21 +1,21 @@
-# 常见问题
+# FAQ
 
-## 什么是BitTorrent-Chain网络？
+## What is the BitTorrent-Chain network?
 
-BitTorrent-Chain(BTTC)是行业首发的异构跨链互操作扩容协议，通过侧链进行链下计算来实现扩展,同时BitTorrent-Chain完全兼容以太坊虚拟机(EVM).
+BitTorrent-Chain (BTTC) is the industry's first heterogeneous cross-chain interoperable scaling protocol that enables scaling through off-chain computing via sidechains, while BitTorrent-Chain is fully compatible with Ethernet Virtual Machines (EVMs).
 
-## 即使我不想运行节点，我也可以参与 staking 过程吗？
+## Can I participate in the staking process even if I don't want to run a node?
 
-可以参与。不希望运行自己的节点的BTT代币持有者可以将他们的代币委托给验证人。委托增加了验证人的权力。权力越大，验证人成为区块生产者和Validator的可能性就越大，在共识中的权重就越大。
+Yes, you can. BTT token holders who do not want to run their nodes can delegate their tokens to a verifier. Delegation increases the power of the verifier. The greater the power, the greater the likelihood that the Validator will become a Block Producer and Validator, and the greater the weight in the consensus.
 
-## 质押的代币将存放在哪里？
+## Where will the pledged tokens be stored?
 
-抵押的代币将被锁定在部署在TRON网络的合约中，验证人不保管委托代币。
+The pledged tokens will be locked in a contract deployed in the TRON network and the Super Delegate will not hold the delegated tokens.
 
-## 从BTTC提取资产需要多久到账？
+## How long does it take to withdraw assets from BTTC?
 
-根据网络拥堵情况，到账时间不固定，通常需要45分钟~3小时。
+Depending on network congestion, the arrival time is variable and usually takes 45 minutes to 3 hours.
 
-## 已有足够的BTT，为什么不能质押?
+## Why can't I pledge if I already have enough BTT?
 
-请检查您在Tron网络的钱包余额是否有足够的BTT，所有质押行为都在Tron网络下进行。如果您的BTT是其他网络下的，需要兑换成原生BTT并转至Tron网络的钱包。
+Please check if you have sufficient BTT in your wallet balance on the Tron network, under which all pledges are made. If your BTT is under another network, you need to convert it to native BTT and transfer it to your wallet on the Tron network.
