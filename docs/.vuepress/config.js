@@ -10,7 +10,7 @@ module.exports = {
       description: 'BitTorrent-Chain Developer Documentation'
     },
     '/traditional/': {
-      lang: 'zh-CN',
+      lang: 'zh-HK',
       label: '繁體中文',
       title: 'BitTorrent-Chain 開發文檔',
       description: 'BitTorrent-Chain 開發和使用手冊'
