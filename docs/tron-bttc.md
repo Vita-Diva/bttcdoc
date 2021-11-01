@@ -518,15 +518,13 @@ BTTC的验证人定期向公共区块链上提交BTTC上所有交易的哈希值
 * 交易哈希将在被收入checkpoint后，用于生成证明。可以使用如下的代码从交易哈希生成证明。
 
 ```js
-// npm i @maticnetwork/maticjs
-// for goerli - mumbai testnet
-const maticPOSClient = new require("@maticnetwork/maticjs").MaticPOSClient({
-  network: "testnet", // when using mainnet, replace to "mainnet" 
-  version: "mumbai",  // when using mainnet, replace to "v1"
-  maticProvider: "https://rpc-mumbai.matic.today", // when using mainnet, replace to matic mainnet RPC endpoint
+const bttcPOSClient = new require("@bttcnetwork/bttcjs").BttcPOSClient({
+  network: "",
+  version: "",
+  maticProvider: "https://rpc-mumbai.matic.today", // when using mainnet, replace to bttc mainnet RPC endpoint
   parentProvider: "https://rpc.slock.it/goerli", // when using mainnet, replace to ethereum mainnet RPC endpoint
 });
-const proof = maticPOSClient.posRootChainManager
+const proof = bttcPOSClient.posRootChainManager
   .customPayload(
     "0x3cc9f7e675bb4f6af87ee99947bf24c38cbffa0b933d8c981644a2f2b550e66a", // replace with txn hash of sendMessageToRoot
     "0x8c5261668696ce22758910d05bab8f186d6eb247ceac2af2e82c7dc17669b036" // SEND_MESSAGE_EVENT_SIG, do not change

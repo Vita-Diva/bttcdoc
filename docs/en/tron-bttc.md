@@ -507,15 +507,14 @@ The following functions are available via the FxBaseChildTunnel contract:
 * After the transaction hash is collected in the checkpoint, it will be used to generate a proof. The following code can be used to generate a proof using the hash of the transaction.
 
 ```js
-// npm i @maticnetwork/maticjs
-// for goerli - mumbai testnet
-const maticPOSClient = new require("@maticnetwork/maticjs").MaticPOSClient({
-  network: "testnet", // when using mainnet, replace to "mainnet" 
-  version: "mumbai",  // when using mainnet, replace to "v1"
-  maticProvider: "https://rpc-mumbai.matic.today", // when using mainnet, replace to matic mainnet RPC endpoint
+// npm i @bttcnetwork/bttcjs
+const bttcPOSClient = new require("@bttcnetwork/bttcjs").BttcPOSClient({
+  network: "testnet", 
+  version: "", 
+  maticProvider: "https://rpc-mumbai.matic.today", // when using mainnet, replace to BTTC mainnet RPC endpoint
   parentProvider: "https://rpc.slock.it/goerli", // when using mainnet, replace to ethereum mainnet RPC endpoint
 });
-const proof = maticPOSClient.posRootChainManager
+const proof = bttcPOSClient.posRootChainManager
   .customPayload(
     "0x3cc9f7e675bb4f6af87ee99947bf24c38cbffa0b933d8c981644a2f2b550e66a", // replace with txn hash of sendMessageToRoot
     "0x8c5261668696ce22758910d05bab8f186d6eb247ceac2af2e82c7dc17669b036" // SEND_MESSAGE_EVENT_SIG, do not change
