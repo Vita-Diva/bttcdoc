@@ -1,9 +1,7 @@
 module.exports = {
-  publicPath:'/',
-  assetsDir:'assets',
   title: 'BitTorrent-Chain',
   description: 'BitTorrent-Chain Documentation',
-  base: '/v1/doc',
+  base: '/v1/doc/',
   locales: { 
     '/': { 
       lang: 'en-US',
@@ -83,21 +81,21 @@ module.exports = {
           ]
         }
       },
-    sidebar: 'auto',
-    sidebarDepth: 4,
-  },
-  markdown: {
-    anchor: {
-      permalink: true,
-      permalinkBefore: true,
-      permalinkSymbol: '#'
-    }
-  },
-  head: [
-    ['link', {
-      rel: 'icon',
-      href: '/favicon.ico'
-    }]
-  ]
-}
+      sidebar: 'auto',
+      sidebarDepth: 4,
+    },
+    markdown: {
+      anchor: {
+        permalink: true,
+        permalinkBefore: true,
+        permalinkSymbol: '#'
+      }
+    },
+    head: [
+      ['link', {
+        rel: 'icon',
+        href: '/favicon.ico'
+      }]
+    ]
+  }
 }
