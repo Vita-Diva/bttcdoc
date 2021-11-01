@@ -1,4 +1,6 @@
 module.exports = {
+  publicPath:'/',
+  assetsDir:'assets',
   title: 'BitTorrent-Chain',
   description: 'BitTorrent-Chain Documentation',
   base: '/v1/doc',
