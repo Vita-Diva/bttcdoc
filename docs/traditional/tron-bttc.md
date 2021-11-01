@@ -1,56 +1,56 @@
 # TRON &lt;-> BTTC
 
-BTTC引入了一条可靠的，能够连通TRON与BTTC网络的跨链桥。通过跨链桥，用户可以随意通过BTTC来转移自己的代币到TRON上，并且无需考虑第三方机构带来的风险以及流动性限制。
+BTTC引入了一條可靠的，能夠連通TRON與BTTC網絡的跨鏈橋。通過跨鏈橋，用戶可以隨意通過BTTC來轉移自己的代幣到TRON上，並且無需考慮第三方機構帶來的風險以及流動性限制。
 
-BTTC提供了一种极其高效、低成本并且灵活的扩展方案。
+BTTC提供了一種極其高效、低成本並且靈活的擴展方案。
 
-## 代币跨链
+## 代幣跨鏈
 
-当代币通过跨链桥传递时，它的总流通量不会被影响
+當代幣通過跨鏈橋傳遞時，它的總流通量不會被影響
 
-+ 离开TRON的代币会被锁定，同时在BTTC网络上铸造与其等量的映射代币。
++ 離開TRON的代幣會被鎖定，同時在BTTC網絡上鑄造與其等量的映射代幣。
 
-+ 将代币从BTTC转回TRON时，BTTC上的代币将被销毁，同时将解锁TRON上的等量原始代币。
++ 將代幣從BTTC轉回TRON時，BTTC上的代幣將被銷毀，同時將解鎖TRON上的等量原始代幣。
 
-## PoS桥
+## PoS橋
 
-PoS桥能实现对资产的精确控制、提高存取款速度，并且增强资产的灵活性。作为一种资产转移的方式，它非常适合需要跨链运行的dApp。
+PoS橋能實現對資產的精確控制、提高存取款速度，並且增強資產的靈活性。作為一種資產轉移的方式，它非常適合需要跨鏈運行的dApp。
 
-### 简介
+### 簡介
 
-PoS桥能让用户自由的出入BTTC的生态系统。您可以高效的在链间转移您的TRC-20或者TRC-721代币。PoS桥能够在7-8分钟内完成存款，并在30分钟内完成提款过程。下文将介绍代币转移的流程。
+PoS橋能讓用戶自由的出入BTTC的生態系統。您可以高效的在鏈間轉移您的TRC-20或者TRC-721代幣。 PoS橋能夠在7-8分鐘內完成存款，並在30分鐘內完成提款過程。下文將介紹代幣轉移的流程。
 
-### 使用PoS桥
+### 使用PoS橋
 
-开始介绍PoS桥的使用之前，我们建议您先了解下面两个概念，以和跨链桥顺利交互：
+開始介紹PoS橋的使用之前，我們建議您先了解下面兩個概念，以和跨鏈橋順利交互：
 
-+ [代币映射](mapping.md)
++ [代幣映射](mapping.md)
 
-使用PoS桥的第一步是建立代币映射。只有根链上的代币合约与子链上的子代币合约建立映射之后，才能在两条链之间转移这种资产。请发送邮件提交映射请求。
+使用PoS橋的第一步是建立代幣映射。只有根鏈上的代幣合約與子鏈上的子代幣合約建立映射之後，才能在兩條鏈之間轉移這種資產。請發送郵件提交映射請求。
 
-成功映射后，可以使用各种SDK，或直接通过接口与合约进行交互。
+成功映射後，可以使用各種SDK，或直接通過接口與合約進行交互。
 
-## 代币充提
+## 代幣充提
 
-### 流程简述
+### 流程簡述
 
-此处以ERC-20为例。
+此處以ERC-20為例。
 
 #### 充值
 
-1. Approve ERC20Predicate合约，允许它控制需要被存入的代币。
+1. Approve ERC20Predicate合約，允許它控制需要被存入的代幣。
 
-2. 在RootChainManager上调用depositFor。
+2. 在RootChainManager上調用depositFor。
 
 #### 提取
 
-1. 在BTTC上销毁代币。
+1. 在BTTC上銷毀代幣。
 
-2. 在RootChainManager上调用exit方法，以提交销毁证明。需要在包含此销毁交易的checkpoint提交之后调用。
+2. 在RootChainManager上調用exit方法，以提交銷毀證明。需要在包含此銷毀交易的checkpoint提交之後調用。
 
-### 详细流程
+### 詳細流程
 
-#### 实例化合约
+#### 實例化合約
 
 ```js
 const mainWeb3 = new Web3(mainProvider)
@@ -62,7 +62,7 @@ const childTokenContract = new bttcWeb3(childTokenABI, childTokenAddress)
 
 #### Approve
 
-批准合约ERC20Predicate消费代币。approve需要两个参数：地址和金额。
+批准合約ERC20Predicate消費代幣。 approve需要兩個參數：地址和金額。
 
 ```js
 await rootTokenContract.methods
@@ -72,9 +72,9 @@ await rootTokenContract.methods
 
 #### 存款
 
-调用RootChainManager合约的depositFor方法。这个方法需要接收三个参数：BTTC上接收存款的用户地址，代币合约在根链上的地址以及金额（以ABI编码形式体现）。
+調用RootChainManager合約的depositFor方法。這個方法需要接收三個參數：BTTC上接收存款的用戶地址，代幣合約在根鏈上的地址以及金額（以ABI編碼形式體現）。
 
-请在存款之前，确保已经进行过正确的approve操作。
+請在存款之前，確保已經進行過正確的approve操作。
 
 ```js
 const depositData = mainWeb3.eth.abi.encodeParameter('uint256', amount)
@@ -83,9 +83,9 @@ await rootChainManagerContract.methods
   .send({ from: userAddress })
 ```
 
-#### 燃烧/销毁
+#### 燃燒/銷毀
 
-通过调用子代币合约的withdraw方法来销毁BTTC上的代币。这个方法接收一个参数：要销毁的代币数量。销毁代币的证明需要在下一步操作中提交，因此要储存销毁交易的哈希。
+通過調用子代幣合約的withdraw方法來銷毀BTTC上的代幣。這個方法接收一個參數：要銷毀的代幣數量。銷毀代幣的證明需要在下一步操作中提交，因此要儲存銷毀交易的哈希。
 
 ```js
 const burnTx = await childTokenContract.methods
@@ -94,24 +94,24 @@ const burnTx = await childTokenContract.methods
 const burnTxHash = burnTx.transactionHash
 ```
 
-#### 退出
+  #### 退出
 
-调用RootChainManager合约的exit方法来解锁并从ERC20Predicate合约接收代币。这个方法接收一个参数：代币的销毁证明。
+調用RootChainManager合約的exit方法來解鎖並從ERC20Predicate合約接收代幣。這個方法接收一個參數：代幣的銷毀證明。
 
-调用这个方法之前必须要等待包含销毁交易的checkpoint提交成功。销毁证明由RLP编码生成如下字段：
+調用這個方法之前必須要等待包含銷毀交易的checkpoint提交成功。銷毀證明由RLP編碼生成如下字段：
 
-+ headerNumber：包含销毁交易的checkpoint起始块
-+ blockProof：确保区块头是提交的默克尔根所在树中叶子的证明
-+ blockNumber：包含销毁交易的区块号
-+ blockTime：包含销毁交易的区块时间
-+ txRoot：区块的交易根
-+ receiptRoot：区块的receipt root
-+ receipt：销毁交易的receipt
-+ receiptProof：销毁交易receipt的默克尔根
-+ branchMask：表示receipt在Merkle Patricia Tree中位置的一个32位参数
-+ receiptLogIndex：用于从receipt中读取的日志索引
++ headerNumber：包含銷毀交易的checkpoint起始塊
++ blockProof：確保區塊頭是提交的默克爾根所在樹中葉子的證明
++ blockNumber：包含銷毀交易的區塊號
++ blockTime：包含銷毀交易的區塊時間
++ txRoot：區塊的交易根
++ receiptRoot：區塊的receipt root
++ receipt：銷毀交易的receipt
++ receiptProof：銷毀交易receipt的默克爾根
++ branchMask：表示receipt在Merkle Patricia Tree中位置的一個32位參數
++ receiptLogIndex：用於從receipt中讀取的日誌索引
 
-手动生成证明很复杂，因此我们建议使用BTTC SDK。如果您想手动发送交易，请将encodeAbi置为true以获取原始调用数据。
+手動生成證明很複雜，因此我們建議使用BTTC SDK。如果您想手動發送交易，請將encodeAbi置為true以獲取原始調用數據。
 
 ```js
 const exitCalldata = await bttcPOSClient
@@ -126,13 +126,13 @@ await mainWeb3.eth.sendTransaction({
 })
 ```
 
-## 存款与检查点事件跟踪
+## 存款與檢查點事件跟踪
 
 ### 存款事件
 
-当代币从公共区块链存入BTTC时，状态同步机制开始发挥作用，并最终在BTTC上铸造代币，整个过程需要5-7分钟。由于时间较长，所以监听用户存款事件在此时尤为重要。s
+當代幣從公共區塊鏈存入BTTC時，狀態同步機制開始發揮作用，並最終在BTTC上鑄造代幣，整個過程需要5-7分鐘。由於時間較長，所以監聽用戶存款事件在此時尤為重要。 s
 
-### 使用web socket进行存款事件追踪
+### 使用web socket進行存款事件追踪
 
 ```js
 const WebSocket = require("ws");
@@ -219,9 +219,9 @@ checkDepositStatus("user address", "contract address", "amount", "proxy address"
  });
 ```
 
-### 在区块链上查询历史存款是否成功
+### 在區塊鏈上查詢歷史存款是否成功
 
-这段代码可以查看特定的一笔存款是否已经完成。两条链上各维护一个不断增加的全局计数器变量。StateSender合约发送带有计数器数值的事件，子链上的计数器数值可以通过StateReceiver合约来查看。如果子链上的计数器数值大于等于主链计数器，则这笔存款可视作成功。
+這段代碼可以查看特定的一筆存款是否已經完成。兩條鏈上各維護一個不斷增加的全局計數器變量。 StateSender合約發送帶有計數器數值的事件，子鏈上的計數器數值可以通過StateReceiver合約來查看。如果子鏈上的計數器數值大於等於主鏈計數器，則這筆存款可視作成功。
 
 ```js
 let Web3 = require("web3");
@@ -281,11 +281,11 @@ depositCompleted(
 
 ## Checkpoint事件
 
-### 实时Checkpoint状态检查
+### 實時Checkpoint狀態檢查
 
-BTTC上的所有交易都会定期提交Checkpoint到TRON。检查点发生在TRON上的合约RootChain。
+BTTC上的所有交易都會定期提交Checkpoint到TRON。檢查點發生在TRON上的合約RootChain。
 
-下面是实时监听Checkpoint事件的例子
+下面是實時監聽Checkpoint事件的例子
 
 ```js
 const Web3 = require("web3");
@@ -345,48 +345,48 @@ checkInclusion(
  });
 ```
 
-## 资产映射
+## 資產映射
 
-映射是资产跨链转移的重要步骤。所谓映射，就是利用两个网络（比如TRON和BTTC）上的智能合约进行资产的一一对应，便于诸如锁定、销毁以及转移等操作。
+映射是資產跨鏈轉移的重要步驟。所謂映射，就是利用兩個網絡（比如TRON和BTTC）上的智能合約進行資產的一一對應，便於諸如鎖定、銷毀以及轉移等操作。
 
-### 介绍
+### 介紹
 
-下文的描述中，“根链”代表如TRON或者以太坊，子链则代表BTTC主网。
+下文的描述中，“根鏈”代表如TRON或者以太坊，子鏈則代表BTTC主網。
 
-如果您的代币合约部署在根链上，并想将其转移到子链，那么这篇文档将给予足够的指引；如果您的代币合约部署在子链上，这将是一种不同的情况，我们称为BTTC Mintable Assets。对于这种情况，请参考这篇[教程](mintable.md)。
+如果您的代幣合約部署在根鏈上，並想將其轉移到子鏈，那麼這篇文檔將給予足夠的指引；如果您的代幣合約部署在子鏈上，這將是一種不同的情況，我們稱為BTTC Mintable Assets。對於這種情況，請參考這篇[教程](mintable.md)。
 
-### 标准子代币
+### 標準子代幣
 
-如果您需要映射的代币是标准的TRC-20或TRC-721合约，请发送邮件进行映射请求，我们的团队将以最快的速度为您在BTTC上部署标准的子代币合约。
+如果您需要映射的代幣是標準的TRC-20或TRC-721合約，請發送郵件進行映射請求，我們的團隊將以最快的速度為您在BTTC上部署標準的子代幣合約。
 
-您可以通过以下链接来确定您的代币是否为标准合约：
+您可以通過以下鏈接來確定您的代幣是否為標準合約：
 
 + [TRC-20](https://github.com/tronprotocol/TIPs/blob/master/tip-20.md)
 
 + [TRC-721](https://github.com/tronprotocol/tips/blob/master/tip-721.md)
 
-### 自定义子代币
+### 自定義子代幣
 
-如果您需要映射自定义（非标准）的代币，首先您需要在子链上自行部署代币合约，然后发送邮件进行映射请求。请确保在提交请求时您提供了准确的代币信息。
+如果您需要映射自定義（非標準）的代幣，首先您需要在子鏈上自行部署代幣合約，然後發送郵件進行映射請求。請確保在提交請求時您提供了準確的代幣信息。
 
-下面是一个创建自定义子代币的例子：
+下面是一個創建自定義子代幣的例子：
 
-**自定义子合约必须满足如下条件：**
+**自定義子合約必須滿足如下條件：**
 
-+ 拥有一个存款方法。每当从根链上发起存款请求时，`ChildChainManagerProxy`合约都会调用这个函数。这个方法会在子链上铸造代币。
++ 擁有一個存款方法。每當從根鏈上發起存款請求時，`ChildChainManagerProxy`合約都會調用這個函數。這個方法會在子鏈上鑄造代幣。
 
-+ 拥有一个取款方法。您必须确保这个方法是始终可用的，因为它将被用于燃烧子链上的代币。燃烧是取款过程的第一步，也是维持代币总发行量不变的重要步骤。
++ 擁有一個取款方法。您必須確保這個方法是始終可用的，因為它將被用於燃燒子鏈上的代幣。燃燒是取款過程的第一步，也是維持代幣總發行量不變的重要步驟。
 
 ::: warning
-子代币合约的构造器中不进行代币铸造。
+子代幣合約的構造器中不進行代幣鑄造。
 :::
 
-#### 实现
+#### 實現
 
-上文已经介绍了子代币合约必须满足的条件及其原因，下面就是按照要求来实现它。
+上文已經介紹了子代幣合約必須滿足的條件及其原因，下面就是按照要求來實現它。
 
 ::: warning
-只有代理合约能调用deposit方法。
+只有代理合約能調用deposit方法。
 :::
 
 ```js
@@ -437,85 +437,85 @@ contract SubToken is ERC20 {
 }
 ```
 
-步骤：
+步驟：
 
-+ 在根链上部署根代币，例如：TRON
++ 在根鏈上部署根代幣，例如：TRON
 
-+ 确保子代币有deposit以及withdraw方法
++ 確保子代幣有deposit以及withdraw方法
 
-+ 在子链上部署子代币，即BTTC
++ 在子鏈上部署子代幣，即BTTC
 
-+ 提交一个映射请求
++ 提交一個映射請求
 
-### 提交映射请求
+### 提交映射請求
 
-请发送邮件进行映射请求。
+請發送郵件進行映射請求。
 
-## 可铸造代币
+## 可鑄造代幣
 
-资产可通过PoS桥在公共区块链和BTTC之间转移，多数资产需要预先存在公共区块链上。另一种选择是在BTTC上直接创建代币，并在需要时将其转移到公共区块链上。与公共区块链相比，在BTTC上发行代币手续费较低，且速度更快。这种代币被称为BTTC可铸造资产。
+資產可通過PoS橋在公共區塊鍊和BTTC之間轉移，多數資產需要預先存在公共區塊鏈上。另一種選擇是在BTTC上直接創建代幣，並在需要時將其轉移到公共區塊鏈上。與公共區塊鏈相比，在BTTC上發行代幣手續費較低，且速度更快。這種代幣被稱為BTTC可鑄造資產。
 
-当BTTC的可铸造资转移到公共区块链时，必须先在BTTC上销毁该代币，并在公共区块链上提交此次的销毁证明。`RootChainManager`合约在内部调用一个特殊的合约，它能直接在公共区块链上调用代币的铸造方法，并将代币铸造到用户地址。这个特殊的合约是`MintableAssetPredicate`。
+當BTTC的可鑄造資轉移到公共區塊鏈時，必須先在BTTC上銷毀該代幣，並在公共區塊鏈上提交此次的銷毀證明。 `RootChainManager`合約在內部調用一個特殊的合約，它能直接在公共區塊鏈上調用代幣的鑄造方法，並將代幣鑄造到用戶地址。這個特殊的合約是`MintableAssetPredicate`。
 
-### 需要满足的条件
+### 需要滿足的條件
 
-您可以在BTTC上部署可铸造的代币，或者通过提交映射请求，在BTTC上自动部署可铸造的代币合约。
+您可以在BTTC上部署可鑄造的代幣，或者通過提交映射請求，在BTTC上自動部署可鑄造的代幣合約。
 
-如果您打算自行部署合约，下面是一些合约代码示例。您可以对这些示例进行更改，但必须确保合约用有`deposit`、`withdraw`以及`mint`功能。
+如果您打算自行部署合約，下面是一些合約代碼示例。您可以對這些示例進行更改，但必須確保合約用有`deposit`、`withdraw`以及`mint`功能。
 
-### 部署在公共区块链上的合约
+### 部署在公共區塊鏈上的合約
 
-最重要的一点是，部署在公共区块链代币合约需要指定公共区块链上的`MintableAssetProxy`合约为铸币者。只有`MintableAssetPredicate`合约有权在公共区块链上铸币。
+最重要的一點是，部署在公共區塊鏈代幣合約需要指定公共區塊鏈上的`MintableAssetProxy`合約為鑄幣者。只有`MintableAssetPredicate`合約有權在公共區塊鏈上鑄幣。
 
-这个角色可以通过调用根链上代币合约的`grantRole`方法来授予。第一个参数是`PREDICATE_ROLE`常量值，即`0x12ff340d0cd9c652c747ca35727e68c547d0f0bfa7758d2e77f75acef481b4f2`，第二个参数是相应的`Predicate`合约地址：
+這個角色可以通過調用根鏈上代幣合約的`grantRole`方法來授予。第一個參數是`PREDICATE_ROLE`常量值，即`0x12ff340d0cd9c652c747ca35727e68c547d0f0bfa7758d2e77f75acef481b4f2`，第二個參數是相應的`Predicate`合約地址：
 
-## 状态转移
+## 狀態轉移
 
-BTTC的验证人持续对公共区块链上的`StateSender`合约进行监控。每当公共区块链上注册的合约调用`StateSender`时，它都会发出一个事件。BTTC的验证人用这个事件将数据中继到BTTC上的另一个合约。这个机制就是状态同步，用于将数据从公共区块链发送至BTTC。
+BTTC的驗證人持續對公共區塊鏈上的`StateSender`合約進行監控。每當公共區塊鏈上註冊的合約調用`StateSender`時，它都會發出一個事件。 BTTC的驗證人用這個事件將數據中繼到BTTC上的另一個合約。這個機制就是狀態同步，用於將數據從公共區塊鏈發送至BTTC。
 
-BTTC的验证人定期向公共区块链上提交BTTC上所有交易的哈希值，这种提交被称为`checkpoint`，它可以用于验证发生在BTTC上的任何交易。当通过验证时，就可以在公共区块链上采取相应的行动。
+BTTC的驗證人定期向公共區塊鏈上提交BTTC上所有交易的哈希值，這種提交被稱為`checkpoint`，它可以用於驗證發生在BTTC上的任何交易。當通過驗證時，就可以在公共區塊鏈上採取相應的行動。
 
-同时使用这两种机制，以实现BTTC与公共区块链之间的双向数据传输。为了把这些交互抽象出来，您可以直接继承我们在公共区块链上的`FxBaseRootTunnel`合约，以及在BTTC上的`FxBaseChildTunnel`合约。
+同時使用這兩種機制，以實現BTTC與公共區塊鏈之間的雙向數據傳輸。為了把這些交互抽像出來，您可以直接繼承我們在公共區塊鏈上的`FxBaseRootTunnel`合約，以及在BTTC上的`FxBaseChildTunnel`合約。
 
-### Root Tunnel 合约
+### Root Tunnel 合約
 
-通过`FxBaseRootTunnel`合约，您可以使用以下功能：
+通過`FxBaseRootTunnel`合約，您可以使用以下功能：
 
-* `_processMessageFromChild(bytes memory data)`：实现这个函数，来处理从Child Tunnel发送来的数据。
+* `_processMessageFromChild(bytes memory data)`：實現這個函數，來處理從Child Tunnel發送來的數據。
 
-* `_sendMessageToChild(bytes memory message)`：使用任何字节数据作为参数，在合约内部调用这个函数，它将按原样将数据发送到Child Tunnel。
+* `_sendMessageToChild(bytes memory message)`：使用任何字節數據作為參數，在合約內部調用這個函數，它將按原樣將數據發送到Child Tunnel。
 
-* `receiveMessage(bytes memory inputData)`：调用这个函数，来接收Child Tunnel发来的消息。交易证明需要通过`calldata`提供。
+* `receiveMessage(bytes memory inputData)`：調用這個函數，來接收Child Tunnel發來的消息。交易證明需要通過`calldata`提供。
 
-### Child Tunnel 合约
+### Child Tunnel 合約
 
-通过`FxBaseChildTunnel`合约，您可以使用以下功能：
+通過`FxBaseChildTunnel`合約，您可以使用以下功能：
 
-* `_processMessageFromRoot(uint256 stateId, address sender, bytes memory data)`：实现这个函数，来处理从Root Tunnel发送的数据。
+* `_processMessageFromRoot(uint256 stateId, address sender, bytes memory data)`：實現這個函數，來處理從Root Tunnel發送的數據。
 
-* `_sendMessageToRoot(bytes memory message)`：在合约内部调用此函数，可以将任何字节数据发送至Root Tunnel。
+* `_sendMessageToRoot(bytes memory message)`：在合約內部調用此函數，可以將任何字節數據發送至Root Tunnel。
 
-### 先决条件
+### 先決條件
 
-1. 部署在公共区块链的Root合约需要继承`FxBaseRootTunnel`合约。您可以参照示例。同样，BTTC上的子合约也需要继承`FxBaseChildTunnel`合约。
+1. 部署在公共區塊鏈的Root合約需要繼承`FxBaseRootTunnel`合約。您可以參照示例。同樣，BTTC上的子合約也需要繼承`FxBaseChildTunnel`合約。
 
 2. `_checkpointManager`
 
 3. `_fxChild`
 
-4. 使用child tunnel的地址，在root tunnel上调用`setChildTunnel`方法；同时，使用root tunnel的地址，在child tunnel上调用`setRootTunnel`方法
+4. 使用child tunnel的地址，在root tunnel上調用`setChildTunnel`方法；同時，使用root tunnel的地址，在child tunnel上調用`setRootTunnel`方法
 
-### 从公共区块链到BTTC的状态转移
+### 從公共區塊鏈到BTTC的狀態轉移
 
-* 在根合约内部调用`_sendMessageToChild()`，将数据发送至BTTC。
+* 在根合約內部調用`_sendMessageToChild()`，將數據發送至BTTC。
 
-* 在子合约中实现`_processMessageFromRoot()`来检索来自公共区块链的数据。当状态同步时，数据将自动从状态接收器接收。
+* 在子合約中實現`_processMessageFromRoot()`來檢索來自公共區塊鏈的數據。當狀態同步時，數據將自動從狀態接收器接收。
 
-#### 从BTTC到公共区块链的状态转移
+#### 從BTTC到公共區塊鏈的狀態轉移
 
-* 在子合约内部调用`_sendMessageToRoot()`将数据发送至公共区块链。
+* 在子合約內部調用`_sendMessageToRoot()`將數據發送至公共區塊鏈。
 
-* 交易哈希将在被收入checkpoint后，用于生成证明。可以使用如下的代码从交易哈希生成证明。
+* 交易哈希將在被收入checkpoint後，用於生成證明。可以使用如下的代碼從交易哈希生成證明。
 
 ```js
 const bttcPOSClient = new require("@bttcnetwork/bttcjs").BttcPOSClient({
@@ -532,24 +532,6 @@ const proof = bttcPOSClient.posRootChainManager
   .then(console.log);
 ```
 
-* 在根合约中实现`_processMessageFromChild()`
+* 在根合約中實現`_processMessageFromChild()`
 
-* 用生成的证明作为`receiveMessage()`的参数，来检索从child tunnel发送来的数据。
-
-## Mintable Token
-
-Through the PoS bridge, assets can be transferred between the public blockchain and BTTC, and the majority of assets must be pre-stored on the public blockchain. Another possibility is to create tokens directly on the BTTC blockchain and then transfer them to the public blockchain as required. In comparison to public blockchains, issuing tokens on BTTC is less expensive and faster. These are referred to as BTTC mintable assets.
-
-When BTTC's mintable assets are transferred to the public blockchain, the token must first be destroyed on the BTTC and proof of destruction submitted to the public blockchain. Internally, the `RootChainManager` contract invokes a special contract that can directly invoke the public blockchain's token minting method and mint the tokens to the user address. `MintableAssetPredicate` is the name of this special contract.
-
-### Requirement
-
-You can either manually deploy mintable tokens on BTTC or submit a mapping request that will automatically deploy mintable token contracts on BTTC.
-
-If you intend to deploy the contract manually, here are some sample contract code. You may modify these examples, but you must ensure that the contract includes the `deposit`, `withdraw`, and `mint` functions.
-
-### Contracts on Public Blockchain
-
-The critical point is that when the token contract is deployed on the public blockchain, it must specify the `MintableAssetProxy` contract as the mint. On the public blockchain, only the `MintableAssetPredicate` contract has the authority to mint coins.
-
-This role can be granted by invoking the root chain's token contract's `grantRole` method. The first parameter is the constant value for `PREDICATE_ROLE,` i.e. `0x12ff340d0cd9c652c747ca35727e68c547d0f0bfa7758d2e77f75acef481b4f2`, and the second parameter is the contract address for the corresponding `Predicate` contract:
+* 用生成的證明作為`receiveMessage()`的參數，來檢索從child tunnel發送來的數據。

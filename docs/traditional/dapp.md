@@ -1,18 +1,18 @@
-# BTTC合约开发教程
+# BTTC合約開發教程
 
-## 使用Remix在BTTC上部署Hello World合约
+## 使用Remix在BTTC上部署Hello World合約
 
-### 设置Remix
+### 設置Remix
 
-Remix是一个在线的智能合约IDE，可以用与编写、编译以及部署合约。
+Remix是一個在線的智能合約IDE，可以用與編寫、編譯以及部署合約。
 
-如果这是您首次使用Remix，需要在插件一栏中，找到“Solidity compiler”，并激活它，如下图
+如果這是您首次使用Remix，需要在插件一欄中，找到“Solidity compiler”，並激活它，如下圖
 
-![image](./pics/dapp/1.png)
+![image](../pics/dapp/1.png)
 
-点击图中圈出的按钮，创建一个新文件，命名为HelloWorld.sol，并将下面的代码复制粘贴到这个文件中。
+點擊圖中圈出的按鈕，創建一個新文件，命名為HelloWorld.sol，並將下面的代碼複製粘貼到這個文件中。
 
-![image](./pics/dapp/2.png)
+![image](../pics/dapp/2.png)
 
 ### HelloWorld.sol
 
@@ -33,31 +33,31 @@ contract HelloWorld {
 }
 ```
 
-第一行的`//SPDX-License-Identifier: GPL-3.0`表示这个智能合约是开源的，并且使用了GPL3.0的开源协议，可以根据需求自行选择其他开源协议。无协议时使用UNLICENSED。
+第一行的`//SPDX-License-Identifier: GPL-3.0`表示這個智能合約是開源的，並且使用了GPL3.0的開源協議，可以根據需求自行選擇其他開源協議。無協議時使用UNLICENSED。
 
-第二行`pragma solidity ^0.8.7` 声明了编译器的版本。这个合约只能在0.8.7以及更高版本的Solidity编译器中才能编译成功。
+第二行`pragma solidity ^0.8.7` 聲明了編譯器的版本。這個合約只能在0.8.7以及更高版本的Solidity編譯器中才能編譯成功。
 
-`string public greeting`声明了一个名为`greeting`的字符串类型的public变量，这种变量称为state variable，会被永久保存在合约中以及区块链上。public关键字让这个变量可以从合约外部被访问，并为其创建一个accessor函数。
+`string public greeting`聲明了一個名為`greeting`的字符串類型的public變量，這種變量稱為state variable，會被永久保存在合約中以及區塊鏈上。 public關鍵字讓這個變量可以從合約外部被訪問，並為其創建一個accessor函數。
 
-`constructor`声明了这个合约的构造函数。它可以接收一个string类型的参数message，将其存储在内存中，并将其值赋给greeting。请注意，每个智能合约中只能有一个构造函数，它仅会在部署合约时被调用。
+`constructor`聲明了這個合約的構造函數。它可以接收一個string類型的參數message，將其存儲在內存中，並將其值賦給greeting。請注意，每個智能合約中只能有一個構造函數，它僅會在部署合約時被調用。
 
-`function updateGreeting`声明了一个普通函数，可以从外部调用，来修改greeting的内容。
+`function updateGreeting`聲明了一個普通函數，可以從外部調用，來修改greeting的內容。
 
-### 编译合约
+### 編譯合約
 
-在左侧选择Solidity编译器，并选择0.8.7或者更高的版本。
+在左側選擇Solidity編譯器，並選擇0.8.7或者更高的版本。
 
-点击Compile HelloWorld.sol。编译成功时，编译器图标会有绿色的对勾，如图所示。
+點擊Compile HelloWorld.sol。編譯成功時，編譯器圖標會有綠色的對勾，如圖所示。
 
-![image](./pics/dapp/3.png)
+![image](../pics/dapp/3.png)
 
-### 网络设置
+### 網絡設置
 
-打开MetaMask钱包，并在如图的下拉选单中选择Custom RPC
+打開MetaMask錢包，並在如圖的下拉選單中選擇Custom RPC
 
-![image](./pics/dapp/4.png)
+![image](../pics/dapp/4.png)
 
-按照图中的信息填写：
+按照圖中的信息填寫：
 
 * Network Name: BitTorrent Chain Testnet
 * RPC URL: https://test-rpc.bittorrentchain.io/
@@ -65,37 +65,37 @@ contract HelloWorld {
 * Currency Symbol: BTT
 * Explorer: https://scan.bittorrentchain.io/
 
-![image](./pics/dapp/5.png)
+![image](../pics/dapp/5.png)
 
-添加完成后的界面如下图所示
+添加完成後的界面如下圖所示
 
-![image](./pics/dapp/6.png)
+![image](../pics/dapp/6.png)
 
-图中的测试账户已经预先存入了一些测试币。请前往水龙头来获取测试BTT。
+圖中的測試賬戶已經預先存入了一些測試幣。請前往水龍頭來獲取測試BTT。
 
-完成了网络设置，接下来，就能在BTTC上部署智能合约了。
+完成了網絡設置，接下來，就能在BTTC上部署智能合約了。
 
-### 部署合约
+### 部署合約
 
-首先，在Remix的DEPLOY & RUN TRANSACTIONS栏中，从Environment的下拉菜单里选择Injected Web3
+首先，在Remix的DEPLOY & RUN TRANSACTIONS欄中，從Environment的下拉菜單裡選擇Injected Web3
 
-![image](./pics/dapp/7.png)
+![image](../pics/dapp/7.png)
 
-在Deploy旁边的输入框中，输入初始的Greeting内容
+在Deploy旁邊的輸入框中，輸入初始的Greeting內容
 
-![image](./pics/dapp/8.png)
+![image](../pics/dapp/8.png)
 
-点击Deploy后，MetaMask会弹出交易确认的窗口
+點擊Deploy後，MetaMask會彈出交易確認的窗口
 
-![image](./pics/dapp/9.png)
+![image](../pics/dapp/9.png)
 
-恭喜，HelloWorld合约已经成功部署到了BTTC的测试网，现在您可以与它进行交互了，同时可以再浏览器上检查它的状态。
+恭喜，HelloWorld合約已經成功部署到了BTTC的測試網，現在您可以與它進行交互了，同時可以再瀏覽器上檢查它的狀態。
 
-![image](./pics/dapp/10.png)
+![image](../pics/dapp/10.png)
 
-## 构建一个去中心化的图书馆
+## 構建一個去中心化的圖書館
 
-### 开发前准备
+### 開發前準備
 
 #### Nodej v10+
 
@@ -106,19 +106,19 @@ v10.24.1
 
 #### Metamask
 
-在[这里](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn)安装Metamask的Google Chrome插件。
+在[這裡](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn)安裝Metamask的Google Chrome插件。
 
-### 我们在做什么？
+### 我們在做什麼？
 
-我们将要构建一个包括以下功能的去中心化图书馆：
+我們將要構建一個包括以下功能的去中心化圖書館：
 
-* 租书
-* 查看可借书目
-* 添加书
+* 租書
+* 查看可藉書目
+* 添加書
 
-### 数据结构
+### 數據結構
 
-对于借书者来说，通常，需要关心书的名字、内容、是否可借以及价格。基于此，我们在合约中创建一个名为Book的结构，它包括了如下的属性：
+對於借書者來說，通常，需要關心書的名字、內容、是否可藉以及價格。基於此，我們在合約中創建一個名為Book的結構，它包括瞭如下的屬性：
 
 ```js
 struct Book {
@@ -130,7 +130,7 @@ struct Book {
    }
 ```
 
-我们希望图书馆能通过一个映射来记录每一本书。为此，这里分别创建了一个bookId的属性，以及bookId到Book的映射关系，命名为books。
+我們希望圖書館能通過一個映射來記錄每一本書。為此，這里分別創建了一個bookId的屬性，以及bookId到Book的映射關係，命名為books。
 
 ```js
 uint256 public bookId;
@@ -138,9 +138,9 @@ uint256 public bookId;
 mapping (uint256 => Book) public books;
 ```
 
-我们还需要记录每一本书的租借信息，包括借书者以及起止时间。
+我們還需要記錄每一本書的租借信息，包括借書者以及起止時間。
 
-与Book相同，创建一个名为Tracking的结构来记录这些信息。这个结构包含了下面的属性：
+與Book相同，創建一個名為Tracking的結構來記錄這些信息。這個結構包含了下面的屬性：
 
 ```js
 struct Tracking {
@@ -151,7 +151,7 @@ struct Tracking {
    }
 ```
 
-同样的，我们也需要建立一种映射关系，来管理每一次租借记录：
+同樣的，我們也需要建立一種映射關係，來管理每一次租借記錄：
 
 ```js
 uint256 public trackingId;
@@ -159,13 +159,13 @@ uint256 public trackingId;
 mapping(uint256 => Tracking) public trackings;
 ```
 
-#### 定义功能和事件
+#### 定義功能和事件
 
-我们需要为图书馆添加一些基本功能，包括：
+我們需要為圖書館添加一些基本功能，包括：
 
-* 为图书馆添加书籍 - addBook
-* 借一本书 - borrowBook
-* 从图书馆移除这本书 - deleteBook
+* 為圖書館添加書籍 - addBook
+* 借一本書 - borrowBook
+* 從圖書館移除這本書 - deleteBook
 
 ##### addBook
 
@@ -244,7 +244,7 @@ mapping(uint256 => Tracking) public trackings;
    }
 ```
 
-在borrowBook方法中，我们用到了两个工具方法_sendBTT和_createTracking。我们不希望用户调用这些方法，因此，遵照Solidity的规则，我们把它们标记为internal，表示仅能在合约内部被调用。
+在borrowBook方法中，我們用到了兩個工具方法_sendBTT和_createTracking。我們不希望用戶調用這些方法，因此，遵照Solidity的規則，我們把它們標記為internal，表示僅能在合約內部被調用。
 
 ##### _sendBTT
 
@@ -272,19 +272,19 @@ mapping(uint256 => Tracking) public trackings;
    }
 ```
 
-现在我们已经完成了合约的编写工作，接下来就该部署上线了。
+現在我們已經完成了合約的編寫工作，接下來就該部署上線了。
 
-### 部署和测试
+### 部署和測試
 
-我们用[Remix](https://remix.ethereum.org/)来编译和部署合约。
+我們用[Remix](https://remix.ethereum.org/)來編譯和部署合約。
 
-部署合约需要燃烧BTT以支付gas。
+部署合約需要燃燒BTT以支付gas。
 
-打开MetaMask钱包，并在如图的下拉选单中选择Custom RPC
+打開MetaMask錢包，並在如圖的下拉選單中選擇Custom RPC
 
-![image](./pics/dapp/4.png)
+![image](../pics/dapp/4.png)
 
-按照图中的信息填写：
+按照圖中的信息填寫：
 
 * Network Name: BitTorrent Chain Testnet
 * RPC URL: https://test-rpc.bittorrentchain.io/
@@ -292,31 +292,31 @@ mapping(uint256 => Tracking) public trackings;
 * Currency Symbol: BTT
 * Explorer: https://scan.bittorrentchain.io/
 
-![image](./pics/dapp/5.png)
+![image](../pics/dapp/5.png)
 
-首先，在Remix的DEPLOY & RUN TRANSACTIONS栏中，从Environment的下拉菜单里选择Injected Web3
+首先，在Remix的DEPLOY & RUN TRANSACTIONS欄中，從Environment的下拉菜單裡選擇Injected Web3
 
-![image](./pics/dapp/7.png)
+![image](../pics/dapp/7.png)
 
-选择0.8.0以及更高版本的编译器
+選擇0.8.0以及更高版本的編譯器
 
-![image](./pics/dapp/11.png)
+![image](../pics/dapp/11.png)
 
-点击Deploy后，MetaMask会弹出交易确认的窗口
+點擊Deploy後，MetaMask會彈出交易確認的窗口
 
-![image](./pics/dapp/12.png)
+![image](../pics/dapp/12.png)
 
-恭喜，Library合约已经成功部署到了BTTC的测试网，现在您可以与它进行交互了，同时可以在浏览器上检查它的状态。
+恭喜，Library合約已經成功部署到了BTTC的測試網，現在您可以與它進行交互了，同時可以在瀏覽器上檢查它的狀態。
 
-### 构建DApp
+### 構建DApp
 
-首先将上一步部署的合约地址粘贴到 utils.js 中的 libraryContractAddress 变量中。
+首先將上一步部署的合約地址粘貼到 utils.js 中的 libraryContractAddress 變量中。
 
-#### 连接UI到Metamask
+#### 連接UI到Metamask
 
-下一步我们需要将UI连接到Metamask Chrome 钱包,  Metamask Chrome扩展程序会将Web3对象注入每个浏览器页面，使得 DApp 能与 BTTC 网络进行交互。
+下一步我們需要將UI連接到Metamask Chrome 錢包,  Metamask Chrome擴展程序會將Web3對象注入每個瀏覽器頁面，使得 DApp 能與 BTTC 網絡進行交互。
 
-在dapp-ui/plugins/utils.js中，创建如下函数来获取智能合约对象，并将其保存到全局变量中,接下来就可以直接使用全局变量来与合约交互了。
+在dapp-ui/plugins/utils.js中，創建如下函數來獲取智能合約對象，並將其保存到全局變量中,接下來就可以直接使用全局變量來與合約交互了。
 
 ```js
 export async function setLibraryContract() {
@@ -325,17 +325,17 @@ export async function setLibraryContract() {
 }
 ```
 
-#### 定义功能和函数
+#### 定義功能和函數
 
-当我们的UI能够连接到Metamask之后，我要考虑我们的UI如何跟智能合约进行交互。所以我们要创建一个合约合约对象，表示去中心化图书馆智能合约。
+當我們的UI能夠連接到Metamask之後，我要考慮我們的UI如何跟智能合約進行交互。所以我們要創建一個合約合約對象，表示去中心化圖書館智能合約。
 
-图书馆DApp需要支持三个主要功能：
+圖書館DApp需要支持三個主要功能：
 
-* 为图书馆添加书籍
-* 查看所有可借书籍
-* 借书
+* 為圖書館添加書籍
+* 查看所有可藉書籍
+* 借書
 
-在index.vue中调用setLibraryContract()初始化合约对象。
+在index.vue中調用setLibraryContract()初始化合約對象。
 
 ```js
  async mounted() {
@@ -347,11 +347,11 @@ export async function setLibraryContract() {
  },
 ```
 
-##### 添加书籍
+##### 添加書籍
 
-首先创建添加书籍表单，用于用户发布书籍出租信息。在后端，它将与library合约的addBook函数交互。
+首先創建添加書籍表單，用於用戶發布書籍出租信息。在後端，它將與library合約的addBook函數交互。
 
-在dapp-ui/components/bookForm.vue的postAd()函数中添加如下代码：
+在dapp-ui/components/bookForm.vue的postAd()函數中添加如下代碼：
 
 ```js
  postAd() {
@@ -359,17 +359,17 @@ export async function setLibraryContract() {
  }
 ```
 
-在dapp-ui/plugins/utils.js的postBookInfo()中添加如下代码：
+在dapp-ui/plugins/utils.js的postBookInfo()中添加如下代碼：
 
 ```js
 const result = await bookRentContract.methods.addBook(name,description,price).send();
 ```
 
-##### 查询所有可借书籍
+##### 查詢所有可藉書籍
 
-通过`fetchAllBooks()`函数获取书籍列表，列出所有可借书籍。
+通過`fetchAllBooks()`函數獲取書籍列表，列出所有可藉書籍。
 
-在dapp-ui/plugins/utils.js的fetchAllBooks()函数中添加如下代码：
+在dapp-ui/plugins/utils.js的fetchAllBooks()函數中添加如下代碼：
 
 ```js
  const books = [];
@@ -388,13 +388,13 @@ const result = await bookRentContract.methods.addBook(name,description,price).se
 return books
 ```
 
-在index.vue中调用`fetchAllBooks()`来获取书籍信息，并显示到主页上。
+在index.vue中調用`fetchAllBooks()`來獲取書籍信息，並顯示到主頁上。
 
-##### 借阅书籍
+##### 借閱書籍
 
-用户查看书籍信息后，可以借阅这本书。
+用戶查看書籍信息後，可以藉閱這本書。
 
-在dapp-ui/components/detailsModal.vue的book()函数中添加如下代码：
+在dapp-ui/components/detailsModal.vue的book()函數中添加如下代碼：
 
 ```js
      // get Start date
@@ -407,38 +407,38 @@ return books
      borrowBook(this.propData.id, startDay, endDay, totalPrice)
 ```
 
-dapp-ui/plugins/utils.js，在borrowBook()函数中添加如下代码：
+dapp-ui/plugins/utils.js，在borrowBook()函數中添加如下代碼：
 
 ```js
  const result = await bookRentContract.methods.borrowBook(spaceId,checkInDate,checkOutDate).send();
 ```
 
-至此，图书馆DApp开发完毕。
+至此，圖書館DApp開發完畢。
 
-### 运行DApp
+### 運行DApp
 
-确保Metamask为登录状态，然后执行如下命令来启动服务：
+確保Metamask為登錄狀態，然後執行如下命令來啟動服務：
 
 ```sh
 npm run dev
 ```
 
-在浏览器地址栏输入：localhost:3000，查看前端页面。
+在瀏覽器地址欄輸入：localhost:3000，查看前端頁面。
 
-![image](./pics/dapp/13.png)
+![image](../pics/dapp/13.png)
 
-点击右上角的”Rent Your Books”按钮，发布一条图书租赁信息。信息包括，图书名称，图书简要描述，图书借阅一天的价格。
+點擊右上角的”Rent Your Books”按鈕，發布一條圖書租賃信息。信息包括，圖書名稱，圖書簡要描述，圖書借閱一天的價格。
 
-![image](./pics/dapp/14.png)
+![image](../pics/dapp/14.png)
 
-信息填写完成后，点击”Submit”按钮，这些信息将发送给library合约的addBook函数，创建了一条触发合约的交易，然后将出现Metamask的弹框，要求确认并签名，如下所示：
+信息填寫完成後，點擊”Submit”按鈕，這些信息將發送給library合約的addBook函數，創建了一條觸發合約的交易，然後將出現Metamask的彈框，要求確認並簽名，如下所示：
 
-![image](./pics/dapp/15.png)
+![image](../pics/dapp/15.png)
 
-交易成功上链后，这条租赁信息将显示到页面上：
+交易成功上鍊後，這條租賃信息將顯示到頁面上：
 
-![image](./pics/dapp/16.png)
+![image](../pics/dapp/16.png)
 
-点击”View”可查看书籍详细信息， 选择租赁的时间段，租赁的价格为：每天的租赁价格*租赁天数。点击”Lent Now”发起租赁请求。将触发library合约的borrowBook函数调用。同样需要签名及广播，然后完成租赁交易。
+點擊”View”可查看書籍詳細信息， 選擇租賃的時間段，租賃的價格為：每天的租賃價格*租賃天數。點擊”Lent Now”發起租賃請求。將觸發library合約的borrowBook函數調用。同樣需要簽名及廣播，然後完成租賃交易。
 
-![image](./pics/dapp/17.png)
+![image](../pics/dapp/17.png)
