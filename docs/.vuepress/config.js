@@ -66,7 +66,7 @@ module.exports = {
         selectText: '選擇語言',
         label: '繁體中文',
         sidebar: {
-          '/' : [
+          '/traditional' : [
             '/traditional/', 
             '/traditional/architecture', 
             '/traditional/wallets',
