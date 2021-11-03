@@ -1,4 +1,4 @@
-# Node deployment
+# Validator Node deployment
 
 ## Getting Started
 
