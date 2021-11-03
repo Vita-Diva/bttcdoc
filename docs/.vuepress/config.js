@@ -2,6 +2,7 @@ module.exports = {
   title: 'BitTorrent-Chain',
   description: 'BitTorrent-Chain Documentation',
   base: '/v1/doc/',
+  theme: '',
   locales: { 
     '/': { 
       lang: 'en-US',
@@ -38,6 +39,7 @@ module.exports = {
             'dapp',
             'tron-bttc',
             'del-val',
+            'sentry',
             'validator/node',
             'validator/faq'
           ]
@@ -57,6 +59,7 @@ module.exports = {
             '/simplified/dapp',
             '/simplified/tron-bttc',
             '/simplified/del-val',
+            '/simplified/sentry',
             '/simplified/validator/node',
             '/simplified/validator/faq'
           ]
@@ -76,6 +79,7 @@ module.exports = {
             '/traditional/dapp',
             '/traditional/tron-bttc',
             '/traditional/del-val',
+            '/traditional/sentry',
             '/traditional/validator/node',
             '/traditional/validator/faq'
           ]
