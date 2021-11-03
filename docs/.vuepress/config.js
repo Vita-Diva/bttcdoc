@@ -91,11 +91,11 @@ module.exports = {
         permalinkSymbol: '#'
       }
     },
-    head: [
-      ['link', {
-        rel: 'icon',
-        href: 'bttc.png'
-      }]
-    ]
-  }
+  },
+  head: [
+    ['link', {
+      rel: 'icon',
+      href: '/bttc.png'
+    }]
+  ]
 }
