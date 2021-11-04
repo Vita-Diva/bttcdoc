@@ -131,13 +131,13 @@ xxx.xxx.xx.xx | SUCCESS => {
 }
 ```
 
-###### Do a test run of the sentry node setup
+##### Do a test run of the sentry node setup
 
 ```sh
 ansible-playbook -l sentry playbooks/network.yml --extra-var="bttc_branch=v0.2.9 delivery_branch=v0.2.3  network_version=mainnet-v1 node_type=sentry/sentry delivery_network=mainnet" --list-hosts
 ```
 
-###### Run the sentry node setup
+##### Run the sentry node setup
 
 ```sh
 ansible-playbook -l sentry playbooks/network.yml --extra-var="bttc_branch=v0.2.9 delivery_branch=v0.2.3  network_version=mainnet-v1 node_type=sentry/sentry delivery_network=mainnet"
@@ -145,7 +145,7 @@ ansible-playbook -l sentry playbooks/network.yml --extra-var="bttc_branch=v0.2.9
 
 Once the setup is complete, you will see a message of completion on the terminal.
 
-###### Set up the validator node
+##### Set up the validator node
 
 At this point, you have the sentry node set up.
 
@@ -185,11 +185,11 @@ ansible-playbook -l validator playbooks/network.yml --extra-var="bttc_branch=v0.
 
 Once the setup is complete, you will see a message of completion on the terminal.
 
-###### Configure the sentry node
+##### Configure the sentry node
 
 Login to the remote sentry machine.
 
-####### Configure the delivery node
+###### Configure the delivery node
 
 Open for editing `~/.deliveryd/config/config.toml`.
 
@@ -210,7 +210,7 @@ To get the node ID of delivery on the validator machine:
 
 Save the changes in config.toml.
 
-####### Configure the BTTC node
+###### Configure the BTTC node
 
 Open for editing `~/node/bttc/start.sh`.
 
@@ -240,7 +240,7 @@ To get the node ID of BTTC on the validator machine:
 
 Save the changes in static-nodes.json.
 
-####### Configure firewall
+###### Configure firewall
 
 The sentry machine must have the following ports open to the world 0.0.0.0/0:
 
@@ -248,11 +248,11 @@ The sentry machine must have the following ports open to the world 0.0.0.0/0:
 * 26656
 * 30303
 
-###### Start the sentry node
+##### Start the sentry node
 
 You will first start the delivery node. Once the delivery node syncs, you will start the BTTC node.
 
-####### Start the delivery node
+###### Start the delivery node
 
 Start the delivery service:
 
@@ -291,7 +291,7 @@ In the output, the catching_up value is:
 
 Wait for the delivery node to fully sync.
 
-####### Start the BTTCr node
+###### Start the BTTCr node
 
 Once the delivery node is fully synced, start the BTTC node.
 
@@ -307,9 +307,9 @@ Check the BTTC service logs:
 journalctl -u bttc.service -f
 ```
 
-###### Configure the validator node
+##### Configure the validator node
 
-####### Configure the delivery node
+###### Configure the delivery node
 
 Login to the remote validator machine.
 
@@ -348,7 +348,7 @@ In delivery-config.toml, change the following:
 
 Save the changes in delivery-config.toml.
 
-####### Configure the BTTC node
+###### Configure the BTTC node
 
 Open for editing ~/.bttc/data/bttc/static-nodes.json.
 
@@ -368,14 +368,14 @@ To get the node ID of BTTC on the sentry machine:
 
 Save the changes in static-nodes.json.
 
-###### Set the owner and signer key
+##### Set the owner and signer key
 
 On BTTC, it is recommended that you keep the owner and signer keys different.
 
 * Signer — the address that signs the checkpoint transactions. The recommendation is to keep at least 1 ETH on the signer address.
 * Owner — the address that does the staking transactions. The recommendation is to keep the bttc tokens on the owner address.
 
-####### Generate a delivery private key
+###### Generate a delivery private key
 
 You must generate a delivery private key only on the validator machine. Do not generate a delivery private key on the sentry machine.
 
@@ -393,7 +393,7 @@ This will generate priv_validator_key.json. Move the generated JSON file to the 
 mv ./priv_validator_key.json ~/.deliveryd/config
 ```
 
-####### Generate a BTTC keystore file
+###### Generate a BTTC keystore file
 
 You must generate a BTTC keystore file only on the validator machine. Do not generate a BTTC keystore file on the sentry machine.
 
@@ -415,11 +415,11 @@ Move the generated keystore file to the BTTC configuration directory:
 mv ./UTC-<time>-<address> ~/.bttc/keystore/
 ```
 
-####### Add password.txt
+###### Add password.txt
 
 Add the BTTC keystore file password in the `~/.bttc/password.txt` file.
 
-####### Add your Ethereum address
+###### Add your Ethereum address
 
 Open for editing /etc/bttc/metadata.
 
@@ -431,7 +431,7 @@ In metadata, add your Ethereum address. Example:
 
 Save the changes in metadata.
 
-###### Start the validator node
+##### Start the validator node
 
 At this point, you must have:
 
@@ -440,7 +440,7 @@ At this point, you must have:
 * The delivery node and the BTTC node on the validator machine configured.
 * Your owner and signer keys configured.
 
-####### Start the delivery node
+###### Start the delivery node
 
 You will now start the delivery node on the validator machine. Once the delivery node syncs, you will start the BTTC node on the validator machine.
 
@@ -493,7 +493,7 @@ In the output, the catching_up value is:
 
 Wait for the delivery node to fully sync.
 
-####### Start the BTTC node
+###### Start the BTTC node
 
 Once the delivery node on the validator machine is fully synced, start the BTTC node on the validator machine.
 
@@ -545,7 +545,7 @@ sudo ln -nfs ~/.go/bin/go /usr/bin/go
 
 NOTE:Run this section both on the sentry and the validator machines.
 
-###### Install delivery
+##### Install delivery
 
 Clone the [delivery repository](https://github.com/bttcprotocol/delivery/):
 
@@ -565,7 +565,7 @@ Check the installation:
 deliveryd version --long
 ```
 
-###### Install bttc
+##### Install bttc
 
 Clone the bttc repository:
 
@@ -597,7 +597,7 @@ bttc version
 
 NOTE:Run this section both on the sentry and the validator machines.
 
-###### Fetch the launch repository
+##### Fetch the launch repository
 
 Clone the [launch repository](https://github.com/bttcprotocol/launch):
 
@@ -605,9 +605,9 @@ Clone the [launch repository](https://github.com/bttcprotocol/launch):
 git clone https://github.com/bttcprotocol/launch
 ```
 
-###### Set up the launch directory
+##### Set up the launch directory
 
-####### On the sentry machine
+###### On the sentry machine
 
 Create a node directory:
 
@@ -623,7 +623,7 @@ cp -rf launch/mainnet-v1/sentry/sentry ~/node
 cp launch/mainnet-v1/service.sh ~/node
 ```
 
-####### On the validator machine
+###### On the validator machine
 
 Create a node directory:
 
@@ -639,11 +639,11 @@ cp -rf launch/mainnet-v1/sentry/validator ~/node
 cp launch/mainnet-v1/service.sh ~/node
 ```
 
-###### Set up the network directories
+##### Set up the network directories
 
 NOTE:Run this section both on the sentry and the validator machines.
 
-####### Set up delivery
+###### Set up delivery
 
 Change to the node directory:
 
@@ -657,7 +657,7 @@ Run the setup script:
 bash setup.sh
 ```
 
-####### Set up bttc
+###### Set up bttc
 
 Change to the node directory:
 
@@ -697,7 +697,7 @@ sudo cp *.service /etc/systemd/system/
 
 Login to the remote sentry machine.
 
-###### Configure the delivery node
+##### Configure the delivery node
 
 Open for editing `~/.deliveryd/config/config.toml`.
 
@@ -718,7 +718,7 @@ To get the node ID of delivery on the validator machine:
 
 Save the changes in config.toml.
 
-###### Configure the bttc node
+##### Configure the bttc node
 
 Open for editing `~/node/bttc/start.sh`.
 
@@ -730,7 +730,7 @@ In start.sh, add the boot node addresses consisting of a node ID, an IP address,
 
 Save the changes in start.sh.
 
-###### Configure firewall
+##### Configure firewall
 
 The sentry machine must have the following ports open to the world 0.0.0.0/0:
 
@@ -742,7 +742,7 @@ The sentry machine must have the following ports open to the world 0.0.0.0/0:
 
 You will first start the delivery node. Once the delivery node syncs, you will start the bttc node.
 
-###### Start the delivery node
+##### Start the delivery node
 
 Start the delivery service:
 
@@ -762,7 +762,7 @@ Check the delivery service logs:
 journalctl -u deliveryd.service -f
 ```
 
-####### Check the delivery rest-server logs
+###### Check the delivery rest-server logs
 
 ```sh
 journalctl -u deliveryd-rest-server.service -f
@@ -781,7 +781,7 @@ In the output, the catching_up value is:
 
 Wait for the delivery node to fully sync.
 
-###### Start the bttc node
+##### Start the bttc node
 
 Once the delivery node is fully synced, start the bttc node.
 
@@ -799,7 +799,7 @@ journalctl -u bttc.service -f
 
 #### Configure the validator node
 
-###### Configure the delivery node
+##### Configure the delivery node
 
 Login to the remote validator machine.
 
@@ -836,7 +836,7 @@ In delivery-config.toml, change the following:
 
 Save the changes in delivery-config.toml.
 
-###### Configure the bttc node
+##### Configure the bttc node
 
 Open for editing `~/.bttc/data/bttc/static-nodes.json`.
 
@@ -861,7 +861,7 @@ On BTTC, it is recommended that you keep the owner and signer keys different.
 * Signer — the address that signs the checkpoint transactions. The recommendation is to keep at least 1 ETH on the signer address.
 * Owner — the address that does the staking transactions. The recommendation is to keep the bttc tokens on the owner address.
 
-###### Generate a delivery private key
+##### Generate a delivery private key
 
 You must generate a delivery private key only on the validator machine. Do not generate a delivery private key on the sentry machine.
 
@@ -881,7 +881,7 @@ This will generate priv_validator_key.json. Move the generated JSON file to the 
 mv ./priv_validator_key.json ~/.deliveryd/config
 ```
 
-###### Generate a bttc keystore file
+##### Generate a bttc keystore file
 
 You must generate a bttc keystore file only on the validator machine. Do not generate a bttc keystore file on the sentry machine.
 
@@ -903,11 +903,11 @@ Move the generated keystore file to the bttc configuration directory:
 mv ./UTC-<time>-<address> ~/.bttc/keystore/
 ```
 
-###### Add password.txt
+##### Add password.txt
 
 Add the bttc keystore file password in the `~/.bttc/password.txt` file.
 
-###### Add your Ethereum address
+##### Add your Ethereum address
 
 Open for editing /etc/bttc/metadata.
 
@@ -928,7 +928,7 @@ At this point, you must have:
 * The delivery node and the bttc node on the validator machine configured.
 * Your owner and signer keys configured.
 
-###### Start the delivery node
+##### Start the delivery node
 
 You will now start the delivery node on the validator machine. Once the delivery node syncs, you will start the bttc node on the validator machine.
 
@@ -981,7 +981,7 @@ In the output, the catching_up value is:
 
 Wait for the delivery node to fully sync.
 
-###### Start the bttc node
+##### Start the bttc node
 
 Once the delivery node on the validator machine is fully synced, start the bttc node on the validator machine.
 
