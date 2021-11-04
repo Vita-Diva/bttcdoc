@@ -1,19 +1,21 @@
-# 驗證人節點部署
+# 節點部署
 
-## 入門
+## 驗證人節點部署
+
+### 入門
 
 要通過在 BitTorrent-chain 上運行節點來參與並成為驗證人，您可以按照如下的文檔進行操作。
 
-## 推薦配置
+### 推薦配置
 
 * 64 GiB of memory
 * 16 core CPU (m5d.4xlarge or OVH’s infra-3)
 * Minimum 1TB SSD (make sure it is extendable)
 * 1Gb/s Bandwidth (expect 3-5 TB data transferred per month)
 
-## 使用Ansible部署驗證人節點
+### 使用Ansible部署驗證人節點
 
-### 先決條件
+#### 先決條件
 
 * 三台機器--一台本地機器，你將在上面運行Ansible playbook；兩台遠程機器--一台sentry和一台驗證機。
 * 在本地機器上，安裝了Ansible。
@@ -21,7 +23,7 @@
 * 在遠程機器上，確保沒有安裝Go。
 * 在遠程機器上，你的本地機器的SSH公鑰在遠程機器上，以便讓Ansible連接到它們。
 
-### 概述
+#### 概述
 
 要進入一個運行中的驗證人節點，請做以下工作。
 
@@ -34,21 +36,21 @@
 * 設置所有者和簽名者密鑰。
 * 啟動驗證人節點。
 
-### 設置sentry節點
+#### 設置sentry節點
 
-#### 在你的本地機器上，git clone node-ansible資源庫
+###### 在你的本地機器上，git clone node-ansible資源庫
 
 ```sh
 git clone [https://github.com/bttcprotocol/node-ansible](https://github.com/bttcprotocol/node-ansible)
 ```
 
-#### 切換至 node-ansible目錄
+###### 切換至 node-ansible目錄
 
 ```sh
 cd node-ansible
 ```
 
-#### 在inventory.yaml文件中添加將成為sentry節點和驗證人節點的遠程機器的IP地址
+###### 在inventory.yaml文件中添加將成為sentry節點和驗證人節點的遠程機器的IP地址
 
 ```yaml
 all:
@@ -92,7 +94,7 @@ all:
         134.209.100.175: 
 ```
 
-#### 檢查遠程sentry節點機器是否可以到達
+###### 檢查遠程sentry節點機器是否可以到達
 
 在本地機器上，運行`ansible sentry -m ping`
 
@@ -114,13 +116,13 @@ xxx.xxx.xx.xx | SUCCESS => {
 }
 ```
 
-#### 對sentry節點的設置進行一次測試
+###### 對sentry節點的設置進行一次測試
 
 ```sh
 ansible-playbook -l sentry playbooks/network.yml --extra-var="bttc_branch=v0.2.8 delivery_branch=v0.2.2  network_version=mainnet-v1 node_type=sentry/sentry delivery_network=mainnet" --list-hosts
 ```
 
-#### 運行sentry節點設置
+###### 運行sentry節點設置
 
 ```sh
 ansible-playbook -l sentry playbooks/network.yml --extra-var="bttc_branch=v0.2.8 delivery_branch=v0.2.2  network_version=mainnet-v1 node_type=sentry/sentry delivery_network=mainnet"
@@ -128,7 +130,7 @@ ansible-playbook -l sentry playbooks/network.yml --extra-var="bttc_branch=v0.2.8
 
 一旦設置完成，你將在終端上看到一條完成信息。
 
-### 設置validator節點
+#### 設置validator節點
 
 至此，你已經建立了sentry節點。
 
@@ -154,13 +156,13 @@ xxx.xxx.xx.xx | SUCCESS => {
 }
 ```
 
-#### 對驗證人節點設置進行測試運行
+###### 對驗證人節點設置進行測試運行
 
 ```sh
 ansible-playbook -l validator playbooks/network.yml --extra-var="bttc_branch=v0.2.8 delivery_branch=v0.2.2 network_version=mainnet-v1 node_type=sentry/validator delivery_network=mainnet" --list-hosts
 ```
 
-#### 運行驗證人節點設置
+###### 運行驗證人節點設置
 
 ```sh
 ansible-playbook -l validator playbooks/network.yml --extra-var="bttc_branch=v0.2.8 delivery_branch=v0.2.2  network_version=mainnet-v1 node_type=sentry/validator delivery_network=mainnet"
@@ -168,11 +170,11 @@ ansible-playbook -l validator playbooks/network.yml --extra-var="bttc_branch=v0.
 
 一旦設置完成，你將在終端上看到一條完成信息。
 
-### 配置sentry節點
+#### 配置sentry節點
 
 登錄到遠程sentry機。
 
-### 配置Delivery節點
+#### 配置Delivery節點
 
 * 編輯 ~/.deliveryd/config/config.toml。
 
@@ -192,7 +194,7 @@ ansible-playbook -l validator playbooks/network.yml --extra-var="bttc_branch=v0.
 * prometheus - 將該值設為true，以啟用Prometheus度量。例如：prometheus = true。
 * max_open_connections - 將該值設置為100。例如：max_open_connections = 100。
 
-### 配置BTTC節點
+#### 配置BTTC節點
 
 * 編輯 `~/node/bttc/start.sh`。
 
@@ -216,7 +218,7 @@ ansible-playbook -l validator playbooks/network.yml --extra-var="bttc_branch=v0.
     示例: "enode://410e359736bcd3a58181cf55d54d4e0bbd6db2939c5f548426be7d18b8fd755a0ceb730fe5cf7510c6fa6f0870e388277c5f4c717af66d53c440feedffb29b4b@134.209.100.175:30303".
 ```
 
-### 配置防火牆
+#### 配置防火牆
 
 sentry節點機器必須對外開放以下端口 0.0.0.0/0。
 
@@ -224,11 +226,11 @@ sentry節點機器必須對外開放以下端口 0.0.0.0/0。
 * 26656
 * 30303
 
-### 啟動sentry節點
+#### 啟動sentry節點
 
 你將首先啟動Delivery節點,一旦Delivery節點同步了，你將啟動BTTC節點。
 
-### 啟動Delivery節點
+#### 啟動Delivery節點
 
 * 啟動Delivery服務:
 
@@ -267,25 +269,25 @@ sentry節點機器必須對外開放以下端口 0.0.0.0/0。
 
 等待delivery節點完全同步。
 
-### 啟動BTTC節點
+#### 啟動BTTC節點
 
 一旦delivery節點被完全同步，啟動BTTC節點。
 
-### 啟動BTTC服務
+#### 啟動BTTC服務
 
 ```sh
 sudo service bttc start
 ```
 
-### 檢查BTTC服務日誌
+#### 檢查BTTC服務日誌
 
 ```sh
 journalctl -u bttc.service -f
 ```
 
-### 配置validator節點
+#### 配置validator節點
 
-#### 配置delivery節點
+###### 配置delivery節點
 
 登錄到遠程驗證人機器上。
 
@@ -313,7 +315,7 @@ journalctl -u bttc.service -f
 * tron_rpc_url- tron主網節點的rpc端點，用來發送交易到這個端點。Example:tron_rpc_url = "47.252.19.181:50051"
 * tron_grid_url -tron主網節點的事件服務,用來查詢事件日誌.Example:tron_grid_url = "http://47.252.35.194:8547"
 
-#### 配置BTTC節點
+###### 配置BTTC節點
 
 編輯 `~/.bttc/data/bttc/static-nodes.json`，在 static-nodes.json 中，修改以下內容。
 
@@ -329,14 +331,14 @@ journalctl -u bttc.service -f
 "enode://a8024075291c0dd3467f5af51a05d531f9e518d6cd229336156eb6545581859e8997a80bc679fdb7a3bd7473744c57eeb3411719b973b2d6c69eff9056c0578f@188.166.216.25:30303"
 ```
 
-### 設置Owner和Signer的密鑰
+#### 設置Owner和Signer的密鑰
 
 在BTTC，建議你保持Onwer和Signer Key的不同。
 
 * Signer - 簽署checkpoint交易的地址。
 * Owner - 進行staking交易的地址。
 
-#### 生成一個delivery私鑰
+###### 生成一個delivery私鑰
 
 你必須只在validator上生成一個delivery私鑰，不要在sentry節點上生成delivery私鑰。
 
@@ -356,7 +358,7 @@ ETHEREUM_PRIVATE_KEY - 你的以太坊地址私鑰。
 mv ./priv_validator_key.json ~/.deliveryd/config
 ```
 
-#### 生成一BTTC keystore文件
+###### 生成一BTTC keystore文件
 
 你必須只在validator機器上生成一個BTTC keystore文件,不要在sentry節點生成BTTC keystore文件。
 
@@ -378,11 +380,11 @@ ETHEREUM_PRIVATE_KEY - 你的以太坊地址私鑰。
 mv ./UTC-<time>-<address> ~/.bttc/keystore/
 ```
 
-#### 添加password.txt
+###### 添加password.txt
 
 在 ~/.bttc/password.txt 文件中添加BTTC keystore文件密碼。
 
-#### 添加你的以太坊地址
+###### 添加你的以太坊地址
 
 編輯/etc/bttc/metadata，在metadata中，添加你的以太坊地址。
 
@@ -392,7 +394,7 @@ mv ./UTC-<time>-<address> ~/.bttc/keystore/
 VALIDATOR_ADDRESS=0xca67a8D767e45056DC92384b488E9Af654d78DE2.
 ```
 
-### 啟動validator節點
+#### 啟動validator節點
 
 至此，你必須：
 
@@ -401,7 +403,7 @@ VALIDATOR_ADDRESS=0xca67a8D767e45056DC92384b488E9Af654d78DE2.
 * 配置好validator上的delivery節點和BTTC節點。
 * 你的Owner和Signer密鑰已配置。
 
-#### 啟動delivery節點
+###### 啟動delivery節點
 
 現在你將在validator上啟動delivery節點,一旦delivery節點同步了，你將在validator上啟動BTTC節點。
 
@@ -454,7 +456,7 @@ VALIDATOR_ADDRESS=0xca67a8D767e45056DC92384b488E9Af654d78DE2.
 
 等待delivery節點完全同步。
 
-#### 啟動BTTC節點
+###### 啟動BTTC節點
 
 一旦validator上的delivery節點完全同步，啟動validator上的BTTC節點。
 
@@ -470,11 +472,11 @@ sudo service bttc start
 journalctl -u bttc.service -f
 ```
 
-## 使用Binaries部署驗證人節點
+### 使用Binaries部署驗證人節點
 
 本節將指導您使用從Binaries啟動和運行驗證人節點。
 
-### 先決條件
+#### 先決條件
 
 * 兩台機器--一台sentry和一台validator。
 * 在sentry機和validator機上安裝build-essential。
@@ -499,7 +501,7 @@ journalctl -u bttc.service -f
 
 * 在sentry機和validator機上安裝RabbitMQ。請參閱 "[下載和安裝 RabbitMQ](https://www.rabbitmq.com/download.html)"。
 
-### 概述
+#### 概述
 
 要運行一個驗證人節點，請做以下工作：
 
@@ -513,13 +515,13 @@ journalctl -u bttc.service -f
 * 設置Owner和Signer的密鑰。
 * 啟動validator節點。
 
-### 安裝二進制文件
+#### 安裝二進制文件
 
 注:
 
 在sentry和validator上都要運行本節。
 
-#### 安裝delivery
+###### 安裝delivery
 
 ```sh
 #Clone the delivery repository:
@@ -532,7 +534,7 @@ make install
 deliveryd version --long 
 ```
 
-#### 安裝BTTCr
+###### 安裝BTTCr
 
 ```sh
 #Clone the BTTC repository:
@@ -549,33 +551,22 @@ sudo ln -nfs ~/bttc/build/bin/bootnode /usr/bin/bootnode
 bttc version
 ```
 
-### 設置節點文件
+#### 設置節點文件
 
 注:
 
 在sentry和validator上都要運行本節。
 
-#### 獲取 launch repository
+###### 獲取 launch repository
 
 ```sh
 #Clone the launch repository:
 git clone https://github.com/bttcprotocol/launch
 ```
 
-#### 設置目錄
+###### 設置目錄
 
-##### sentry機器上
-
-```sh
-#Create a node directory:
-mkdir -p node
-
-#Copy the files and scripts from the launch directory to the node directory:
-cp -rf launch/mainnet-v1/sentry/sentry ~/node
-cp launch/mainnet-v1/service.sh ~/node
-```
-
-##### validator機器上
+####### sentry機器上
 
 ```sh
 #Create a node directory:
@@ -586,9 +577,20 @@ cp -rf launch/mainnet-v1/sentry/sentry ~/node
 cp launch/mainnet-v1/service.sh ~/node
 ```
 
-#### 設置網絡目錄
+####### validator機器上
 
-#### 設置delivery
+```sh
+#Create a node directory:
+mkdir -p node
+
+#Copy the files and scripts from the launch directory to the node directory:
+cp -rf launch/mainnet-v1/sentry/sentry ~/node
+cp launch/mainnet-v1/service.sh ~/node
+```
+
+###### 設置網絡目錄
+
+###### 設置delivery
 
 ```sh
 #Change to the node directory:
@@ -597,7 +599,7 @@ cd ~/node/delivery
 bash setup.sh
 ```
 
-#### 設置BTTC
+###### 設置BTTC
 
 ```sh
 #Change to the node directory:
@@ -606,7 +608,7 @@ cd ~/node/bttc
 bash setup.sh
 ```
 
-### 設置服務
+#### 設置服務
 
 注:
 
@@ -621,11 +623,11 @@ bash service.sh
 sudo cp *.service /etc/systemd/system/
 ```
 
-### 配置sentry節點
+#### 配置sentry節點
 
 登錄到sentry機。
 
-#### 配置delivery節點
+###### 配置delivery節點
 
 * 編輯 ~/.deliveryd/config/config.toml。
 
@@ -645,7 +647,7 @@ sudo cp *.service /etc/systemd/system/
 * prometheus - 將該值設為true，以啟用Prometheus度量。例如：prometheus = true。
 * max_open_connections - 將該值設置為100。例如：max_open_connections = 100。
 
-#### 配置BTTC節點
+###### 配置BTTC節點
 
 * 編輯 ~/node/bttc/start.sh。
 
@@ -657,7 +659,7 @@ sudo cp *.service /etc/systemd/system/
 
 保存start.sh中的修改。
 
-#### 配置防火牆
+###### 配置防火牆
 
 sentry節點機器必須對外開放以下端口 0.0.0.0/0。
 
@@ -665,11 +667,11 @@ sentry節點機器必須對外開放以下端口 0.0.0.0/0。
 * 26656
 * 30303
 
-### 啟動sentry節點
+#### 啟動sentry節點
 
 你將首先啟動delivery節點,一旦delivery節點同步了，你將啟動BTTC節點。
 
-#### 啟動delivery節點
+###### 啟動delivery節點
 
 * 啟動delivery服務:
 
@@ -708,25 +710,25 @@ sentry節點機器必須對外開放以下端口 0.0.0.0/0。
 
 等待delivery節點完全同步。
 
-#### 啟動BTTC節點
+###### 啟動BTTC節點
 
 一旦delivery節點被完全同步，啟動BTTC節點。
 
-#### 啟動BTTC服務
+###### 啟動BTTC服務
 
 ```sh
 sudo service bttc start
 ```
 
-#### 檢查BTTC服務日誌
+###### 檢查BTTC服務日誌
 
 ```sh
 journalctl -u bttc.service -f
 ```
 
-### 配置validator節點
+#### 配置validator節點
 
-#### 配置delivery節點
+###### 配置delivery節點
 
 登錄到遠程validator機器上。
 
@@ -752,7 +754,7 @@ journalctl -u bttc.service -f
 * tron_rpc_url- tron主網節點的rpc端點，用來發送交易到這個端點。Example:tron_rpc_url = "47.252.19.181:50051"
 * tron_grid_url -tron主網節點的事件服務,用來查詢事件日誌.Example:tron_grid_url = "http://47.252.35.194:8547"
 
-#### 配置BTTC節點
+###### 配置BTTC節點
 
 編輯 `~/.bttc/data/bttc/static-nodes.json`，在 static-nodes.json 中，修改以下內容。
 
@@ -768,14 +770,14 @@ journalctl -u bttc.service -f
 "enode://a8024075291c0dd3467f5af51a05d531f9e518d6cd229336156eb6545581859e8997a80bc679fdb7a3bd7473744c57eeb3411719b973b2d6c69eff9056c0578f@188.166.216.25:30303".
 ```
 
-### 設置Owner和Signer的密鑰
+#### 設置Owner和Signer的密鑰
 
 在BTTC，建議你保持Onwer和Signer Key的不同。
 
 * Signer - 簽署checkpoint交易的地址。
 * Owner - 進行staking交易的地址。
 
-#### 生成一個delivery私鑰
+###### 生成一個delivery私鑰
 
 你必須只在validator上生成一個delivery私鑰，不要在sentry節點上生成delivery私鑰。
 
@@ -795,7 +797,7 @@ ETHEREUM_PRIVATE_KEY - 你的以太坊地址私鑰。
 mv ./priv_validator_key.json ~/.deliveryd/config
 ```
 
-#### 生成一個BTTC keystore文件
+###### 生成一個BTTC keystore文件
 
 你必須只在validator機器上生成一個BTTC keystore文件,不要在sentry節點生成BTTC keystore文件。
 
@@ -817,11 +819,11 @@ ETHEREUM_PRIVATE_KEY - 你的以太坊地址私鑰。
 mv ./UTC-<time>-<address> ~/.bttc/keystore/
 ```
 
-#### 添加password.txt
+###### 添加password.txt
 
 在 `~/.bttc/password.txt` 文件中添加BTTC keystore文件密碼。
 
-#### 添加你的以太坊地址
+###### 添加你的以太坊地址
 
 編輯/etc/bttc/metadata，在metadata中，添加你的以太坊地址。
 
@@ -831,7 +833,7 @@ mv ./UTC-<time>-<address> ~/.bttc/keystore/
 VALIDATOR_ADDRESS=0xca67a8D767e45056DC92384b488E9Af654d78DE2.
 ```
 
-### 啟動validator節點
+#### 啟動validator節點
 
 至此，你必須：
 
@@ -840,7 +842,7 @@ VALIDATOR_ADDRESS=0xca67a8D767e45056DC92384b488E9Af654d78DE2.
 * 配置好validator上的delivery節點和BTTC節點。
 * 你的Owner和Signer密鑰已配置。
 
-#### 啟動delivery節點
+###### 啟動delivery節點
 
 現在你將在validator上啟動delivery節點,一旦delivery節點同步了，你將在validator上啟動BTTC節點。
 
@@ -893,7 +895,7 @@ VALIDATOR_ADDRESS=0xca67a8D767e45056DC92384b488E9Af654d78DE2.
 
 等待delivery節點完全同步。
 
-#### 啟動BTTC節點
+###### 啟動BTTC節點
 
 一旦validator上的delivery節點完全同步，啟動validator上的BTTC節點。
 
@@ -908,3 +910,114 @@ sudo service bttc start
 ```sh
 journalctl -u bttc.service -f
 ```
+
+## Fullnode部署
+
+### 系統要求
+
+- 內存：32G
+- CPU：16核心
+- 存儲：700G固態硬盤（可擴展）
+
+### 部署節點
+
+我們創建了一個Ansible playbook來部署全節點。
+
+- Ansible需要Python3.x版本來安裝，使用pip3 install ansible來安裝Python3依賴項以及ansible。
+
+- 需要檢查用於部署的機器上沒有安裝Go。如果已經安裝，那麼通過ansible設置全節點時會遇到一些問題，因為ansible需要安裝特定的Go包
+
+- 刪除任何之前的BTTC的配置。
+
+- 確保您有權訪問正在設置完整節點的遠程計算機或 VM。
+
+- `git clone https://github.com/bttcprotocol/node-ansible`
+
+- `cd node-ansible`
+
+- 編輯inventory.yml文件並在該sentry->hosts部分插入您的 IP 。
+
+```yml
+all:
+  hosts:
+  children:
+    sentry:
+      hosts:
+        xxx.xxx.xx.xx: # <----- Add IP for sentry node
+        xxx.xxx.xx.xx: # <----- Add IP for second sentry node (optional)
+    validator:
+      hosts:
+        xxx.xxx.xx.xx: # <----- Add IP for validator node
+```
+
+示例如下
+
+```yml
+all:
+  hosts:
+  children:
+    sentry:
+      hosts:
+        188.166.216.25:
+    validator:
+      hosts:
+```
+
+- 通過運行檢查遠程機器是否可訪問 ansible sentry -m ping
+- 要進行測試運行以確認是否配置了正確的遠程機器/VM，請運行以下命令：
+
+```sh
+ansible-playbook -l sentry playbooks/network.yml --extra-var="bttc_branch=v0.2.7 delivery_branch=v0.2.2  network_version=mainnet-v1 node_type=sentry/sentry delivery_network=mainnet" --list-hosts
+```
+
+它應該輸出您配置的遠程機器IP。
+
+- 使用以下命令設置節點
+
+```sh
+ansible-playbook -l sentry playbooks/network.yml --extra-var="bttc_branch=v0.2.7 delivery_branch=v0.2.2  network_version=mainnet-v1 node_type=sentry/sentry delivery_network=mainnet"
+```
+
+- 如果遇到問題，可以用以下命令刪除並清理所有配置
+
+```sh
+ansible-playbook -l sentry playbooks/clean.yml
+```
+
+- 登錄到遠程機器
+
+- 在`~/.bttc/config/config.toml`配置如下內容
+
+```toml
+moniker=<enter unique identifier> seeds="TBD:SEEDS
+```
+
+- 將下面的flag添加到`~/node/bor/bttc-start.sh`的bttc啟動參數中
+
+```sh
+--bootnodes "enode://0cb82b395094ee4a2915e9714894627de9ed8498fb881cec6db7c65e8b9a5bd7f2f25cc84e71e89d0947e51c76e85d0847de848c7782b13c0255247a6758178c@44.232.55.71:30303,enode://88116f4295f5a31538ae409e4d44ad40d22e44ee9342869e7d68bdec55b0f83c1530355ce8b41fbec0928a7d75a5745d528450d30aec92066ab6ba1ee351d710@159.203.9.164:30303"
+```
+
+- 如果您希望開啟trace，在`~/node/bttc/start.sh`的bttc啟動參數中添加如下參數`--gcmode 'archive'`
+
+### 啟動節點和服務
+
+#### 運行全節點
+
+- 啟動中間層驗證人 `sudo service delivery start`
+
+- 啟動中間層驗證人 `rest server：sudo service deliveryd-rest-server start`
+
+- 同步中間層驗證人後，運行以下命令：`sudo service bttc start`
+
+#### 查看日誌
+
+- 查看中間層驗證人日誌：`journalctl -u delivery.service -f`
+
+- 查看中間層驗證人rest server日誌：`journalctl -u deliveryd-rest-server.service -f`
+
+- 查看BTTC日誌：`journalctl -u bttc.service -f`
+
+#### 端口/防火牆設置
+
+在節點防火牆上向所有人 `(0.0.0.0/0)` 開放端口 22、26656 和 30303。其他端口都應該關閉。
