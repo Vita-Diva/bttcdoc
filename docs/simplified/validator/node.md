@@ -1,5 +1,19 @@
 # 节点部署
 
+## 节点概述
+
+### 验证人节点(Validator)
+
+验证人节点(validator)主要负责同步质押，存取款等事件，同时负责提交checkpoint至主网。
+
+验证人节点也是BitTorrent-Chain层中的超级节点。
+
+如何申请成为验证人请参考：[验证人申请文档](https://bttc.zendesk.com/hc/zh-cn/articles/4408443786905-成为验证人)
+
+### 全节点(FullNode)
+
+全节点是BTTC网络的参与者，任何人可以通过部署BTTC全节点同步BTTC网络区块，广播交易，同时全节点包含BTTC网络的全部区块数据。
+
 ## 验证人节点部署
 
 ### 入门

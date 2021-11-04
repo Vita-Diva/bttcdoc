@@ -1,5 +1,19 @@
 # 節點部署
 
+## 節點概述
+
+### 驗證人節點(Validator)
+
+驗證人節點(validator)主要負責同步質押，存取款等事件，同時負責提交checkpoint至主網。
+
+驗證人節點也是BitTorrent-Chain層中的超級節點。
+
+如何申請成為驗證人請參考：[驗證人申請文檔](https://bttc.zendesk.com/hc/en-us/articles/4408443786905-How-to-Become-a-Validator)
+
+### 全節點(FullNode)
+
+全節點是BTTC網絡的參與者，任何人可以通過部署BTTC全節點同步BTTC網絡區塊，廣播交易，同時全節點包含BTTC網絡的全部區塊數據。
+
 ## 驗證人節點部署
 
 ### 入門

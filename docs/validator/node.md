@@ -1,5 +1,19 @@
 # Node Deployment
 
+## Node overview
+
+### Validator node (Validator)
+
+The validator node (validator) is mainly responsible for synchronizing pledges, deposits and withdrawals and other events, and is also responsible for submitting checkpoints to the main network.
+
+The validator node is also a super node in the BitTorrent-Chain layer.
+
+To apply to become a verifier, please refer to: [How to Become a Validator](https://bttc.zendesk.com/hc/en-us/articles/4408443786905-How-to-Become-a-Validator)
+
+### Full Node (FullNode)
+
+A full node is a participant of the BTTC network. Anyone can synchronize the BTTC network block and broadcast transactions by deploying the BTTC full node. At the same time, the full node contains all the block data of the BTTC network.
+
 ## Validator Node deployment
 
 ### Getting Started
