@@ -102,13 +102,15 @@ all:
 
      hosts:
 
-       188.166.216.25:
+       54.173.172.27
+       18.205.136.99
+       18.144.96.251
+       52.9.163.94
 
    validator:
 
      hosts:
 
-       134.209.100.175:
 ```
 
 Check that the remote sentry machine is reachable. On the local machine, run `ansible sentry -m ping`:
@@ -198,7 +200,7 @@ In config.toml, change the following:
 * moniker — any name. Example: moniker = "my-sentry-node".
 * seeds — the seed node addresses consisting of a node ID, an IP address, and a port. \
 Use the following values:
-* seeds="f4f605d60b8ffaaf15240564e58a81103510631c@159.203.9.164:26656,4fb1bc820088764a564d4f66bba1963d47d82329@44.232.55.71:26656,2eadba4be3ce47ac8db0a3538cb923b57b41c927@35.199.4.13:26656,3b23b20017a6f348d329c102ddc0088f0a10a444@35.221.13.28:26656,25f5f65a09c56e9f1d2d90618aa70cd358aa68da@35.230.116.151:26656"
+* Testnet seeds="093f5dbb99a4a086701c54a0abaa6ef98b690d01@54.173.172.27:26656,d8584528a4f33da2fe90248a2451984710131043@18.205.136.99:26656,38b31688d6175f1dc18deac60682575a536e1c7b@18.144.96.251:26656,06ad59e0a4f7e66cba9d1ffe2a65d1f18eb93192@52.9.163.94:26656"
 * pex — set the value to true to enable the peer exchange. Example: pex = true.
 * private_peer_ids — the node ID of delivery set up on the validator machine. \
 To get the node ID of delivery on the validator machine:
@@ -217,7 +219,8 @@ Open for editing `~/node/bttc/start.sh`.
 In start.sh, add the boot node addresses consisting of a node ID, an IP address, and a port by adding the following line at the end:
 
 ```sh
---bootnodes "enode://0cb82b395094ee4a2915e9714894627de9ed8498fb881cec6db7c65e8b9a5bd7f2f25cc84e71e89d0947e51c76e85d0847de848c7782b13c0255247a6758178c@44.232.55.71:30303,enode://88116f4295f5a31538ae409e4d44ad40d22e44ee9342869e7d68bdec55b0f83c1530355ce8b41fbec0928a7d75a5745d528450d30aec92066ab6ba1ee351d710@159.203.9.164:30303,enode://3178257cd1e1ab8f95eeb7cc45e28b6047a0432b2f9412cff1db9bb31426eac30edeb81fedc30b7cd3059f0902b5350f75d1b376d2c632e1b375af0553813e6f@35.221.13.28:30303,enode://16d9a28eadbd247a09ff53b7b1f22231f6deaf10b86d4b23924023aea49bfdd51465b36d79d29be46a5497a96151a1a1ea448f8a8666266284e004306b2afb6e@35.199.4.13:30303,enode://ef271e1c28382daa6ac2d1006dd1924356cfd843dbe88a7397d53396e0741ca1a8da0a113913dee52d9071f0ad8d39e3ce87aa81ebc190776432ee7ddc9d9470@35.230.116.151:30303"
+# testnet
+--bootnodes "enode://9a9bf0cb51e1fb04aa8b4838267c510d3e8492c3ff9dce98bac1982fc83551706c981486d26d2e473f61155924aa2a0872a0867ac6785fa53aeb65c39fbf42e2@54.173.172.27:30303,enode://6868cfb33a0fbd46a409be44b348445b0c1acd2025121ddcb233886169ac9568babdcad46d3ca0ae0af9a29b3f0f715ac8c356cf7c144b1d4ecadfca3824b57c@18.205.136.99:30303,enode://dc111c1ea693b349643ee4d9ba7adda0b7e3ca810e5d5191864cd008031ce55795aeedeb5f25e3ddffced47e963d6bf0939f422e94bcf6586c2a6ae711531cc5@18.144.96.251:30303,enode://d3a6c6fd22a2c42924b3be103e264f5850f6943926569d140ba4e47e0f5190293aa2886bca6437d28c5d364c1a0309bb777ef7ee5ee380d7158fc8e62e7a56c7@52.9.163.94:30303"
 ```
 
 Save the changes in start.sh.
@@ -706,7 +709,7 @@ In config.toml, change the following:
 * moniker — any name. Example: moniker = "my-sentry-node".
 * seeds — the seed node addresses consisting of a node ID, an IP address, and a port. \
 Use the following values:
-* seeds="f4f605d60b8ffaaf15240564e58a81103510631c@159.203.9.164:26656,4fb1bc820088764a564d4f66bba1963d47d82329@44.232.55.71:26656,2eadba4be3ce47ac8db0a3538cb923b57b41c927@35.199.4.13:26656,3b23b20017a6f348d329c102ddc0088f0a10a444@35.221.13.28:26656,25f5f65a09c56e9f1d2d90618aa70cd358aa68da@35.230.116.151:26656"
+* Testnet seeds="093f5dbb99a4a086701c54a0abaa6ef98b690d01@54.173.172.27:26656,d8584528a4f33da2fe90248a2451984710131043@18.205.136.99:26656,38b31688d6175f1dc18deac60682575a536e1c7b@18.144.96.251:26656,06ad59e0a4f7e66cba9d1ffe2a65d1f18eb93192@52.9.163.94:26656"
 * pex — set the value to true to enable the peer exchange. Example: pex = true.
 * private_peer_ids — the node ID of delivery set up on the validator machine. \
 To get the node ID of delivery on the validator machine:
@@ -725,7 +728,8 @@ Open for editing `~/node/bttc/start.sh`.
 In start.sh, add the boot node addresses consisting of a node ID, an IP address, and a port by adding the following line at the end:
 
 ```sh
---bootnodes "enode://0cb82b395094ee4a2915e9714894627de9ed8498fb881cec6db7c65e8b9a5bd7f2f25cc84e71e89d0947e51c76e85d0847de848c7782b13c0255247a6758178c@44.232.55.71:30303,enode://88116f4295f5a31538ae409e4d44ad40d22e44ee9342869e7d68bdec55b0f83c1530355ce8b41fbec0928a7d75a5745d528450d30aec92066ab6ba1ee351d710@159.203.9.164:30303,enode://3178257cd1e1ab8f95eeb7cc45e28b6047a0432b2f9412cff1db9bb31426eac30edeb81fedc30b7cd3059f0902b5350f75d1b376d2c632e1b375af0553813e6f@35.221.13.28:30303,enode://16d9a28eadbd247a09ff53b7b1f22231f6deaf10b86d4b23924023aea49bfdd51465b36d79d29be46a5497a96151a1a1ea448f8a8666266284e004306b2afb6e@35.199.4.13:30303,enode://ef271e1c28382daa6ac2d1006dd1924356cfd843dbe88a7397d53396e0741ca1a8da0a113913dee52d9071f0ad8d39e3ce87aa81ebc190776432ee7ddc9d9470@35.230.116.151:30303"
+# testnet
+--bootnodes "enode://9a9bf0cb51e1fb04aa8b4838267c510d3e8492c3ff9dce98bac1982fc83551706c981486d26d2e473f61155924aa2a0872a0867ac6785fa53aeb65c39fbf42e2@54.173.172.27:30303,enode://6868cfb33a0fbd46a409be44b348445b0c1acd2025121ddcb233886169ac9568babdcad46d3ca0ae0af9a29b3f0f715ac8c356cf7c144b1d4ecadfca3824b57c@18.205.136.99:30303,enode://dc111c1ea693b349643ee4d9ba7adda0b7e3ca810e5d5191864cd008031ce55795aeedeb5f25e3ddffced47e963d6bf0939f422e94bcf6586c2a6ae711531cc5@18.144.96.251:30303,enode://d3a6c6fd22a2c42924b3be103e264f5850f6943926569d140ba4e47e0f5190293aa2886bca6437d28c5d364c1a0309bb777ef7ee5ee380d7158fc8e62e7a56c7@52.9.163.94:30303"
 ```
 
 Save the changes in start.sh.
@@ -1044,7 +1048,10 @@ all:
   children:
     sentry:
       hosts:
-        188.166.216.25:
+        54.173.172.27
+        18.205.136.99
+        18.144.96.251
+        52.9.163.94
     validator:
       hosts:
 ```
@@ -1076,13 +1083,14 @@ ansible-playbook -l sentry playbooks/clean.yml
 - Configure the following content in `~/.bttc/config/config.toml`
 
 ```toml
-moniker=<enter unique identifier> seeds="TBD:SEEDS
+moniker=<enter unique identifier> seeds="093f5dbb99a4a086701c54a0abaa6ef98b690d01@54.173.172.27:26656,38b31688d6175f1dc18deac60682575a536e1c7b@18.144.96.251:26656"
 ```
 
 - Add the following flag to the bttc startup parameters of `~/node/bor/bttc-start.sh`
 
 ```sh
---bootnodes "enode: //0cb82b395094ee4a2915e9714894627de9ed8498fb881cec6db7c65e8b9a5bd7f2f25cc84e71e89d0947e51c76e85d0847de848c7782b13c0255247a6758178c@44.232.55.71: 30303, enode: //88116f4295f5a31538ae409e4d44ad40d22e44ee9342869e7d68bdec55b0f83c1530355ce8b41fbec0928a7d75a5745d528450d30aec92066ab6ba1ee351d710@159.203.9.164: 30303"
+# testnet
+--bootnodes "enode://9a9bf0cb51e1fb04aa8b4838267c510d3e8492c3ff9dce98bac1982fc83551706c981486d26d2e473f61155924aa2a0872a0867ac6785fa53aeb65c39fbf42e2@54.173.172.27:30303,enode://6868cfb33a0fbd46a409be44b348445b0c1acd2025121ddcb233886169ac9568babdcad46d3ca0ae0af9a29b3f0f715ac8c356cf7c144b1d4ecadfca3824b57c@18.205.136.99:30303,enode://dc111c1ea693b349643ee4d9ba7adda0b7e3ca810e5d5191864cd008031ce55795aeedeb5f25e3ddffced47e963d6bf0939f422e94bcf6586c2a6ae711531cc5@18.144.96.251:30303,enode://d3a6c6fd22a2c42924b3be103e264f5850f6943926569d140ba4e47e0f5190293aa2886bca6437d28c5d364c1a0309bb777ef7ee5ee380d7158fc8e62e7a56c7@52.9.163.94:30303"
 ```
 
 - If you want to enable trace, add the following parameter `--gcmode'archive'` to the bttc startup parameters of `~/node/bttc/start.sh`
