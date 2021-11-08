@@ -96,8 +96,8 @@ all:
   children:
 
     sentry:
-
       hosts:
+      # testnet
         54.173.172.27
         18.205.136.99
         18.144.96.251
@@ -976,6 +976,7 @@ all:
   children:
     sentry:
       hosts:
+      # testnet
         54.173.172.27
         18.205.136.99
         18.144.96.251
@@ -1010,6 +1011,7 @@ ansible-playbook -l sentry playbooks/clean.yml
 - 在`~/.bttc/config/config.toml`配置如下內容
 
 ```toml
+# testnet
 moniker=<enter unique identifier> seeds="093f5dbb99a4a086701c54a0abaa6ef98b690d01@54.173.172.27:26656,38b31688d6175f1dc18deac60682575a536e1c7b@18.144.96.251:26656"
 ```
 

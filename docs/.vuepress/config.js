@@ -39,8 +39,9 @@ module.exports = {
             'dapp',
             'tron-bttc',
             'del-val',
+            'tbd',
             // 'sentry',
-            'validator/node',
+            // 'validator/node',
             'validator/faq'
           ]
         }
@@ -59,8 +60,9 @@ module.exports = {
             '/simplified/dapp',
             '/simplified/tron-bttc',
             '/simplified/del-val',
+            '/simplified/tbd',
             // '/simplified/sentry',
-            '/simplified/validator/node',
+            // '/simplified/validator/node',
             '/simplified/validator/faq'
           ]
         }
@@ -79,8 +81,9 @@ module.exports = {
             '/traditional/dapp',
             '/traditional/tron-bttc',
             '/traditional/del-val',
+            '/traditional/tbd',
             // '/traditional/sentry',
-            '/traditional/validator/node',
+            // '/traditional/validator/node',
             '/traditional/validator/faq'
           ]
         }
