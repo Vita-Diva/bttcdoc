@@ -1,4 +1,4 @@
-# BTTC Testnet Configuration
+# BTTC Testnet
 
 The BitTorrent Chain (BTTC) test network is open now. Currently, it supports TRON Nile testnet, Ethereum Goerli testnet and the BSC testnet. The introduction is as follows:
 
@@ -8,6 +8,10 @@ The BitTorrent Chain (BTTC) test network is open now. Currently, it supports TRO
 |  ETH |  Goerli | [Goerli Faucet](https://faucet.goerli.mudit.blog/)  |
 |  BSC |  BSC Testnet | [BSC Faucet](https://testnet.binance.org/faucet-smart)  |
 |  BTTC | BTTC Testnet | [BTTC Faucet](https://faucet.bittorrentchain.io/)  |
+
+::: tip
+Please note that the BTT test coins acquired from BTTC Faucet will be sent to the TRON Nile testnet. Please use [BTTC Bridge](https://wallet.bittorrentchain.io/bridge), link your Tronlink wallet and map the test coins from TRON to the BTTC network.
+:::
 
 ## TRON Nile Testnet
 

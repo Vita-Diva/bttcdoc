@@ -1,4 +1,4 @@
-# BTTC測試網絡設置
+# BTTC測試網絡
 
 BitTorrent Chain（BTTC）測試網現已正式開啟，目前已支持TRON測試網(Nile)，以太坊測試網(Goerli)以及BSC測試網的接入，簡介如下：
 
@@ -8,6 +8,10 @@ BitTorrent Chain（BTTC）測試網現已正式開啟，目前已支持TRON測�
 |  ETH |  Goerli | [Goerli Faucet](https://faucet.goerli.mudit.blog/)  |
 |  BSC |  BSC測試網 | [BSC Faucet](https://testnet.binance.org/faucet-smart)  |
 |  BTTC | BTTC測試網  | [BTTC Faucet](https://faucet.bittorrentchain.io/)  |
+
+::: tip
+請注意，從BTTC Faucet領取的BTT測試幣將發送至TRON Nile測試網。請通過[BTTC Bridge](https://wallet.bittorrentchain.io/bridge)，鏈接Tronlink錢包後，將TRON上的測試幣映射到BTTC網絡。
+:::
 
 ## TRON Nile 測試網
 
