@@ -9,10 +9,6 @@ The BitTorrent Chain (BTTC) test network is open now. Currently, it supports TRO
 |  BSC |  BSC Testnet | [BSC Faucet](https://testnet.binance.org/faucet-smart)  |
 |  BTTC | BTTC Testnet | [BTTC Faucet](https://faucet.bittorrentchain.io/)  |
 
-::: tip
-Please note that the BTT test coins acquired from BTTC Faucet will be sent to the TRON Nile testnet. Please use [BTTC Bridge](https://wallet.bittorrentchain.io/bridge), link your Tronlink wallet and map the test coins from TRON to the BTTC network.
-:::
-
 ## TRON Nile Testnet
 
 The access to the Tron Nile testnet requires the Tronlink Chrome plug-in, and Tronlink already supports Nile.

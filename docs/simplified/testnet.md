@@ -9,10 +9,6 @@ BitTorrent Chain（BTTC）测试网现已正式开启，目前已支持TRON测�
 |  BSC |  BSC测试网 | [BSC Faucet](https://testnet.binance.org/faucet-smart)  |
 |  BTTC | BTTC测试网  | [BTTC Faucet](https://faucet.bittorrentchain.io/)  |
 
-::: tip
-请注意，从BTTC Faucet领取的BTT测试币将发送至TRON Nile测试网。请通过[BTTC Bridge](https://wallet.bittorrentchain.io/bridge)，链接Tronlink钱包后，将TRON上的测试币映射到BTTC网络。
-:::
-
 ## TRON Nile 测试网
 
 Tron Nile测试网的接入需要使用Tronlink Chrome插件，并且Tronlink已支持Nile，用户在登录Tronlink钱包后需要切换至Nile测试网，通过水龙头申请测试币并发送至Tronlink账号，即可完成Nile测试网环境准备。
