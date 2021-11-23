@@ -7,7 +7,7 @@ The BitTorrent Chain (BTTC) test network is open now. Currently, it supports TRO
 | TRON  | Nile  |  [Nile Faucet](https://nileex.io/join/getJoinPage) |
 |  ETH |  Goerli | [Goerli Faucet](https://faucet.goerli.mudit.blog/)  |
 |  BSC |  BSC Testnet | [BSC Faucet](https://testnet.binance.org/faucet-smart)  |
-|  BTTC | BTTC Testnet | [BTTC Faucet](https://faucet.bittorrentchain.io/)  |
+|  BTTC | BitTorrent Chain Donau | [BTTC Faucet](https://testfaucet.bittorrentchain.io/#)  |
 
 ## TRON Nile Testnet
 
@@ -56,10 +56,10 @@ For details, please refer to:：[Conncting Metamask to Binance Smart Chain](http
 
 Accessing to the BTTC test network requires Metamask. Please use Metamask to add the network configuration of the BTTC test network, and switch to the BTTC test network.
 
-* Network Name: BitTorrent Chain Testnet
-* RPC URL: https://test-rpc.bittorrentchain.io/ 
-* ChainID: 1028
+* Network Name: BitTorrent Chain Donau
+* RPC URL: https://pre-rpc.bittorrentchain.io/
+* ChainID: 1029
 * Symbol: BTT
-* Block Explorer URL: https://scan.bittorrentchain.io/
+* Block Explorer URL: https://testscan.bittorrentchain.io/
 
 ![image](./pics/wallet-rpc.png)

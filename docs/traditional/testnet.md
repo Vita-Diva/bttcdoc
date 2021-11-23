@@ -7,7 +7,7 @@ BitTorrent Chain（BTTC）測試網現已正式開啟，目前已支持TRON測�
 | TRON  | Nile  |  [Nile Faucet](https://nileex.io/join/getJoinPage) |
 |  ETH |  Goerli | [Goerli Faucet](https://faucet.goerli.mudit.blog/)  |
 |  BSC |  BSC測試網 | [BSC Faucet](https://testnet.binance.org/faucet-smart)  |
-|  BTTC | BTTC測試網  | [BTTC Faucet](https://faucet.bittorrentchain.io/)  |
+|  BTTC | BitTorrent Chain Donau  | [BTTC Faucet](https://testfaucet.bittorrentchain.io/#)  |
 
 ## TRON Nile 測試網
 
@@ -54,10 +54,10 @@ BSC測試網的接入需要使用Metamask，並切換至Goerli測試網，通過
 
 BTTC測試網的接入需要使用Metamask，並使用Metamask添加BTTC測試網的網絡配置，並切換至BTTC測試網。
 
-* 網絡名稱（Network Name）：BitTorrent Chain Testnet
-* RPC URL（RPC URL）：https://test-rpc.bittorrentchain.io/ 
-* 智能鏈ID（ChainID）：1028
+* 網絡名稱（Network Name）：BitTorrent Chain Donau
+* RPC URL（RPC URL）：https://pre-rpc.bittorrentchain.io/
+* 智能鏈ID（ChainID）：1029
 * 符號（Symbol）：BTT
-* 區塊瀏覽器URL（Block Explorer URL）：https://scan.bittorrentchain.io/
+* 區塊瀏覽器URL（Block Explorer URL）：https://testscan.bittorrentchain.io/
 
 ![image](../pics/wallet-rpc.png)
