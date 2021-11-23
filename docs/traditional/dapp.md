@@ -59,11 +59,11 @@ contract HelloWorld {
 
 按照圖中的信息填寫：
 
-* Network Name: BitTorrent Chain Testnet
-* RPC URL: https://test-rpc.bittorrentchain.io/
+* Network Name: BitTorrent Chain Donau
+* RPC URL: https://pre-rpc.bittorrentchain.io/
 * Chain ID: 1028
 * Currency Symbol: BTT
-* Explorer: https://scan.bittorrentchain.io/
+* Explorer: https://testscan.bittorrentchain.io/
 
 ![image](../pics/dapp/5.png)
 
@@ -286,11 +286,11 @@ mapping(uint256 => Tracking) public trackings;
 
 按照圖中的信息填寫：
 
-* Network Name: BitTorrent Chain Testnet
-* RPC URL: https://test-rpc.bittorrentchain.io/
+* Network Name: BitTorrent Chain Donau
+* RPC URL: https://pre-rpc.bittorrentchain.io/
 * Chain ID: 1028
 * Currency Symbol: BTT
-* Explorer: https://scan.bittorrentchain.io/
+* Explorer: https://testscan.bittorrentchain.io/
 
 ![image](../pics/dapp/5.png)
 

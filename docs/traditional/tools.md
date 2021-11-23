@@ -2,7 +2,7 @@
 
 ## 區塊鏈瀏覽器
 
-* 測試網：[https://scan.bittorrentchain.io/](https://scan.bittorrentchain.io/)
+* 測試網：[https://testscan.bittorrentchain.io/](https://testscan.bittorrentchain.io/)
 
 ## 合約開發
 

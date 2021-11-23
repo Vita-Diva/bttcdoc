@@ -2,7 +2,7 @@
 
 ## Blockchain Explorer
 
-* Testnet：[https://scan.bittorrentchain.io/](https://scan.bittorrentchain.io/)
+* Testnet：[https://testscan.bittorrentchain.io/](https://testscan.bittorrentchain.io/)
 
 ## Contract Development
 
