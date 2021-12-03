@@ -48,7 +48,7 @@ make bttc
 
 ```sh
 npm uninstall -g bttc-cli
-npm install -g @tronnetwork/bttc-cli
+npm install -g @bttcnetwork/bttc-cli
 ```
 
 ### 检查bttc-cli版本

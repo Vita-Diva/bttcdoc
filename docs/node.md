@@ -1,0 +1,166 @@
+# Node Deployment
+
+## Dependencies and Tools
+
+- Git v2.30.1
+- g++
+- Go 1.16 +
+- Nodejs v11.0
+- Rabbitmq(latest stable version)
+
+## Compile & Install Delivery and BTTC Binary Packages
+
+::: tip NOTE
+The genesis configuration and node id needed for deployment are all placed in [launch](https://github.com/bttcprotocol/launch.git)
+:::
+
+### Clone Delivery Code
+
+```sh
+git clone https://github.com/bttcprotocol/delivery.git
+```
+
+### Install Delivery
+
+```sh
+cd delivery
+make install
+```
+
+### Clone BTTC Code
+
+```sh
+git clone https://github.com/bttcprotocol/bttc
+```
+
+### Install BTTC
+
+```sh
+cd bttc
+make bttc
+```
+
+## Install bttc-cli Script
+
+::: tip NOTE
+When bttc-cli is updated, please uninstall the local old version first, and then reinstall the latest version.
+:::
+
+```sh
+npm uninstall -g bttc-cli
+npm install -g @bttcnetwork/bttc-cli
+```
+
+### Check bttc-cli Version
+
+```sh
+bttc-cli -V
+```
+
+## Deploy Node
+
+Use the following command to initialize the node directory:
+
+```sh
+bttc-cli setup devnet
+```
+
+Then fill in the following questions one by one, please pay attention to the difference between the main network and the test network
+
+### BTTC Test Net (Donau, 1029)
+
+```sh
+Please enter Bttc chain id 1029
+? Please enter Delivery chain id delivery-1029
+? Please enter Bttc branch or tag master
+? Please enter Delivery branch or tag master
+? Please enter Contracts branch or tag master
+? Please enter number of validator nodes 1
+? Please enter number of non-validator nodes 0
+? Please enter ETH url
+? Please select devnet type remote
+? Please enter comma separated hosts/IPs localhost
+```
+
+After running the above script, the following node directory will be generated
+
+![image](./pics/node/node-dir.png)
+
+## Validator Configuration
+
+Assume that the root directory of the node is in `/data/bttc/node0`.
+
+### Configure the Delivery Seed Node
+
+#### Node API_KEY Configuration
+
+Modify the delivery-config file
+Directory: `/data/bttc/node0/deliveryd/config/delivery-config.toml`
+
+**Configuration instructions:**
+
+- eth_rpc_url: For the API_KEY address you applied for, you need to generate INFURA_KEY yourself in order to communicate with Ethereum. [API_KEY Application Tutorial](https://ethereumico.io/knowledge-base/infura-api-key-guide)
+
+- tron_rpc_url: RPC address of TRON network node.
+
+- tron_grid_url: TRON network query node.
+
+- bsc_rpc_url: RPC address of BSC network node.
+
+**DEMO:**
+
+```conf
+vim /data/bttc/node0/deliveryd/config/delivery-config.toml
+  
+eth_rpc_url = "https://goerli.infura.io/v3/<YOUR_INFURA_KEY>"
+bsc_rpc_url = "https://data-seed-prebsc-1-s1.binance.org:8545/"
+tron_rpc_url = "47.252.19.181:50051"
+tron_grid_url = "http://172.18.1.136:8547"
+```
+
+#### Replace Genesis file Configuration
+
+Replace delivery-genesis.json in [launch warehouse](https://github.com/bttcprotocol/launch.git) with the path: `/data/bttc/node0/deliveryd/config/genesis.json`.
+
+#### Add node-ids of the Delivery Layer
+
+Modify the seeds field of the configuration file `/data/bttc/node0/deliveryd/config/config.toml`. See the seed information in [here](https://github.com/bttcprotocol/launch/tree/master/testnet-1029/without-sentry/delivery).
+
+### Start the Delivery node
+
+#### Start Delivery
+
+```sh
+nohup sh delivery-start.sh>>logs/deliveryd.log 2>&1 &
+```
+
+#### Start Follow-up Service
+
+```sh
+nohup sh delivery-server-start.sh>>logs/rest-server.log 2>&1 &
+nohup sh delivery-bridge-start.sh>>logs/bridge.log 2>&1 &
+```
+
+### Configure BTTC Seed Node
+
+#### Replace BTTC's Genesis File
+
+BTTC genesis file path: `/data/bttc/node0/bttc/genesis.json`
+
+Replace `bttc-genesis.json` in [launch warehouse](https://github.com/bttcprotocol/launch.git) with the above path.
+
+#### Add node-ids of BTTC Seed Nodes
+
+Replace `static-nodes.json` in [launch warehouse](https://github.com/bttcprotocol/launch.git) with `/data/bttc/node0/bttc/static-nodes.json`.
+
+### Initialize the BTTC Node
+
+```sh
+sh bttc-setup.sh
+```
+
+### Start BTTC Node
+
+```sh
+nohup sh bttc-start.sh >>logs/bttc-start.log 2>&1 &
+```
