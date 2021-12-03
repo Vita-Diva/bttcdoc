@@ -60,7 +60,7 @@ module.exports = {
             '/simplified/dapp',
             '/simplified/tron-bttc',
             '/simplified/del-val',
-            '/simplified/tbd',
+            '/simplified/node',
             // '/simplified/sentry',
             // '/simplified/validator/node',
             '/simplified/validator/faq'
