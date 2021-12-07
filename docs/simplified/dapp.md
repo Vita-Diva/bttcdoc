@@ -59,13 +59,13 @@ contract HelloWorld {
 
 按照图中的信息填写：
 
-* Network Name: BitTorrent Chain Testnet
-* RPC URL: https://test-rpc.bittorrentchain.io/ 
-* Chain ID: 1028
-* Currency Symbol: BTT
-* Explorer: https://scan.bittorrentchain.io/
+* 网络名称（Network Name）：BitTorrent Chain Donau
+* RPC URL（RPC URL）：https://pre-rpc.bittorrentchain.io/ 
+* 智能链ID（ChainID）：1029
+* 符号（Symbol）：BTT
+* 区块浏览器URL（Block Explorer URL）：https://testscan.bittorrentchain.io/
 
-![image](../pics/dapp/5.png)
+![image](../pics/wallet-rpc.png)
 
 添加完成后的界面如下图所示
 
@@ -286,13 +286,13 @@ mapping(uint256 => Tracking) public trackings;
 
 按照图中的信息填写：
 
-* Network Name: BitTorrent Chain Testnet
-* RPC URL: https://test-rpc.bittorrentchain.io/ 
-* Chain ID: 1028
-* Currency Symbol: BTT
-* Explorer: https://scan.bittorrentchain.io/
+* 网络名称（Network Name）：BitTorrent Chain Donau
+* RPC URL（RPC URL）：https://pre-rpc.bittorrentchain.io/ 
+* 智能链ID（ChainID）：1029
+* 符号（Symbol）：BTT
+* 区块浏览器URL（Block Explorer URL）：https://testscan.bittorrentchain.io/
 
-![image](../pics/dapp/5.png)
+![image](../pics/wallet-rpc.png)
 
 首先，在Remix的DEPLOY & RUN TRANSACTIONS栏中，从Environment的下拉菜单里选择Injected Web3
 

@@ -6,12 +6,6 @@
 
 https://rpc.bittorrentchain.io/
 
-## 测试网（ChainID 0x404，十进制1028）
-
-### Endpoint
-
-https://test-rpc.bittorrentchain.io/ 
-
 ## Donau(ChainID 0x405, Decimal 1029)
 
 ### Endpoint

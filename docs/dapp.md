@@ -63,13 +63,13 @@ Open the MetaMask wallet and select Custom RPC in the drop-down menu as shown in
 
 Fill in according to the information in the picture:
 
-* Network Name: BitTorrent Chain Testnet
-* RPC URL: https://test-rpc.bittorrentchain.io/ 
-* Chain ID: 1028
-* Currency Symbol: BTT
-* Explorer: https://scan.bittorrentchain.io/
+* Network Name: BitTorrent Chain Donau
+* RPC URL: https://pre-rpc.bittorrentchain.io/ 
+* ChainID: 1029
+* Symbol: BTT
+* Block Explorer URL: https://testscan.bittorrentchain.io/
 
-![image](./pics/dapp/5.png)
+![image](./pics/wallet-rpc.png)
 
 The screen after the addition is complete is shown below
 
@@ -290,13 +290,13 @@ Open Metamask and select Custom RPC from the networks dropdown
 
 Fill in the information as per the chart：
 
-* Network Name: BitTorrent Chain Testnet
-* RPC URL: https://test-rpc.bittorrentchain.io/ 
-* Chain ID: 1028
-* Currency Symbol: BTT
-* Explorer: https://scan.bittorrentchain.io/
+* Network Name: BitTorrent Chain Donau
+* RPC URL: https://pre-rpc.bittorrentchain.io/ 
+* ChainID: 1029
+* Symbol: BTT
+* Block Explorer URL: https://testscan.bittorrentchain.io/
 
-![image](./pics/dapp/5.png)
+![image](./pics/wallet-rpc.png)
 
 First, in the DEPLOY & RUN TRANSACTIONS section of Remix, select Injected Web3 from the Environment drop-down menu.
 
