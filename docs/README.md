@@ -38,3 +38,22 @@ You are already a BTTC developer if you have developed a dApp on TRON or Ethereu
 
 You can deploy your smart contract on BTTC without worrying about the underlying architecture if you have a ready-made dApp that is compatible with EVM.
 
+## Network Details
+
+The BitTorrent Mainnet is launched on December 12, 2021. There is also a running testnet (Donau).
+
+### BTTC Mainnet
+
+* Network Name: BitTorrent Chain Mainnet
+* RPC URL (RPC URL): https://rpc.bittorrentchain.io/
+* Smart chain ID (ChainID): 199
+* Symbol: BTT
+* Block Explorer URL: https://scan.bittorrentchain.io/
+
+### BTTC Test Network (Donau)
+
+* Network Name: BitTorrent Chain Donau
+* RPC URL (RPC URL): https://pre-rpc.bittorrentchain.io/
+* Smart chain ID (ChainID): 1029
+* Symbol: BTT
+* Block Explorer URL: https://testscan.bittorrentchain.io/
