@@ -1,6 +1,6 @@
 # JSON-RPC
 
-## 主網（ChainID 0xc7，十進制199）
+## 主網（ChainID 0xc7，Decimal 199）
 
 ### Endpoint
 
