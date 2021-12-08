@@ -27,6 +27,10 @@ cd delivery
 make install
 ```
 
+::: tip NOTE
+当在某些环境下`make install`失败时，请使用`make build`，并将`delivery-start.sh`中的`deliveryd`替换为build文件夹下deliverd的路径。
+:::
+
 ### clone BTTC代码
 
 ```sh
@@ -70,21 +74,28 @@ bttc-cli setup devnet
 ### BTTC测试网（Donau, 1029）
 
 ```sh
-Please enter Bttc chain id  1029
+? Please enter Bttc chain id 1029
 ? Please enter Delivery chain id delivery-1029
 ? Please enter Bttc branch or tag master
-? Please enter Delivery branch or tag master
-? Please enter Contracts branch or tag master
+? Please enter Delivery branch or tag release_1.0.0
+? Please enter Contracts branch or tag stake
 ? Please enter number of validator nodes 1
 ? Please enter number of non-validator nodes 0
-? Please enter ETH url
+? Please enter ETH url https://goerli.infura.io/v3/<YOUR_INFURA_KEY>
+? Please enter BSC url https://data-seed-prebsc-1-s1.binance.org:8545/
+? Please enter TRON rpc url 47.252.19.181:50051
+? Please enter TRON grid url http://172.18.1.136:8547
 ? Please select devnet type remote
-? Please enter comma separated hosts/IPs localhost
+? Please enter comma separated hosts/IPs
 ```
 
 运行上述脚本后，会生成如下的node目录
 
 ![image](../pics/node/node-dir.png)
+
+::: tip NOTE
+在每个 .sh 文件中，请确保 `NODE_DIR` 是正确的。 在这个例子中，`NODE_DIR` 应该是 `/data/bttc/node0`。
+:::
 
 ## validator配置
 
@@ -120,7 +131,7 @@ tron_grid_url = "http://172.18.1.136:8547"
 
 #### 替换创世文件配置
 
-将[launch仓库](https://github.com/bttcprotocol/launch.git)中的delivery-genesis.json替换至路径：`/data/bttc/node0/deliveryd/config/genesis.json`。
+将[genesis.json](https://github.com/bttcprotocol/launch/blob/master/testnet-1029/sentry/sentry/delivery/config/genesis.json)替换至路径：`/data/bttc/node0/deliveryd/config/genesis.json`。
 
 #### 添加delivery层的node-id
 
@@ -147,11 +158,11 @@ nohup sh delivery-bridge-start.sh>>logs/bridge.log 2>&1 &
 
 BTTC创世文件路径:`/data/bttc/node0/bttc/genesis.json`
 
-将[launch仓库](https://github.com/bttcprotocol/launch.git)中的`bttc-genesis.json`替换至上述路径。
+将[genesis.json](https://github.com/bttcprotocol/launch/blob/master/testnet-1029/sentry/sentry/bttc/genesis.json)替换至上述路径。
 
 #### 添加BTTC网络种子节点的node-id
 
-将[launch仓库](https://github.com/bttcprotocol/launch.git)中`static-nodes.json`替换到`/data/bttc/node0/bttc/static-nodes.json`。
+将[static-nodes.json](https://github.com/bttcprotocol/launch/blob/master/testnet-1029/sentry/sentry/bttc/static-nodes.json)替换到`/data/bttc/node0/bttc/static-nodes.json`。
 
 ### 初始化BTTC节点
 

@@ -27,6 +27,10 @@ cd delivery
 make install
 ```
 
+::: tip NOTE
+When `make install` fails in some environments, please use `make build` and replace `deliveryd` in `delivery-start.sh` with the delivered path under the build folder.
+:::
+
 ### Clone BTTC Code
 
 ```sh
@@ -70,21 +74,28 @@ Then fill in the following questions one by one, please pay attention to the dif
 ### BTTC Test Net (Donau, 1029)
 
 ```sh
-Please enter Bttc chain id 1029
+? Please enter Bttc chain id 1029
 ? Please enter Delivery chain id delivery-1029
 ? Please enter Bttc branch or tag master
-? Please enter Delivery branch or tag master
-? Please enter Contracts branch or tag master
+? Please enter Delivery branch or tag release_1.0.0
+? Please enter Contracts branch or tag stake
 ? Please enter number of validator nodes 1
 ? Please enter number of non-validator nodes 0
-? Please enter ETH url
+? Please enter ETH url https://goerli.infura.io/v3/<YOUR_INFURA_KEY>
+? Please enter BSC url https://data-seed-prebsc-1-s1.binance.org:8545/
+? Please enter TRON rpc url 47.252.19.181:50051
+? Please enter TRON grid url http://172.18.1.136:8547
 ? Please select devnet type remote
-? Please enter comma separated hosts/IPs localhost
+? Please enter comma separated hosts/IPs
 ```
 
 After running the above script, the following node directory will be generated
 
 ![image](./pics/node/node-dir.png)
+
+::: tip NOTE
+In each .sh file, please ensure `NODE_DIR` is correct. In this example, `NODE_DIR` should be `/data/bttc/node0`.
+:::
 
 ## Validator Configuration
 
@@ -120,7 +131,7 @@ tron_grid_url = "http://172.18.1.136:8547"
 
 #### Replace Genesis file Configuration
 
-Replace delivery-genesis.json in [launch warehouse](https://github.com/bttcprotocol/launch.git) with the path: `/data/bttc/node0/deliveryd/config/genesis.json`.
+Replace delivery-genesis.json in [genesis.json](https://github.com/bttcprotocol/launch/blob/master/testnet-1029/sentry/sentry/delivery/config/genesis.json) with the path: `/data/bttc/node0/deliveryd/config/genesis.json`.
 
 #### Add node-ids of the Delivery Layer
 
@@ -147,11 +158,11 @@ nohup sh delivery-bridge-start.sh>>logs/bridge.log 2>&1 &
 
 BTTC genesis file path: `/data/bttc/node0/bttc/genesis.json`
 
-Replace `bttc-genesis.json` in [launch warehouse](https://github.com/bttcprotocol/launch.git) with the above path.
+Replace `bttc-genesis.json` in [genesis.json](https://github.com/bttcprotocol/launch/blob/master/testnet-1029/sentry/sentry/bttc/genesis.json) with the above path.
 
 #### Add node-ids of BTTC Seed Nodes
 
-Replace `static-nodes.json` in [launch warehouse](https://github.com/bttcprotocol/launch.git) with `/data/bttc/node0/bttc/static-nodes.json`.
+Replace `static-nodes.json` in [static-nodes.json](https://github.com/bttcprotocol/launch/blob/master/testnet-1029/sentry/sentry/bttc/static-nodes.json) with `/data/bttc/node0/bttc/static-nodes.json`.
 
 ### Initialize the BTTC Node
 
