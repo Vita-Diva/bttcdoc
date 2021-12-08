@@ -79,8 +79,8 @@ Then fill in the following questions one by one, please pay attention to the dif
 ? Please enter Bttc branch or tag master
 ? Please enter Delivery branch or tag release_1.0.0
 ? Please enter Contracts branch or tag stake
-? Please enter number of validator nodes 1
-? Please enter number of non-validator nodes 0
+? Please enter number of validator nodes 0 # number of block procducing nodes
+? Please enter number of non-validator nodes 1 # number of full nodes
 ? Please enter ETH url https://goerli.infura.io/v3/<YOUR_INFURA_KEY>
 ? Please enter BSC url https://data-seed-prebsc-1-s1.binance.org:8545/
 ? Please enter TRON rpc url 47.252.19.181:50051
