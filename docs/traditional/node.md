@@ -7,6 +7,8 @@
 - Go 1.16 +
 - Nodejs v11.0
 - Rabbitmq(latest stable version)
+- Solc v0.5.11^
+- Ganache CLI
 
 ## 編譯安裝Delivery和BTTC二進制包
 
