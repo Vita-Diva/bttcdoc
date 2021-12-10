@@ -172,6 +172,12 @@ BTTC創世文件路徑:`/data/bttc/node0/bttc/genesis.json`
 sh bttc-setup.sh
 ```
 
+::: tip 僅部署BTTC節點（不推薦）
+替換`bttc-start.sh`裡`http://localhost:1317`為`http://50.18.50.100:1317`即可不搭建delivery節點。
+
+出去安全方面的考慮，我們強烈推薦同時搭建delivery和BTTC節點。
+:::
+
 ### 啟動BTTC節點
 
 ```sh
